@@ -41,7 +41,7 @@ public class Product
     public bool Sold { get; set; }
 }
 ```
-For now, completely ignore the keyword `public`.  We'll learn more about the importance of this keyword later. For now, always put `public` in front of class definitions and property definitions. Do the same with `{ get; set; }` - add them after every property name for now, but don't worry about what they do.   
+For now, completely ignore the keyword `public`.  We'll learn more about the importance of this keyword later. For now, always put `public` in front of class definitions and property definitions. Do the same with `{ get; set; }` - add them after every property name for now. We'll explore these a bit later.   
 
 What is this `Product` class? Think of it as a template for creating an object. It is not _a_ product, but the blueprint for _creating any product_ in our system. Each one of the lines inside the curly braces defines a _property_ for the `Product` class, so all `Products` in our system will have those three properties (though, of course, they may have different values for them.) Now that we have defined this class is a type in our system, it is available for our use in the program, just like `string`, `int`, and `bool`. Let's do that now!
 
@@ -103,5 +103,8 @@ Are there other metaphors you can think of besides `blueprint`, `model` or `temp
 
 2. You may have noticed that this class `Product` looks a lot like an _entity_ in the ERDs that you are already familiar with. That is exactly what it is! Most of the entities in your projects will get their own data model, like `Product`, to describe the type of that data for the C# type system. Practice with class properties by adding another property to our `Product` class. Get creative! You can choose what the property represents and what its data type is. Then, set the value of that property for each of the _instances_ of `Product` in your `products` list. Finally, at the end of the program where we print out the product details, add that new property to the string that describes the product. 
 
-Up Next: [Working with DateTime](./foundations-datetime.md)
+Up Next: [Calculated Properties](./classes-calculated.md)
 
+
+## 🔍 Additional Materials
+[.NET OOP tutorial](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/tutorials/oop)

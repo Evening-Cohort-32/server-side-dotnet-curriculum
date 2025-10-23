@@ -151,6 +151,4 @@ You'll have noticed that all of the methods we have written so far start with th
 1. Take a look at the methods (again, methods are like functions) that we added to our project. Try to think of a few reasons why these functions were helpful to us in making this program. Share your thoughts with your team, see what your colleagues thought as well!
 1. We're finishing up with Thrown For a Loop. If you have time, it can be instructive to try to rewrite this program in Javascript. Notice where it isn't a 1-to-1 translation.  Do you know of JS features that would make some of this code shorter and more readable? C# has many of those features too, and we will be introducing some more in the next projects. 
 
-Up Next: [Introducing ExtraVert](./extravert-intro.md)
-
-
+Up Next: [Reducto & Absurdum](./reducto.md)

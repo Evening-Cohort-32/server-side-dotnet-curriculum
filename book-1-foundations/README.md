@@ -26,28 +26,35 @@ The purpose of this book is to provide a basic introduction to the syntax of C# 
 
 <!-- prettier-ignore-start -->
 
+
 ### Installations
 |[Installations for Book 1](./chapters/book-1-installations.md) :computer:|
 |--|
 
-Start on the top left, and work you way down. When you get to the bottom, continue at the top of the column immediately to the right.
-|#|Thrown for a Loop <br>:football::curly_loop: <sub>(guided tour)</sub> |ExtraVert :potted_plant:|Reductio & Absurdum <br> :mage: :magic_wand:|
-|:-:|:-:|:-:|:-:|
-|1|[Setting up a console app](./chapters/setting-up-console-app.md)|[Project Setup](./chapters/extravert-intro.md)|[Project Requirements](./chapters/red-and-abe-requirements.md)|
-|2|[Strings, Console](./chapters/interacting-with-console.md)|[Main Menu](./chapters/extravert-main-menu.md)|[Calculated Properties](./chapters/red-and-abe-properties.md)<br><sub style="font-size: 0.85rem;">#get #set</sub>|
-|3|[Loops and Conditions](./chapters/conditionals-and-loops.md)|[Menu Options](./chapters/extravert-implement-menu.md)<br><sub style="font-size: 0.85rem;">#ternaries</sub>||
-|4|[Integers](./chapters/working-with-integers.md)|[Plant of the Day](./chapters/extravert-plant-of-day.md) <br> <sub style="font-size: 0.85rem;">#random</sub>||
-|5|[List](./chapters/thrown-for-a-loop-lists.md)|[Search](./chapters/extravert-search.md)|[Querying Data](./chapters/red-and-abe-linq.md)<br><sub style="font-size: 0.85rem;">#select #where #first</sub>|
-|6|[User-Defined Types: Classes](./chapters/classes-intro.md) |||
-|7|[DateTime](./chapters/foundations-datetime.md)|[Available Until](./chapters/extravert-date.md) ||
-|8|[Doubles and Decimals](./chapters/doubles-and-decimals.md)<br><sub style="font-size: 0.85rem;">#foreach</sub>|[Stats](./chapters/extravert-stats.md)<br><sub style="font-size: 0.85rem;">#casts</sub>||
-|9|[Exceptions and Error Handling](./chapters/handling-exceptions.md)|[Unexpected Data](./chapters/extravert-exceptions.md)<br> <sub style="font-size: 0.85rem;">#exception-types</sub>||
-|10|[Methods](./chapters/foundations-methods.md)|[Parameters](./chapters/extravert-methods.md)<br><sub style="font-size: 0.85rem;">#method-parameters #return-types</sub>||
-|11|||:trumpet: :page_with_curl:[Coding Assessment](./chapters/coding-self-assessment.md)|
+Work you way down through these lessons, one at a time:
+|#|Thrown for a Loop <br>:football::curly_loop: <sub>(guided tour)</sub> |
+|:-:|:-:|
+|1|[Setting up a console app](./chapters/setting-up-console-app.md)|
+|2|[Strings, Console](./chapters/interacting-with-console.md)|
+|4|[Integers](./chapters/working-with-integers.md)|
+|5|[List](./chapters/thrown-for-a-loop-lists.md)|
+|6|[More Lists](./chapters/thrown-for-a-loop-linq.md)|
+|7|[User-Defined Types: Classes](./chapters/classes-intro.md)|
+|8|[Calculated Properties](./chapters/classes-calculated.md)|
+|9|[DateTime](./chapters/foundations-datetime.md)|
+|10|[Doubles and Decimals](./chapters/doubles-and-decimals.md)<br><sub style="font-size: 0.85rem;">#foreach</sub>|
+|11|[Exceptions and Error Handling](./chapters/handling-exceptions.md)|
+|12|[Methods](./chapters/foundations-methods.md)|
 
 
+|:page_with_curl: Pair Programming Project:|
+|[Reducto & Absurdum](./chapters/reducto.md)|
 
-|:compass: Explorer Chapters (after you finish the table above)|
+|:trumpet: :page_with_curl:[Coding Assessment](./chapters/coding-self-assessment.md)|
+|--|
+|:potted_plant: [Dictionaries and Arrays](./chapters/book-1-extravert-collections-exploorer.md)|
+
+|:compass: Explorer Chapters (after you finish the self assessment or are otherwise waiting)|
 |--|
 |:potted_plant: [Dictionaries and Arrays](./chapters/book-1-extravert-collections-explorer.md)|
 |:football::curly_loop: [DateTimes in Depth](./chapters/book-1-datetimes-explorer.md)|

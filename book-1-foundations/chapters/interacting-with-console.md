@@ -34,7 +34,33 @@ Let's look at some similar C# code:
 string theMeaningOfLife = "forty-two";
 Console.WriteLine(theMeaningOfLife);
 ```
-What's different? Instead of using `let` or `const`, we declare a variable with a type - in this case, `string`. This tells the compiler that `theMeaningOfLife` will only ever hold `string` values, or `null` (the default value for a string - more about default values later). As a result, we cannot reassign `theMeaningOfLife` with a value of `42`, because `42` is an integer. This is what it means for C# to be strongly typed. Variables are assigned a type when they are declared, and that type does not change. Also note that strings in C# must be inside double-quotes (`"`).
+What's different? Instead of using `let` or `const`, we declare a variable with a type - in this case, `string`. This tells the compiler that `theMeaningOfLife` will only ever hold `string` values, or `null` (the default value for a string - more about default values later). As a result, we cannot reassign `theMeaningOfLife` with a value of `42`, because `42` is an integer. This is what it means for C# to be strongly typed. Variables are assigned a type when they are declared, and that type does not change. 
+
+That also means that function parameters also get assigned types. So a JS function like this:
+
+```javascript
+const addingMachine = (firstNumber, secondNumber) => {
+  return firstNumber + secondNumber;
+};
+```
+
+would be expressed in C# like this:
+
+```csharp
+int AddingMachine(int firstNumber, int secondNumber)
+{
+    return firstNumber + secondNumber;
+}
+```
+
+Notice that our `AddingMachine` method also _returns_ an `int`. Therefore, instead of `void` in front of the method name, the method has a _return type_ of `int`. Functions have inputs and outputs. Because C# is strongly typed, we can tell the compiler what types to expect for the inputs (the parameters), and what type we can expect the method to output (its return type). All of the information is conveniently available to you right in the function definition, and you have to abide by those types when you use the function. If you pass in , you will see errors:
+
+```csharp
+string result = AddingMachine(4, 5);
+//compiler error!
+int result = AddingMachine("4", "5");
+//also a compiler error!
+```
 
 Add a line at the top of `Program.cs` that stores the program greeting in a variable. Then, _reference_ that variable in the call to `Console.WriteLine`:
 ```csharp
@@ -42,7 +68,7 @@ string greeting = "Welcome to Thrown For a Loop!";
 Console.WriteLine(greeting);
 ```
 
-Note that when we reference `greeting` in the second line above, we don't put the type in front of the variable name because we are referencing a variable that we already declared above. The compiler already knows the type for `greeting`. 
+Note that when we reference `greeting` in the second line above, we don't put the type in front of the variable name because we are referencing a variable that we already declared above. Likewise, we don't explicitly define the types of arguments when we call a function. The compiler already knows their types. Also note that strings in C# must be inside double-quotes (`"`).
 
 ### Making our program interactive
 If we want to make a string multi-line, we can prepend the string with an `@`. This is called a _verbatim string_, but its other features are not important right now.
