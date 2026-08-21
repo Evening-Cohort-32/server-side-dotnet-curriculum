@@ -44,7 +44,7 @@ There is also a `Program.cs` file, which is the entrypoint to the application, j
 
 ### What's different
 
-In the `csproj` file, you'll notice that there are `PackageReference` nodes for something called `Swashbuckle` and `OpenApi`. Package references in .NET are a lot like dependencies in the `package.json` file in an npm project. They are references for outside libraries and projects that your project needs to work correctly. This particular library will help you create a nice little UI in the browser to test your API. There is an explorer chapter with a tutorial in its use. 
+In the `csproj` file, you'll notice a `PackageReference` node for `Microsoft.AspNetCore.OpenApi`. Package references in .NET are a lot like dependencies in the `package.json` file in an npm project. They are references for outside libraries and projects that your project needs to work correctly. This particular package lets ASP.NET Core generate a document describing your API's endpoints (this is called an OpenAPI document). We're about to add one more package reference of our own, to get a nice UI in the browser for exploring that document and testing your API. There is an explorer chapter with a tutorial in its use. 
 
 There are two more new files called `appsettings.json` and `appsettings.Development.json`. They hold configuration data for the application that gets used when starting the app. We will use these files later, but you can leave them alone for now.
 
@@ -58,23 +58,40 @@ The `Properties` folder holds a file called `launch.json`. This file holds confi
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();
 ```
 
-All of the code above is setting up the application to be ready to serve as a web API. We will edit some parts of this code later when we want to change the app's behavior (for example, adding Authentication to protect our app from unauthenticated users), but for now you can always leave it alone at the top of the file. 
+All of the code above is setting up the application to be ready to serve as a web API. `AddOpenApi()` and `MapOpenApi()` make ASP.NET Core generate that OpenAPI document we mentioned above, and serve it up as raw JSON at a route when the app is running in development. That's useful for tools, but not much fun to read by eye. Unlike some past versions of the template, this one doesn't come with a browsable UI on top of it, so let's add one:
+
+1. In your terminal, in the project directory, run:
+    ``` bash
+    dotnet add package Swashbuckle.AspNetCore
+    ```
+1. Replace `builder.Services.AddOpenApi();` with:
+    ``` csharp
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+    ```
+1. Replace `app.MapOpenApi();` with:
+    ``` csharp
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    ```
+
+`Swashbuckle` is a package that reads the OpenAPI document and builds an interactive web page from it, where you can see every endpoint in your API and try them out right in the browser. There's an explorer chapter later in this book with a tutorial on using that UI; for the required chapters, you'll mostly use Yaak instead.
+
+We will edit this block of code again later on in the book (for example, when we add Authentication to protect our app from unauthenticated users), but for now you can always leave it alone at the top of the file. 
 
 Skipping to near the bottom of the file, there is a single line:
 ``` csharp 
@@ -83,9 +100,9 @@ app.Run();
 
 This actually starts the app, and should always be at the bottom of this file. When you write other code in this file, make sure this line is always at the bottom. 
 
-Below that is this code:
+Below that, at the very end of the file, is this code:
 ``` csharp
-record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
+record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
@@ -98,6 +115,11 @@ A `record` is a data type similar to the `class` definitions that we have been w
 Let's return to the middle of the file, where you will do the vast majority of your coding: 
 
 ``` csharp
+var summaries = new[]
+{
+    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+};
+
 app.MapGet("/weatherforecast", () =>
 {
     var forecast =  Enumerable.Range(1, 5).Select(index =>
@@ -110,8 +132,7 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 })
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+.WithName("GetWeatherForecast");
 ```
 
 This code creates an _endpoint_ in the application. This is an important concept that is a basic building block of a web API. An endpoint is essentially a _route_ (a URL to make a request), and a _handler_, which is a function that determines the logic for what to do when a request is made to that route. Because `MapGet` is getting called here, we also know that this endpoint is for a `GET` request only. So in this case: 
