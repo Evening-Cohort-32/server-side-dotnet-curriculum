@@ -47,8 +47,11 @@ Work you way down through these lessons, one at a time:
 |11|[Exceptions and Error Handling](./chapters/loop-11-handling-exceptions.md)|||
 |12|[Methods](./chapters/loop-12-foundations-methods.md)|||
 
-|:trumpet: :page_with_curl: [Coding Assessment](./chapters/assessment-01.md)|
+|:mortar_board: Coding Self-Assessment|
 |--|
+|:trumpet: :page_with_curl: [Brass & Poem](./chapters/assessment-01.md)|
+
+## 🔍 Additional Materials
 
 |:compass: Explorer Chapters (after you finish the self assessment or are otherwise waiting)|
 |--|
