@@ -18,7 +18,7 @@ The purpose of this book is to provide a conceptual introduction to building Web
 
 ## Table of Contents
 
-|#|Honey Rae's Repairs 🍯 💻<br> <sub>(guided tour)</sub> |Car Builder 🚙🚗 |DeShawn's Dog Walking 🐕‍🦺 🐩 |
+|#|Honey Rae's Repairs <br>🍯 💻 <sub>(guided tour)</sub> |Car Builder <br>🚙🚗 <sub>(optional extra practice)</sub> |DeShawn's Dog Walking <br>🐕‍🦺 🐩 <sub>(pair programming)</sub>|
 |:-:|:-:|:-:|:-:|
 |1|[Setup for Web APIs](./chapters/honeyrae-01-web-api-setup.md)|[Project Setup](./chapters/carbuilder-01-setup.md)|[Project Setup](./chapters/deshawns-01-setup.md)|
 |2|[Making Requests with Yaak](./chapters/honeyrae-02-testing-web-api.md)  <br><sub style="font-size: 0.85rem;">#debugging #endpoints #routes #handlers</sub>|[Basic Requirements](./chapters/carbuilder-02-basic-endpoints.md)|[User Stories](./chapters/deshawns-02-user-stories.md)|
