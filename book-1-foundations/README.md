@@ -32,7 +32,7 @@ The purpose of this book is to provide a basic introduction to the syntax of C# 
 |--|
 
 Work you way down through these lessons, one at a time:
-|#|Thrown for a Loop <br>:football::curly_loop: <sub>(guided tour)</sub> |ExtraVert <br>:potted_plant: <sub>(optional extra practice)</sub>|Reducto & Absurdum :mage: :magic_wand: <sub>(pair programming)</sub>|
+|#|Thrown for a Loop <br>:football::curly_loop: <sub>(guided tour)</sub> |ExtraVert <br>:potted_plant: <sub>(optional extra practice)</sub>|Reducto & Absurdum <br>:mage: :magic_wand: <sub>(pair programming)</sub>|
 |:-:|:-:|:-:|:-:|
 |1|[Setting up a console app](./chapters/loop-01-setting-up-console-app.md)|[Getting Started](./chapters/extravert-01-intro.md)|[Reducto & Absurdum](./chapters/reducto-01-requirements.md)|
 |2|[Strings, Console](./chapters/loop-02-interacting-with-console.md)|[Adding a Main Menu](./chapters/extravert-02-main-menu.md)||
