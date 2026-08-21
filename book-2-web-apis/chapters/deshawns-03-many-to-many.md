@@ -1,48 +1,13 @@
 # Handling Walker Cities in Deshawn's Dog Walking
-In DeShawn's Dog Walking, a city can have many walkers in it, and a walker can walk in many cities. Therefore, the relationship between walker and city is _many-to-many_. You have covered this idea before in the first iteration of Deshawn's, but the .NET version will cause a few new wrinkles, which we will cover here. 
+In DeShawn's Dog Walking, a city can have many walkers in it, and a walker can walk in many cities. Therefore, the relationship between walker and city is _many-to-many_, the same shape you already built for `ServiceTicket`s and `Employee`s back in [Honey Rae's](./honeyrae-12-many-to-many.md). The idea is the same here, applied to a new pair of entities. Work through the requirements below with your pair, using that chapter as a reference for the pattern, not a script to copy.
 
-## Defining the data types
-Of course, you will have a `Walker` and a `City` class. To connect a many-to-many relationship, you will also need a joining entity (you'll here these called join tables, bridge tables, or junction tables), which we'll call `WalkerCity` that has a `CityId` and a `WalkerId`.  The `Walker` class should have a `Cities` property where we can store cities for a walker before sending the data back to the client (think `_embed` in JSON Server). Similarly, the `City` class could have a `Walkers` property. But how do we query the database to populate those properties?
+## Requirements
+1. Add a `Walker` class, a `City` class, and a joining `WalkerCity` class to connect them, with a `WalkerId` and a `CityId`.
+   - `Walker` needs a `Cities` property to hold a walker's related city data.
+   - `City` needs a `Walkers` property to hold a city's related walker data.
+1. Update the `GET` endpoints so that each walker in the response includes its cities, and each city includes its walkers.
+1. Build a `PUT` endpoint for updating a walker's cities. The client will send a walker object with the full, correct list of `Cities` the walker should be associated with.
+   - This one endpoint has to account for cities being added, cities being removed, and cities that are unaffected, since the client is only sending you the final list, not a diff.
+1. Test each endpoint as you complete it.
 
-## Getting Cities for a Walker
-Assume that we have `walkers` `cities`, and `walkerCities` collections holding our data. Getting a single walker looks like this:
-
-``` csharp
-int id = 1;
-Walker walker = walkers.FirstOrDefault(w => w.Id == id);
-```
-If we want to get the walker's cities, we need to do that in two steps:
-```csharp
-int id = 1;
-List<WalkerCity> walkerCitiesForWalker1 = walkerCities.Where(wc => wc.WalkerId == 1).ToList();
-
-List<City> citiesFor1 = walkerCitiesForWalker1.Select(wc => cities.First(c => c.Id = wc.CityId)).ToList();
-```
-The second step returns a city that matches the `CityId` of each `WalkerCity` in the `List` stored in `walkerCitiesForWalker1` collection. 
-
-Putting it all together, we can finally add the cities to the `WalkerDTO` object stored in the `walker` variable:
-``` csharp
-walker.Cities = citiesFor1; 
-```
-
-## Updating cities for a walker
-Updating cities associated with a walker is a bit more complicated. Let's say the client sends a `walker` object to the server to do a `PUT` operation, with a list of `Cities` that represent the correct list of cities that the walker walks in. 
-
-Our first task is to remove the current `WalkerCity` items associated with the walker:
-``` csharp
-walkersCities =  walkerCities.Where(wc => wc.WalkerId != walker.Id).ToList();
-```
-Then, we add new `WalkerCity` items for each of the cities in the `Walker` object sent to the server from the client:
-``` csharp
-foreach (City city in walker.Cities)
-{
-    WalkerCity newWC = new WalkerCity
-    {
-        WalkerId = walker.Id,
-        CityId = city.Id
-    };
-    newWC.Id = walkerCities.Count > 0 ? walkerCities.Max(wc => wc.Id) + 1 : 1;
-    walkerCities.Add(newWC);
-}
-```
-The endpoint that implements this logic functions as the Create, Update, and Delete functionality for walker cities, because the client should send the entire list of correct cities every time the walker is updated.
+Up Next: [Coding Self-Assessment](./assessment-02.md)

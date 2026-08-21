@@ -1,7 +1,7 @@
 # Further Development of the Honey Rae's API :weight_lifting:
 This chapter lists a number of features for the Honey Rae's API for you to implement. You can do as many of them as you like. Some of the features will require you to build a larger database to properly test their functionality. 
 
-This chapter will require you to think about how to name your routes. To assist you in this, the explorer chapter on [REST principles](./rest-concepts.md) is recommended before this chapter.
+This chapter will require you to think about how to name your routes. To assist you in this, the resource on [REST principles](./resource-01-rest-concepts.md) is recommended before this chapter.
 
 If you get stuck, ask for help! These exercises intentionally go beyond what you've learned in the course so far. 
 

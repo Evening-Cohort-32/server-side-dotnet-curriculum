@@ -10,12 +10,11 @@ Each of these options collections requires a `GET` endpoint to fetch all of the 
 
 ## `/orders`
 
-1. Create an endpoint that gets all orders
-   - This endpoint should [add the related data](./honey-raes-get-emps-cust.md#include-the-employees-data-in-the-service-ticket-details) from each of the options that are related to it. You might have to [add more properties](./honey-raes-get-emps-cust.md#including-related-data) to the `Order` class so that there is a place to store those options on the order.
-1. Create another endpoint that [creates an order](./honey-raes-create.md#creating-a-serviceticket) and adds it to the orders collection.
+1. Create an endpoint that gets all orders. You'll come back to add related option data to this endpoint in a later chapter, for now it just needs to return the collection.
+1. Create another endpoint that [creates an order](./honeyrae-07-create.md#creating-a-serviceticket) and adds it to the orders collection.
    - It needs to use the `POST` HTTP method, and should expect an order object in the JSON body of the HTTP request
-   - Configure this endpoint to [add the `Timestamp`](./honey-rae-put.md#creating-a-custom-endpoint-to-complete-a-ticket) to the order on the server-side using `DateTime.Now`.
-   - Include the code that [creates a new Id](./honey-raes-create.md#creating-the-endpoint) for the new `Order` object.
+   - Configure this endpoint to [add the `Timestamp`](./honeyrae-09-put.md#creating-a-custom-endpoint-to-complete-a-ticket) to the order on the server-side using `DateTime.Now`.
+   - Include the code that [creates a new Id](./honeyrae-07-create.md#creating-the-endpoint) for the new `Order` object.
 1. Test all of these endpoints before moving on.
 
-Up Next: [Making Requests](./car-builder-client-requests-cors.md)
+Up Next: [Making Requests](./carbuilder-03-client-requests-cors.md)

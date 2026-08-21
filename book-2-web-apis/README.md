@@ -18,20 +18,33 @@ The purpose of this book is to provide a conceptual introduction to building Web
 
 ## Table of Contents
 
-|#|🍯 💻<br>  Honey Rae's Repairs<br> <sub>(guided tour)</sub> |🚙🚗 <br>Car Builder |🐕‍🦺 🐩<br> DeShawn's Dog Walking |
+|#|Honey Rae's Repairs 🍯 💻<br> <sub>(guided tour)</sub> |Car Builder 🚙🚗 |DeShawn's Dog Walking 🐕‍🦺 🐩 |
 |:-:|:-:|:-:|:-:|
-|1|[Setup for Web APIs](./chapters/web-api-setup.md)|[Project Setup](./chapters/car-builder-setup.md)|[Project Setup](./chapters/deshawns-setup.md)<br><sub style="font-size: 0.85rem;">#proxy</sub>|
-|2|[Making Requests with Postman](./chapters/testing-web-api.md)  <br><sub style="font-size: 0.85rem;">#debugging #endpoints #routes #handlers</sub>|[Basic Requirements](./chapters/car-builder-basic-endpoints.md)|[User Stories](./chapters/deshawns-user-stories.md)|
-|3|[Data Models](./chapters/defining-types-honey-raes.md) <br><sub style="font-size: 0.85rem;">#namespaces #dtos</sub>|[Get Technologies](./chapters/car-builder-client-requests-cors.md)<br><sub style="font-size: 0.85rem;">#cors #await #async</sub>|[Walker Cities](./chapters/deshawns-many-to-many.md)| 
-|4|[Get All/Get One Service Ticket(s)](./chapters/honey-raes-get-tickets.md) <br><sub style="font-size: 0.85rem;">#using</sub>|[Submit an Order](./chapters/car-builder-submit-order.md)||
-|5|[Adding all Honey Rae's GET endpoints](./chapters/honey-raes-get-emps-cust.md)<br><sub style="font-size: 0.85rem;">#composition #NotFound</sub>|[Calculating Total Price](./chapters/car-builder-related-data.md)||
-|6| [Creating a Service Ticket](./chapters/honey-raes-create.md) |[Completing a Build](./chapters/car-builder-complete-build.md)||
-|7| [Deleting a Ticket](./chapters/honey-raes-delete.md) <br><sub style="font-size: 0.85rem;">#delete</sub>|[Query String Params](./chapters/car-builder-query-string.md)|
-|8| [Assigning a Ticket](./chapters/honey-rae-put.md) <br><sub style="font-size: 0.85rem;">#put</sub>||:potato:[Coding Self-Assessment](./chapters/coding-self-assessment.md)|
+|1|[Setup for Web APIs](./chapters/honeyrae-01-web-api-setup.md)|[Project Setup](./chapters/carbuilder-01-setup.md)|[Project Setup](./chapters/deshawns-01-setup.md)|
+|2|[Making Requests with Yaak](./chapters/honeyrae-02-testing-web-api.md)  <br><sub style="font-size: 0.85rem;">#debugging #endpoints #routes #handlers</sub>|[Basic Requirements](./chapters/carbuilder-02-basic-endpoints.md)|[User Stories](./chapters/deshawns-02-user-stories.md)|
+|3|[Data Models](./chapters/honeyrae-03-defining-types.md) <br><sub style="font-size: 0.85rem;">#namespaces #dtos</sub>|[Get Technologies](./chapters/carbuilder-03-client-requests-cors.md)|[Walker Cities](./chapters/deshawns-03-many-to-many.md)| 
+|4|[Get All/Get One Service Ticket(s)](./chapters/honeyrae-04-get-tickets.md) <br><sub style="font-size: 0.85rem;">#using</sub>|[Submit an Order](./chapters/carbuilder-04-submit-order.md)||
+|5|[Adding all Honey Rae's GET endpoints](./chapters/honeyrae-05-get-emps-cust.md)<br><sub style="font-size: 0.85rem;">#composition #NotFound</sub>|[Calculating Total Price](./chapters/carbuilder-05-related-data.md)||
+|6| [Filtering Tickets with Query Strings](./chapters/honeyrae-06-query-string.md) <br><sub style="font-size: 0.85rem;">#querystring</sub>|||
+|7| [Creating a Service Ticket](./chapters/honeyrae-07-create.md) |[Completing a Build](./chapters/carbuilder-06-complete-build.md)||
+|8| [Deleting a Ticket](./chapters/honeyrae-08-delete.md) <br><sub style="font-size: 0.85rem;">#delete</sub>|[Query String Params](./chapters/carbuilder-07-query-string.md)||
+|9| [Assigning a Ticket](./chapters/honeyrae-09-put.md) <br><sub style="font-size: 0.85rem;">#put</sub>|||
+|10| [Adding a Client](./chapters/honeyrae-10-client-cors.md) <br><sub style="font-size: 0.85rem;">#cors #proxy</sub>|||
+|11| [Planning a New Feature: Team Repairs](./chapters/honeyrae-11-planning-teams.md) <br><sub style="font-size: 0.85rem;">#userstories #erd</sub>|||
+|12| [Implementing the Many-to-Many Relationship](./chapters/honeyrae-12-many-to-many.md) <br><sub style="font-size: 0.85rem;">#manytomany</sub>|||
 
-|:compass: Explorer Chapters|
+|:mortar_board: Coding Self-Assessment|
 |--|
-|[REST design principles -naming routes](./chapters/rest-concepts.md)|
-|🍯 💻 [Adding More Endpoints to HoneyRae's](./chapters/honey-rae-more-endpoints.md)|
-|🍯 💻 [Add a front-end client for HoneyRae's API](./chapters/honey-rae-client.md)|
-|🍯 💻 [OpenAPI (Swagger)](./chapters/honey-rae-open-api.md)|
+|:potato: [Tuber Treats](./chapters/assessment-02.md)|
+
+## 🔍 Additional Materials
+
+|:compass: Explorer Chapters (after you finish the self assessment or are otherwise waiting)|
+|--|
+|🍯 💻 [Adding More Endpoints to HoneyRae's](./chapters/explorer-honeyrae-01-more-endpoints.md)|
+|🍯 💻 [Building Out the HoneyRae's Client](./chapters/explorer-honeyrae-02-client.md)|
+|🍯 💻 [OpenAPI (Swagger)](./chapters/explorer-honeyrae-03-open-api.md)|
+
+|🌐 Resources|
+|--|
+|[REST design principles - naming routes](./chapters/resource-01-rest-concepts.md)|

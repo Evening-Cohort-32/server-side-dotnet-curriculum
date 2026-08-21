@@ -49,8 +49,8 @@ Some things to notice:
 
 ## Test the new endpoint
 1. Start the debugger in VS Code or restart if it is already running.
-1. In Postman, open a new request with the `+` button. Choose the `POST` method in the dropdown to the left of the URL, and put `http://localhost:<port>/servicetickets` in the URL bar.
-1. Before we send this request, we need to add the data that we're going to post to the body of the request. Click on the Body tab,choose the `raw`  radio button, and then `JSON` from the dropdown. 
+1. In Yaak, open a new request with the `+` button, and choose `HTTP`. Choose the `POST` method in the dropdown to the left of the URL, and put `http://localhost:<port>/servicetickets` in the URL field.
+1. Before we send this request, we need to add the data that we're going to post to the body of the request. Click on the Body tab, and choose `JSON` as the body type. 
 
 Add this as the body:
 ```json
@@ -65,6 +65,6 @@ We're leaving the `employeeId` out as well as the `dateCompleted`, because a new
 
 Hit send!
 
-If you didn't get any errors you can confirm that the endpoint is working by looking at the response. You should see the same object in the response body, but it will have an `id` on it created by the API. This is one of the reasons it can be helpful to send the new object back. If you look at the headers for the response, you will also see the `location` header with the url to the new service ticket. You can also see that the object is in the database by changing the method in Postman to `GET`. Hit send again, and you should see the new service ticket that was posted in the list of service tickets in the response. We've now confirmed two things: a new service ticket is created, and it is successfully saved to the database collection.
+If you didn't get any errors you can confirm that the endpoint is working by looking at the response. You should see the same object in the response body, but it will have an `id` on it created by the API. This is one of the reasons it can be helpful to send the new object back. If you look at the headers for the response, you will also see the `location` header with the url to the new service ticket. You can also see that the object is in the database by changing the method in Yaak to `GET`. Hit send again, and you should see the new service ticket that was posted in the list of service tickets in the response. We've now confirmed two things: a new service ticket is created, and it is successfully saved to the database collection.
 
-Up Next: [Delete a Service Ticket](./honey-raes-delete.md)
+Up Next: [Delete a Service Ticket](./honeyrae-08-delete.md)

@@ -42,7 +42,7 @@ To refactor do the following (try to do this before looking at the solution):
     ```
     </details>
 
-1. Use Postman to get all of the orders to ensure that your order was created. 
+1. Use Yaak to get all of the orders to ensure that your order was created. 
 
 ## Fetching Orders from the database
 1. The client is still getting the list of orders from the database in the front end. Update the `getOrders` function to be `async` and get its data from the API
@@ -67,5 +67,5 @@ To refactor do the following (try to do this before looking at the solution):
 1. As you can see, the `async`/`await` syntax is simpler than `.then`, but requires any functions that call an `async` function to also be `async`. This is fine! 
 1. Now test the client to see that the list of orders updates when you submit an order.
 
-Up Next: [Related Data and Calculated Values](./car-builder-related-data.md)
+Up Next: [Related Data and Calculated Values](./carbuilder-05-related-data.md)
 

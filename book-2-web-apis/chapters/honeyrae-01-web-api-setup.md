@@ -48,7 +48,7 @@ In the `csproj` file, you'll notice that there are `PackageReference` nodes for 
 
 There are two more new files called `appsettings.json` and `appsettings.Development.json`. They hold configuration data for the application that gets used when starting the app. We will use these files later, but you can leave them alone for now.
 
-The `Properties` folder holds a file called `launch.json`. This file holds configuration settings for launching the app (this is where you can find the urls you can use to access the app in Postman or a browser).
+The `Properties` folder holds a file called `launch.json`. This file holds configuration settings for launching the app (this is where you can find the urls you can use to access the app in Yaak or a browser).
  
 `Program.cs` looks _very_ different from our console app template. Let's use the code that is there to introduce some important concepts in building web APIs. 
 
@@ -124,4 +124,4 @@ This code creates an _endpoint_ in the application. This is an important concept
 
 In the next chapter, we'll see how we can interact with this API and add another endpoint to it. 
 
-Up Next: [Sending requests to the API](./testing-web-api.md)
+Up Next: [Sending requests to the API](./honeyrae-02-testing-web-api.md)

@@ -59,7 +59,7 @@ You can also use DTOs to create things like calculated properties to further mod
 1. Create the other classes in the same way. Notice that we append `DTO` to the end of the class name to distinguish it from the data model class.
 
     
-Up Next: [Implementing Get All/Get One Service Ticket(s)](./honey-raes-get-tickets.md)
+Up Next: [Implementing Get All/Get One Service Ticket(s)](./honeyrae-04-get-tickets.md)
 
 ## 🔍 Additional Materials
 1. [namespace keyword](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/namespace)
