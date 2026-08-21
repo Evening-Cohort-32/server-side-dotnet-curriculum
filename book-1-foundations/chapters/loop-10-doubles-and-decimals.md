@@ -96,7 +96,7 @@ for (let product of products)
 
 Run the program again to ensure that you are getting the correct tally for your inventory (remember that sold items will be excluded!)
 
-Up Next: [Handling Exceptions](./handling-exceptions.md)
+Up Next: [Handling Exceptions](./loop-11-handling-exceptions.md)
 
 ## 🔍 Additional Materials
 1. [Numbers in C#](https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/tutorials/numbers-in-csharp-local)

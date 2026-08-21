@@ -1,5 +1,7 @@
 # :potted_plant: Dictionaries and Arrays
 
+The Dictionary and Array features below build on the ExtraVert project, so make sure you've built it (or at least worked through [the setup and Post a Plant feature](./extravert-01-intro.md)) before starting here.
+
 ## Dictionaries
 Dictionaries allow for storing multiple key-value pairs in a collection. They do not feature prominently in this course, but they are sometimes very useful data structures. They are the closest thing to a plain-old javascript object you will encounter in the course. The biggest difference is that it is possible to define a type for both the keys and the values.  
 

@@ -115,4 +115,4 @@ The last `catch` will catch any other general Exceptions that aren't `FormatExce
 1. There are two skills we introduce in this chapter. The first, and for you most important right now, is _how to read Exception messages_. What are the four parts of the Exception message, and what piece of information does each part give you? How can you use them to see what's wrong in your code?
 1. The second is how to _handle_ Exceptions, that is, anticipate that some parts of your code might throw errors, and instead of your program breaking, provide alternative logic for it to follow in the `catch`. When would you do this instead of using `if`/`else`? Sometimes there isn't a straightforward answer to this question, so discuss it with your peers!
 
-Up Next: [Methods](./foundations-methods.md)
+Up Next: [Methods](./loop-12-foundations-methods.md)

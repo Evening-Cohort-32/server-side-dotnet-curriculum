@@ -119,7 +119,7 @@ Console.WriteLine($"You chose: {products[response - 1]}");
 ```
 We need to subtract `1` from the user's answer (if they chose option `3`, that will correspond to index `2` in the `List`).
 
-Up Next: [Handling Lists with Linq](./thrown-for-a-loop-linq.md)
+Up Next: [Handling Lists with Linq](./loop-06-thrown-for-a-loop-linq.md)
 
 ## 🔍 Additional Materials
 1. [Default values for C# types](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/default-values)

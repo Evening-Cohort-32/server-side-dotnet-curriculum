@@ -9,4 +9,4 @@ Reductio & Absurdum have been providing high-quality magical supplies to the wiz
 1. Products have a name, price (as a decimal), a boolean to indicate whether they are still available, and a DaysOnShelf int that's calculated based on the date the product was entered in the system. They also have a ProductTypeId, which categorize them into the following categories: apparel, potions, enchanted objects, and wands. When adding a product to the inventory, the user should be able to choose from these options to add a product type id to the new product.
 1. Product Types have Name and Id properties.
 
-Up Next: [Foundations Coding Assessment](./coding-self-assessment.md)
+Up Next: [Foundations Coding Assessment](./assessment-01.md)

@@ -74,4 +74,4 @@ Now, you can update the code to display only the balls by iterating through this
 1. Anywhere that you are searching for an individual item in products or product types. (HINT: you need to use `FirstOrDefault` and search by `product.Name`, if you are looking for an item with a name that you know.) This could be when updating an item, as an example. 
 1. To allow a user to search by product type, you need to show them the list of product types, and then filter the list of products based on the user's input. These are good use cases for `Where` (to filter the products by ProductTypeId) and `Select` (to turn the List of ProductTypes into strings to display them). See if you can refactor the code you have for that feature to use these methods instead of loops to do that work. If you're struggling with how to implement this, ask an instructor to talk through it with you.
 
-Up Next: [User-Defined Types: Classes](./classes-intro.md)
+Up Next: [User-Defined Types: Classes](./loop-07-classes-intro.md)

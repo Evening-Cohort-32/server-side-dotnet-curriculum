@@ -1,5 +1,5 @@
 # :potted_plant: Creating Custom Exceptions
-In this chapter you will learn how to create custom exceptions to more precisely target issues in your application. 
+In this chapter you will learn how to create custom exceptions to more precisely target issues in your application. This chapter builds on the ExtraVert project, so make sure you've built it (or at least worked through [the setup and Post a Plant feature](./extravert-01-intro.md)) before starting here.
 
 ## Inheriting the Exception class
 You can use the Exception class as the base for the new type you're creating. We will cover inheritance more in depth later, but it basically allows you to take all of the members of one class and apply them to another:
@@ -63,10 +63,10 @@ At the bottom of `Program.cs`, add the following class:
 ``` csharp
 public class ValidationException : Exception
 {
-    public TooLongException(string message) : base(message)
+    public ValidationException(string message) : base(message)
     {
 
     }
 }
 ```
-In the method for posting a plant, try to think of ways in which the user could provide bad input (in addition to the input we handled in the [bug report chapter](./extravert-exceptions.md)). Some of these won't actually throw Exceptions unless you explicitly throw them (for example, the ZIP should not have more than 5 numbers). Throw the `ValidationException` with a message about what's wrong for any of these other validation issues. See if you can figure out where to `catch` them in the application. As always, ask a colleague or an instructor if you get stuck. 
+In the method for posting a plant, try to think of ways in which the user could provide bad input (in addition to the input we handled in the [bug report chapter](./extravert-08-exceptions.md)). Some of these won't actually throw Exceptions unless you explicitly throw them (for example, the ZIP should not have more than 5 numbers). Throw the `ValidationException` with a message about what's wrong for any of these other validation issues. See if you can figure out where to `catch` them in the application. As always, ask a colleague or an instructor if you get stuck. 

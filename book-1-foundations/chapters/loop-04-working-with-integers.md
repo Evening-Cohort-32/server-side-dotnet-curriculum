@@ -50,7 +50,7 @@ Run the program and see what it does! Test the basic functionality and make sure
 
 In Javascript, there is only one `number` type. In C# there are many different numerical types (which vary in how big they can be and how precise), and even more than one integer type. We'll get to some of them later, but if it's possible, most of the time you should use the `int` type for integer values.
 
-Up Next: [Lists](./thrown-for-a-loop-lists.md)
+Up Next: [Lists](./loop-05-thrown-for-a-loop-lists.md)
 
 ## 🔍 Additional Materials
 1. [Microsoft docs for integral types](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/integral-numeric-types)

@@ -89,5 +89,5 @@ If the part before the `?` is true, this expression will return what's on the le
 
 And you can use it in other ways, like inside the {} with string interpolation. But that doesn't mean you should always try to minimize your code lines. When things are simple enough, it can be elegant. But cramming together a lot of operations in one line can make your code hard to understand and debug. 
 
-Up Next: [Working with DateTime](./foundations-datetime.md)
+Up Next: [Working with DateTime](./loop-09-foundations-datetime.md)
 

@@ -103,7 +103,7 @@ Are there other metaphors you can think of besides `blueprint`, `model` or `temp
 
 2. You may have noticed that this class `Product` looks a lot like an _entity_ in the ERDs that you are already familiar with. That is exactly what it is! Most of the entities in your projects will get their own data model, like `Product`, to describe the type of that data for the C# type system. Practice with class properties by adding another property to our `Product` class. Get creative! You can choose what the property represents and what its data type is. Then, set the value of that property for each of the _instances_ of `Product` in your `products` list. Finally, at the end of the program where we print out the product details, add that new property to the string that describes the product. 
 
-Up Next: [Calculated Properties](./classes-calculated.md)
+Up Next: [Calculated Properties](./loop-08-classes-calculated.md)
 
 
 ## 🔍 Additional Materials

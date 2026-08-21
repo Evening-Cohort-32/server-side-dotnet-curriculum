@@ -28,37 +28,33 @@ The purpose of this book is to provide a basic introduction to the syntax of C# 
 
 
 ### Installations
-|[Installations for Book 1](./chapters/book-1-installations.md) :computer:|
+|:computer: [Installations for Book 1](./chapters/installs-01-installations.md)|
 |--|
 
 Work you way down through these lessons, one at a time:
-|#|Thrown for a Loop <br>:football::curly_loop: <sub>(guided tour)</sub> |
-|:-:|:-:|
-|1|[Setting up a console app](./chapters/setting-up-console-app.md)|
-|2|[Strings, Console](./chapters/interacting-with-console.md)|
-|4|[Integers](./chapters/working-with-integers.md)|
-|5|[List](./chapters/thrown-for-a-loop-lists.md)|
-|6|[More Lists](./chapters/thrown-for-a-loop-linq.md)|
-|7|[User-Defined Types: Classes](./chapters/classes-intro.md)|
-|8|[Calculated Properties](./chapters/classes-calculated.md)|
-|9|[DateTime](./chapters/foundations-datetime.md)|
-|10|[Doubles and Decimals](./chapters/doubles-and-decimals.md)<br><sub style="font-size: 0.85rem;">#foreach</sub>|
-|11|[Exceptions and Error Handling](./chapters/handling-exceptions.md)|
-|12|[Methods](./chapters/foundations-methods.md)|
+|#|Thrown for a Loop <br>:football::curly_loop: <sub>(guided tour)</sub> |ExtraVert <br>:potted_plant: <sub>(optional extra practice)</sub>|Reducto & Absurdum :mage: :magic_wand: <sub>(pair programming)</sub>|
+|:-:|:-:|:-:|:-:|
+|1|[Setting up a console app](./chapters/loop-01-setting-up-console-app.md)|[Getting Started](./chapters/extravert-01-intro.md)|[Reducto & Absurdum](./chapters/reducto-01-requirements.md)|
+|2|[Strings, Console](./chapters/loop-02-interacting-with-console.md)|[Adding a Main Menu](./chapters/extravert-02-main-menu.md)||
+|3|[Conditionals and Loops](./chapters/loop-03-conditionals-and-loops.md)|[Implementing the Main Menu Options](./chapters/extravert-03-implement-menu.md)||
+|4|[Integers](./chapters/loop-04-working-with-integers.md)|[Plant of the Day](./chapters/extravert-04-plant-of-day.md)||
+|5|[List](./chapters/loop-05-thrown-for-a-loop-lists.md)|[Searching for Sunlight](./chapters/extravert-05-search.md)||
+|6|[More Lists](./chapters/loop-06-thrown-for-a-loop-linq.md)|[Adding an Available Until Date](./chapters/extravert-06-date.md)||
+|7|[User-Defined Types: Classes](./chapters/loop-07-classes-intro.md)|[App Statistics](./chapters/extravert-07-stats.md)||
+|8|[Calculated Properties](./chapters/loop-08-classes-calculated.md)|[Handling Unexpected Data](./chapters/extravert-08-exceptions.md)||
+|9|[DateTime](./chapters/loop-09-foundations-datetime.md)|[Method Parameters](./chapters/extravert-09-methods.md)||
+|10|[Doubles and Decimals](./chapters/loop-10-doubles-and-decimals.md)<br><sub style="font-size: 0.85rem;">#foreach</sub>|||
+|11|[Exceptions and Error Handling](./chapters/loop-11-handling-exceptions.md)|||
+|12|[Methods](./chapters/loop-12-foundations-methods.md)|||
 
-
-|:page_with_curl: Pair Programming Project:|
-|[Reducto & Absurdum](./chapters/reducto.md)|
-
-|:trumpet: :page_with_curl:[Coding Assessment](./chapters/coding-self-assessment.md)|
+|:trumpet: :page_with_curl: [Coding Assessment](./chapters/assessment-01.md)|
 |--|
-|:potted_plant: [Dictionaries and Arrays](./chapters/book-1-extravert-collections-exploorer.md)|
 
 |:compass: Explorer Chapters (after you finish the self assessment or are otherwise waiting)|
 |--|
-|:potted_plant: [Dictionaries and Arrays](./chapters/book-1-extravert-collections-explorer.md)|
-|:football::curly_loop: [DateTimes in Depth](./chapters/book-1-datetimes-explorer.md)|
-|:potted_plant:[Creating Custom Exceptions](./chapters/book-1-custom-exceptions-explorer.md)|
+|:football::curly_loop: [DateTimes in Depth](./chapters/explorer-loop-01-datetimes.md)|
+|:potted_plant: [Dictionaries and Arrays](./chapters/explorer-extravert-01-collections.md)|
+|:potted_plant: [Creating Custom Exceptions](./chapters/explorer-extravert-02-custom-exceptions.md)|
 
 
 |:test_tube: Projects|

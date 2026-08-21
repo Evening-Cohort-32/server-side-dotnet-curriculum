@@ -28,4 +28,4 @@ The `.vscode` folder includes configuration files for VS Code to run your projec
 
 Finally, `dotnet run` will compile our code (if necessary - if there have been no changes since the last run, it won't need to), and then starts the program in our terminal. `Program.cs` is the _entrypoint_ for our application, like `main.js` or `index.js` in a JS program. The program starts at the top of this file and executes line by line. Once the program runs out of code to execute, it will exit. Later on we'll add more files, but this is all you need to know for now!
 
-Up Next: [User Interaction in the Console and working with strings](./interacting-with-console.md)
+Up Next: [User Interaction in the Console and working with strings](./loop-02-interacting-with-console.md)

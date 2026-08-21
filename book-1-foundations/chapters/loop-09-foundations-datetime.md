@@ -65,7 +65,7 @@ Test your code with all of the products that you have in your list, and see how 
 
 We have just scratched the surface of what `DateTime` can do for us, but this chapter covers some of the most common uses of the type that you will see in the course. We will take a look at one more in the next chapter. 
 
-Up Next: [Working with other number types](./doubles-and-decimals.md)
+Up Next: [Working with other number types](./loop-10-doubles-and-decimals.md)
 
 ## 🔍 Additional Materials
 [DateTime documentation](https://learn.microsoft.com/en-us/dotnet/api/system.datetime?view=net-8.0)

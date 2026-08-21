@@ -84,7 +84,7 @@ This will turn any whitespace-only answers into empty answers, and will also tri
 
 Test the program again to make sure that it works as expected. What cases do you need to test to know it does what we intend?
 
-Up Next: [Working with Integers](./working-with-integers.md)
+Up Next: [Working with Integers](./loop-04-working-with-integers.md)
 
 ## 🔍 Additional Materials
 1. [Microsoft string documentation](https://learn.microsoft.com/en-us/dotnet/api/system.string?view=net-8.0)
