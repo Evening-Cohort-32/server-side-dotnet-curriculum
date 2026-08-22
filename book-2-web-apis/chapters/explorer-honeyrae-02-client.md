@@ -10,7 +10,7 @@ The `Employee` row in that component's table is already scaffolded for a single 
 Implement the same views for customers and employees
 
 ### Creating a service ticket (Challenge)
-There is an empty component for a form to create a service ticket. Create the form and the proper function in the `serviceTicketData` module to send service ticket data to the API to create a new ticket. Remember that you will need to get all of the customers and employees to list them for the user to choose to get their ids for the serviceTicket data.
+There is an empty component for a form to create a service ticket. Create the form and the proper function in the `serviceTicketData` module to send service ticket data to the API to create a new ticket. Remember that you will need to get all of the customers to list them for the user to choose, so you have a `customerId` for the new ticket. A new ticket isn't assigned to anyone yet, that happens later, in the assigning employees challenge below.
 
 ### Delete button
 Add a delete button to the service tickets list rows to remove a service ticket. After the ticket is deleted, _dynamically_ update the array of service tickets _without refreshing the page_. 
