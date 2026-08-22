@@ -75,6 +75,9 @@ app.MapGet("/hello", () =>
 });
 ```
 1. Save the file, and in the debugging controls panel, hit the "Restart" button (`Ctrl+Shift+F5` if it's an option for you). 
+
+    > :bulb: Why restart? The debugger is running a specific compiled version of your app, the one that existed at the moment you started it. Editing `Program.cs` only changes the source code on disk, not that already-running process, so your new `/hello` endpoint doesn't exist yet as far as the running app is concerned. Restarting rebuilds the app from the current source and starts a fresh process with your changes included. You'll need to do this every time you change code while debugging (this is different from `dotnet watch run`, which you used earlier in this chapter and which watches for file changes and restarts automatically, without a debugger attached).
+
 1. In Yaak, replace the `/weatherforecast` end of the address with `/hello`. Click Send again
 1. You should see the string `hello` in the response body at the bottom. 
 

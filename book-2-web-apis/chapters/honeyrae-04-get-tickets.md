@@ -25,6 +25,11 @@ List<Employee> employees = new List<Employee> { };
 List<ServiceTicket> serviceTickets = new List<ServiceTicket> { };
 ```
 
+You're also about to use the DTO classes you created in the last chapter, and those live in their own nested namespace, `HoneyRaesAPI.Models.DTOs`, separate from `HoneyRaesAPI.Models` itself. Importing one doesn't automatically import the other, so add this line as well:
+```csharp
+using HoneyRaesAPI.Models.DTOs;
+```
+
 In practice, you will always add these `using` directives to the top of files where you are referencing classes from other namespaces when it is possible. If you want to think about them like JS module imports, that will help for now. 
 
 ### Adding data to the collections
@@ -73,7 +78,7 @@ app.MapGet("/servicetickets/{id}", (int id) =>
     };
 });
 ```
-2. Use the restart button on the debugger controls to reload the API.
+2. Why do we need to use the restart button on the debugger controls? Do that now.
 3. When it is running again, make a GET request in Yaak to `http://localhost:<port>/servicetickets/1`. 
 4. Check the output to confirm that the service ticket with an id of one is in the response body. 
 

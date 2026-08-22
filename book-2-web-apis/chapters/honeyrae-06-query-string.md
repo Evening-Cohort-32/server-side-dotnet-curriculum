@@ -39,6 +39,8 @@ app.MapGet("/servicetickets", (bool? open) =>
 });
 ```
 
+> :bug: If this doesn't compile, check the type of `DateCompleted` on `ServiceTicket`. Comparing it to `null` only works if that property's type allows `null` values, the same fix you may have already made to `EmployeeId` back in `honeyrae-05`. If you haven't made that fix yet, go do it now.
+
 Try the endpoint with the following urls:
 1. `/servicetickets`
 1. `/servicetickets?open=true`

@@ -152,6 +152,8 @@ public int? EmployeeId { get; set; }
 
 Restart the API, and test the endpoint again. `employeeId` should now be `null`, as we would prefer. 
 
+Is there any other place this same problem is happening? Take a look at the rest of `ServiceTicket`'s properties, and the data you seeded it with back in `honeyrae-04`, for another value that's defaulting to something misleading instead of being genuinely absent. If you find one, fix it the same way.
+
 
 ## Adding more related data
 1. Add the customer data to the service ticket when sending a request to the get-by-id endpoint

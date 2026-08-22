@@ -35,6 +35,8 @@ Type `Ctrl+C` in the terminal to shut the API down now.
 6. You should see this dialog from VS Code (click Yes):
 ![build and debug assets confirmation](../../assets/honey-raes-assets-confirm.png)
 
+    > :bulb: If you don't see this dialog (this can happen depending on which C# extension(s) you have installed), you can generate the same files yourself: open the Command Palette (`Ctrl+Shift+P`), and run `.NET: Generate Assets for Build and Debug` (it may be listed as `.NET Core: Generate Assets for Build and Debug` depending on your extension version). Afterward, the Run and Debug panel should show a ".NET Core Launch (web)" option like normal.
+
 ## A tour of the scaffolded project
 
 ### What's the same
