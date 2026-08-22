@@ -56,6 +56,15 @@ This data is the result that is returned by the function that is the second argu
 
 1. In your terminal type `Ctrl+C` to stop your API. This is a good time to notice that our web API program will continue to run after an endpoint is hit. It wouldn't be very helpful if it could only answer one request and then stop! After the request is handled, the program continues running, and waits for the next request.
 1. In the left panel of VS Code, find the Run and Debug icon. Click on it, and then at the top of the panel that opens, click the green play button to start the API with the debugger running. (There is a dropdown next to the button, choose ".NET Core Launch (web)" if it isn't already selected.)
+
+    > :bulb: If there's no ".NET Core Launch (web)" option to choose, C# Dev Kit may instead pop open a list of choices, something like:
+    > - `C#: Launch Startup Project HoneyRaesAPI`
+    > - `C# HoneyRaesAPI [Default Configuration]`
+    > - `C# HoneyRaesAPI [http]`
+    > - `C# HoneyRaesAPI [https]`
+    > - `C# Debug Active File`
+    >
+    > This is C# Dev Kit's "dynamic configuration" feature, a newer alternative to the `launch.json` file mentioned back in `honeyrae-01` that skips generating any files at all. Choose **`[https]`**. The first time you do, VS Code will likely also ask if you want to create a trusted self-signed development certificate - choose yes. This is a normal, one-time, safe step for local .NET development; it's what lets your API run securely over `https` on your own machine.
 1. The API will start again (this might take a bit longer than before). 
 1. Go to `Program.cs` in VS Code. On the line that has `return forecast`, click to the left of the line number, and you should see a red dot appear next to the line. This indicates that there is a breakpoint set on that line. 
 1. Go back to Yaak and click Send another time. 

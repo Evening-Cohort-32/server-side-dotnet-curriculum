@@ -6,14 +6,16 @@ In this chapter we will connect a front-end client to `HoneyRaesAPI`, and use th
 1. In the client's directory, run `npm install` to get the project's dependencies.
 1. This client expects the API to be running locally on port `5001` for HTTPS. In your `HoneyRaesAPI` project, open `Properties/launchSettings.json` and change the `applicationUrl` in both profiles so the ports match this (your starting ports may be different, but the shape will be the same):
     ```json
-    "http": {
-      "applicationUrl": "http://localhost:5000",
-    },
     "https": {
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
     },
+    "http": {
+      "applicationUrl": "http://localhost:5000;https://localhost:5001",
+    },
     ```
-    Notice that the `https` profile's `applicationUrl` actually has two addresses in it, separated by a `;` - the https one first, then a fallback http one. Both `http://localhost:5000` addresses should end up matching each other.
+    Notice that each profile's `applicationUrl` actually has two addresses in it, separated by a `;`. Every `http://localhost:5000` and `https://localhost:5001` in the file should end up matching each other, regardless of which profile they're in.
+
+    > :bulb: Why bind both ports in both profiles? When you start the debugger, VS Code picks one of these profiles to run. If it picks `http` and that profile only had the http address on it, `5001` would never open, and anything expecting to reach the API over https (like the client's proxy, coming up next) would fail to connect. Binding both addresses on both profiles means it doesn't matter which one gets picked, you'll always have both ports available.
 1. The client's own dev server is also going to act as a proxy server for the API, and it assumes that all of the API's routes begin with `/api`. Go through `Program.cs` and add `/api` to the front of every route you've written so far, so that `/servicetickets` becomes `/api/servicetickets`, and so on for the employee and customer endpoints. From now on, every project in the course will follow this same convention.
 1. Start the API with the debugger, then in the client's directory, run `npm run dev` to start the React app.
 
