@@ -4,7 +4,16 @@ In this chapter we will connect a front-end client to `HoneyRaesAPI`, and use th
 ## Setting up the client
 1. Use [this](https://github.com/nss-group-projects/dotnet-honey-rae-client) template to create your own repo, and clone it locally.
 1. In the client's directory, run `npm install` to get the project's dependencies.
-1. This client expects the API to be running locally on port `5001` for HTTPS. In your `HoneyRaesAPI` project, open `Properties/launchSettings.json` and change the `https` profile to use port `5001`, and the `http` profile to use port `5000`.
+1. This client expects the API to be running locally on port `5001` for HTTPS. In your `HoneyRaesAPI` project, open `Properties/launchSettings.json` and change the `applicationUrl` in both profiles so the ports match this (your starting ports may be different, but the shape will be the same):
+    ```json
+    "http": {
+      "applicationUrl": "http://localhost:5000",
+    },
+    "https": {
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+    },
+    ```
+    Notice that the `https` profile's `applicationUrl` actually has two addresses in it, separated by a `;` - the https one first, then a fallback http one. Both `http://localhost:5000` addresses should end up matching each other.
 1. The client's own dev server is also going to act as a proxy server for the API, and it assumes that all of the API's routes begin with `/api`. Go through `Program.cs` and add `/api` to the front of every route you've written so far, so that `/servicetickets` becomes `/api/servicetickets`, and so on for the employee and customer endpoints. From now on, every project in the course will follow this same convention.
 1. Start the API with the debugger, then in the client's directory, run `npm run dev` to start the React app.
 
