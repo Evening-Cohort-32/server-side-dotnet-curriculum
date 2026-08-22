@@ -34,7 +34,7 @@ The first step finds every join row for that ticket. The second step uses those 
 ## Updating the GET endpoints
 Every endpoint that used to read `serviceTicket.EmployeeId` directly now needs to go through `serviceTicketEmployees` instead.
 
-### The `/servicetickets` endpoint
+### GET `/api/servicetickets`
 In the endpoint that gets all service tickets (the one with the `open` filter), replace the DTO you're building for each ticket with this:
 ```csharp
 return ticketsToReturn.Select(t => new ServiceTicketDTO
@@ -56,10 +56,10 @@ return ticketsToReturn.Select(t => new ServiceTicketDTO
 });
 ```
 
-### The `/servicetickets/{id}` endpoint
+### GET `/api/servicetickets/{id}`
 Replace the lookup and DTO here too:
 ```csharp
-app.MapGet("/servicetickets/{id}", (int id) =>
+app.MapGet("/api/servicetickets/{id}", (int id) =>
 {
     ServiceTicket serviceTicket = serviceTickets.FirstOrDefault(st => st.Id == id);
 
@@ -91,7 +91,7 @@ app.MapGet("/servicetickets/{id}", (int id) =>
 ```
 Notice what's missing: the null check and the nullable `int` trick we needed earlier for a single `Employee` that might not exist yet. An unassigned ticket just gets an empty `Employees` list instead of a `null` one, which is a perfectly good way to represent "nobody assigned yet" for a collection. One of the side benefits of a many-to-many relationship is that you don't have to think about that edge case anymore.
 
-### The `/employees/{id}` endpoint
+### GET `/api/employees/{id}`
 On this side, the direction of the lookup flips. Replace the line that finds an employee's tickets with this:
 ```csharp
 List<int> ticketIds = serviceTicketEmployees
@@ -101,10 +101,13 @@ List<int> ticketIds = serviceTicketEmployees
 
 List<ServiceTicket> tickets = serviceTickets.Where(st => ticketIds.Contains(st.Id)).ToList();
 ```
-The rest of that endpoint, building the `EmployeeDTO` with its `ServiceTickets` property, doesn't need to change.
+The rest of that endpoint still builds the `EmployeeDTO` with its `ServiceTickets` property the same way, but each `ServiceTicketDTO` it builds needs to drop the `EmployeeId = t.EmployeeId` line, that property doesn't exist anymore either.
 
-## Updating the assign endpoint
-This is the endpoint that actually needs to create, update, and remove assignments, the `PUT` endpoint you wrote a few chapters ago. Remove the line that sets `EmployeeId`, and add this in its place:
+### GET `/api/customers/{id}`
+You built this one yourself back when you added the GET endpoints for employees and customers, following the same shape as the `/api/employees/{id}` example. Nothing about the lookup itself changes here, a customer's tickets are still found directly by `CustomerId`, but the `ServiceTicketDTO` it builds needs the same fix as the other two endpoints: drop the `EmployeeId = t.EmployeeId` line.
+
+## PUT `/api/servicetickets/{id}`
+This is the endpoint that actually needs to create, update, and remove assignments, the one you wrote a few chapters ago. Remove the line that sets `EmployeeId`, and add this in its place:
 ```csharp
 // remove the ticket's current employee assignments...
 serviceTicketEmployees = serviceTicketEmployees.Where(ste => ste.ServiceTicketId != id).ToList();

@@ -72,10 +72,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 ```
-This is that moment. Above this block, add:
+This is that moment, but the first edit actually belongs a few lines higher up. Find where you called `builder.Services.AddSwaggerGen();`, above `var app = builder.Build();`, and add this beneath it:
 ```csharp
 builder.Services.AddCors();
 ```
+This has to go there and not down by the `if` block: registering a service happens on `builder`, and `builder.Services` gets locked as soon as `builder.Build()` runs. Add it any later and you'll get an `InvalidOperationException` telling you the service collection is read-only.
 And update the block itself to this:
 ```csharp
 if (app.Environment.IsDevelopment())
