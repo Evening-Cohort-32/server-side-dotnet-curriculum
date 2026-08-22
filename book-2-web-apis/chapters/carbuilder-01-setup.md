@@ -2,7 +2,7 @@
 The main goal of this project is to help you think about how the APIs you are going to build from this point in the course forward fit into a larger full-stack application architecture. This column assumes you have completed the front-end Car Builder project.
 
 ## Project Setup
-1. Use the [instructions](./web-api-setup.md) from the first column to create a webapi called `CarBuilder` in your csharp directory. 
+1. Use the [instructions](./honeyrae-01-web-api-setup.md) from the first column to create a webapi called `CarBuilder` in your csharp directory. 
 1. Add a `Models` folder, and create the classes required for CarBuilder with their properties:
     - `PaintColor`
         - `Id`
@@ -66,4 +66,4 @@ The main goal of this project is to help you think about how the APIs you are go
     1. 18-inch Pair Spoke Silver
     1. 18-inch Pair Spoke Black
 
-Up Next: [Basic Endpoints](./car-builder-basic-endpoints.md)
+Up Next: [Basic Endpoints](./carbuilder-02-basic-endpoints.md)

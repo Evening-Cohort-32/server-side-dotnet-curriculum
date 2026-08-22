@@ -40,9 +40,9 @@ export const Orders = async () => {
 This component gets each of the options objects from the database directly. Let's update the API so that it sends those objects directly, without having to look them up!
 
 ## Adding related data properties to `Order`
-1. [Add properties](./honey-raes-get-emps-cust.md#including-related-data) for the various options to the `Order` class. Currently, the model only has, for example, `WheelId`, but you also need a `Wheels` property.  
+1. [Add properties](./honeyrae-05-get-emps-cust.md#including-related-data) for the various options to the `Order` class. Currently, the model only has, for example, `WheelId`, but you also need a `Wheels` property.  
 1. Do the same for the corresponding DTO classes.
-1. Update the `GET` `/orders` endpoint to look up the various options based on the foreign keys, and add them to the `OrderDTO` before returning it. Refer back to [this chapter](./honey-raes-get-emps-cust.md) if you forget how to do that.
+1. Update the `GET` `/orders` endpoint to look up the various options based on the foreign keys, and add them to the `OrderDTO` before returning it. Refer back to [this chapter](./honeyrae-05-get-emps-cust.md) if you forget how to do that.
 1. In the `Orders` component on the front end, you can remove the logic that gets all of the options and finds the correct one for each option type. It should now be possible to access those directly on the order. For example:
     ``` javascript
     `<section class="order">
@@ -67,4 +67,4 @@ This component gets each of the options objects from the database directly. Let'
     ```
 1. Test again to make sure everything is working. Make sure to remove any code that is no longer needed, even if it's not causing errors. 
 
-Up Next: [Completing Car Builds](./car-builder-complete-build.md)
+Up Next: [Completing Car Builds](./carbuilder-06-complete-build.md)

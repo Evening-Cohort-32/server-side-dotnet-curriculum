@@ -18,7 +18,7 @@ You probably already encountered HTTP status codes in the front end part of the 
 1. Making a request to that endpoint with an id that doesn't exist for that collection. 
 1. You should see a runtime error in VS Code: `System.InvalidOperationException: Sequence contains no matching element`
 1. Click the continue button on the debugger controls
-1. Look in Postman. In the response, in the top right you should see a status code of `500`. Notice that in the response body, you will see the same runtime error that we saw in VS Code. This feature of the development mode for running your API will be very useful later on.
+1. Look in Yaak. In the response, in the top right you should see a status code of `500`. Notice that in the response body, you will see the same runtime error that we saw in VS Code. This feature of the development mode for running your API will be very useful later on.
 
 ### Sending back a different status code programmatically
 The ASP.NET Core framework allows us to send back whatever status code we want (assuming that nothing catastrophic occurred that results in a `500`). 
@@ -43,7 +43,7 @@ app.MapGet("/employees/{id}", (int id) =>
 
 2. If you hover over the `NotFound` method, you'll see that it creates a `404` response for the endpoint. We return that if no employee is found with a matching `Id`. Otherwise, we return a `200` response with the employee data in the body (created by the call to `Ok()`, and passing in the employee DTO object as an argument). 
 
-3. Test the endpoint and make sure you get a `404` response in Postman when querying for an employee that doesn't exist in the database. 
+3. Test the endpoint and make sure you get a `404` response in Yaak when querying for an employee that doesn't exist in the database. 
 
 4. Finally, implement this change in the endpoint for getting a customer by `Id`.
 
@@ -95,7 +95,7 @@ return Results.Ok(new EmployeeDTO
 ```
 This new code adds the service tickets to the `EmployeeDTO` data by using `Select` to turn all of the `ServiceTicket` object retrieved from the database into `ServiceTicketDTO` objects. 
 
-Restart your app, and then using an employee id that has service tickets assigned to them, send a request to get one employee. In Postman, you should now see another property in the JSON (`serviceTickets` - yes, ASP.NET automatically converts the C# PascalCase properties to camelCase for Javascript), which will be an array of service ticket objects.  
+Restart your app, and then using an employee id that has service tickets assigned to them, send a request to get one employee. In Yaak, you should now see another property in the JSON (`serviceTickets` - yes, ASP.NET automatically converts the C# PascalCase properties to camelCase for Javascript), which will be an array of service ticket objects.  
 
 ### Include the employee's data in the service ticket details
 Just like an `Employee` has many `ServiceTicket`s, a `ServiceTicket` has at most one `Employee` assigned to it. We already have an `EmployeeId` in the class, but if we want to include the whole `Employee` object, we can do that too, by adding a property to the `ServiceTicket` class:
@@ -152,15 +152,17 @@ public int? EmployeeId { get; set; }
 
 Restart the API, and test the endpoint again. `employeeId` should now be `null`, as we would prefer. 
 
+Is there any other place this same problem is happening? Take a look at the rest of `ServiceTicket`'s properties, and the data you seeded it with back in `honeyrae-04`, for another value that's defaulting to something misleading instead of being genuinely absent. If you find one, fix it the same way.
+
 
 ## Adding more related data
 1. Add the customer data to the service ticket when sending a request to the get-by-id endpoint
 1. Add the customer's service tickets to the customer object when getting one customer by id
-1. Be sure to test each endpoint as you complete it with Postman. The testing is as important a part of the exercise as writing the code.
+1. Be sure to test each endpoint as you complete it with Yaak. The testing is as important a part of the exercise as writing the code.
 
 ## ✍️ Reflections
 1. <small>By now you've probably noticed that the way we are coding is very different. _Most_ of the functionality of the application is abstracted away from us by a few lines of code in `Program.cs` that end with `app.Run()`. We add a few lines here and there, and suddenly we have a new endpoint to get data from our database. We didn't have to think about starting a server to listen on a port, or how to start the application that will call the functions we are writing to handle responses. We don't have to think about how to send the responses back either! This is the power of a framework like ASP.NET: taking care of common but complicated needs so we can focus on the business logic. This comes with frustrations too, though: it feels like you understand less and less of what's going on (a lot of it is "magic"). This is normal! As you work with these tools more, you can start learning more about _how_ they work, but for now focus on learning how to _implement_ the parts of the framework you need to do the work you need to do. Are there other questions you have about what the framework is doing for us? Write them down and ask an instructor, and they can help you figure out what you need to understand now, and what can wait until later! </small>
 1. <small> The framework takes a lot of work out of our hands, but we actually now have a lot _more_ control than we did when using JSON Server. In this chapter, we added the same functionality that we would have had to use `_embed` and `_expand` to do with JSON Server. Now though, our client can just make a request to `/employees/1` instead of `/employees/1?_embed=servicetickets` to get the same data. Can you think of other types of more tailor-made `GET` endpoints that `HoneyRaesAPI` could use (like, for example, getting all open service tickets)? </small>
 
-Up Next: [Creating a Service Ticket](./honey-raes-create.md)
+Up Next: [Filtering Service Tickets with Query String Params](./honeyrae-06-query-string.md)
 

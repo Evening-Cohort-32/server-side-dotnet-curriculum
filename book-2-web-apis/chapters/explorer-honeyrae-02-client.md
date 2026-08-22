@@ -1,11 +1,10 @@
-# Adding a Client to Honey Rae's API
-Follow the setup instructions in the README of [this repo](https://github.com/nss-group-projects/dotnet-honey-rae-client) to get starter code for the React client app. 
-
-### Testing the `/servicetickets` endpoint
-Make sure that both the API and the React client are running. In the React client, click on the Service Tickets option in the nav bar, and you should see all of the tickets from the API displayed in the client. If you see that, you know that both projects are configured correctly. If you don't, go over the instructions to make sure you didn't miss a step, and find an instructor if you still can't get them running. 
+# Building Out the Honey Rae's Client
+Your client should already be up and running and displaying a list of service tickets, connected to your API through the proxy from the last chapter. In this chapter, we'll build out the rest of the app.
 
 ### Implement seeing a service ticket's details
 There is already a component to view a service ticket's details. Create the correct function in the `serviceTicketData` module to get one ticket from the API, and use it in a `useEffect` in the details component. 
+
+The `Employee` row in that component's table is already scaffolded for a single `ticket.employee`, but the API now sends back an `employees` array, since a ticket can have any number of employees assigned to it. Update that row to display every assigned employee's name (a comma-separated list works fine), or "Unassigned" if the array is empty.
 
 ### Details and List views for customers and employees
 Implement the same views for customers and employees
@@ -19,8 +18,9 @@ Add a delete button to the service tickets list rows to remove a service ticket.
 ### Complete a ticket
 Add a button next to the delete button to mark a request as complete, and correctly update the API database with the right HTTP request when it is clicked. The Complete button should only appear when the request is 1. assigned and 2. not complete. 
 
-### Assigning an employee (challenge)
-1. Add an `Assign` button to the service ticket details routes the user to the following component: 
-1. Create a component that allows the user to choose an employee to assign to a service ticket. The component should submit the ticket data to the API so that the database can be updated.  After submission, the app should navigate back to the details for that ticket. 
-1. The assign button should appear in the "Employee" column instead of "Unassigned", otherwise display the assigned employee name
+### Assigning employees (challenge)
+1. Add an `Assign` button to the service ticket details that routes the user to a new component.
+1. In that component, get the full list of employees, and render a checkbox for each one, checked if that employee is already in the ticket's `employees` array.
+1. On submit, build the list of employees the user checked, and send the whole ticket, including that list, in a `PUT` request to update it. Remember the API expects the entire ticket object, not just the employees, so you'll need the rest of the ticket's data too. After submission, the app should navigate back to the details for that ticket.
+1. The assign button should appear in the "Employees" row instead of "Unassigned" when there's already at least one employee assigned, otherwise display the assigned employees' names.
 

@@ -28,8 +28,8 @@ app.MapPut("/servicetickets/{id}", (int id, ServiceTicket serviceTicket) =>
 });
 ```
 
-1. Restart the debugger and submit a `PUT` request through Postman to the correct endpoint. In the body of the request, put a json service ticket that adds an employeeId to a currently unassigned ticket. Submit the request. 
-1. If everything succeeds, switch the method to `GET` in Postman, and submit that request. Check the response body to make sure that the ticket was updated correctly. You should also see the details of the employee that was assigned!
+1. Restart the debugger and submit a `PUT` request through Yaak to the correct endpoint. In the body of the request, put a json service ticket that adds an employeeId to a currently unassigned ticket. Submit the request. 
+1. If everything succeeds, switch the method to `GET` in Yaak, and submit that request. Check the response body to make sure that the ticket was updated correctly. You should also see the details of the employee that was assigned!
 
 ### Algorithmic reasoning  ✍️ 
 The explanation of how this particular endpoint works has been omitted intentionally. Write an explanation of how it works, step by step, for yourself. You can look at the other explanations in this project for inspiration.  Once you think you're done, ask an instructor to go over your explanation with you. 
@@ -67,9 +67,11 @@ Finally, set the service ticket's `DateCompleted` to today:
 ticketToComplete.DateCompleted = DateTime.Today;
 ```
 
-Pick an incomplete ticket, and use Postman to make a request to this endpoint, and then check the data with a `GET` to confirm that it works!
+Pick an incomplete ticket, and use Yaak to make a request to this endpoint, and then check the data with a `GET` to confirm that it works!
 
 ## Additional Challenges
 This is the end of the Honey Rae's API walk-through. If you would like to explore using this API to serve data to a front-end client, look in the explorer chapters. There is also a chapter there to add additional endpoints to this API that require more complex logic. In addition to practicing with endpoints, they are good algorithmic practice. 
+
+Up Next: [Adding a Client to Honey Rae's API](./honeyrae-10-client-cors.md)
 
 

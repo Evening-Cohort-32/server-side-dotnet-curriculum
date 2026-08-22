@@ -1,18 +1,5 @@
 # Filter Orders By Paint Color
-In this chapter we will update the `/orders` endpoint to optionally filter the orders by paint color. 
-
-## Refresher on query string params
-Query string params allow us to pass data to an endpoint as part of the url that is sent to the server. A request can have multiple params in it, which always come after the `?` at the end of a url. Consider this request url:
-```
-https://www.example.com/resource/1?age=20&type=open
-```
-The above URL has two query string params:
-1. `age`, with a value of 20
-1. `type`, with a value of "open"
-
-The `1` at the end of the URL is _not_ a query string param. You can tell because it comes before the `?`, not after. It is a _URL param_. Notice that when there are multiple query string params, they are separated by an `&`. Finally, it is important to note that query string params are _always optional_. Regardless of how many params (or none!) are after the question mark, as long as a request is made starting with  `https://www.example.com/resource/1`, all of those requests would hit that endpoint.
-
-> It is important to note that you should generally only use primitive data types like string and numbers as the values for your query params. It is common for beginners to try to pass entire objects as the value of a query string param, but this is generally a bad idea, and there are other ways to solve nearly any problem you are trying to use this strategy to solve.
+In this chapter we will practice query string params again, the same way you used them to filter service tickets back in Honey Rae's, this time updating the `/orders` endpoint to optionally filter the orders by paint color.
 
 ## Capturing query params in an endpoint
 The endpoints in our web APIs are capable of capturing the values passed in through query params by declaring handler params with the same names. Replace the `/orders` GET endpoint with this one:
@@ -71,7 +58,7 @@ app.MapGet("/orders", (int? paintId) =>
     }).ToList();
 });
 ```
-This endpoint has a parameter called `paintId` that is a nullable integer. It is nullable because the query param is optional. If a request came to the endpoint that did not have the query param (because query params in the url are always optional), and the type of `paintId` were `int`, the value that the framework would pass in as the arg for `paintId` would be `0`. This can be confusing, so it is better to make the param an `int?`, so that if the request does not have the param, the value will be `null`. 
+This endpoint has a parameter called `paintId` that is a nullable integer, for the same reason `open` was nullable back in Honey Rae's: a missing query param still needs to pass _something_ into the handler, and making the param `int?` lets that missing value come through as `null` instead of the confusing default of `0`.
 
 Try the endpoint with the following urls:
 1. `/orders`
@@ -80,4 +67,4 @@ Try the endpoint with the following urls:
 Notice that in the first case the endpoint still returns all of the orders, because the query param is optional, and you can see in the endpoint that we optionally filter the orders if the `paintId` is not null. With the second request, you should only see orders with the `paintId` of `1`. 
 
 
-Up Next: [DeShawn's Dog Walking](./deshawns-setup.md)
+Up Next: [DeShawn's Dog Walking](./deshawns-01-setup.md)
