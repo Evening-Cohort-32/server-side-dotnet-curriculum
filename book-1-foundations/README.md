@@ -59,6 +59,19 @@ Work you way down through these lessons, one at a time:
 |:potted_plant: [Dictionaries and Arrays](./chapters/explorer-extravert-01-collections.md)|
 |:potted_plant: [Creating Custom Exceptions](./chapters/explorer-extravert-02-custom-exceptions.md)|
 
+|🌐 Resources|
+|--|
+|[Strings & Console I/O](./chapters/resource-01-interacting-with-console.md)|
+|[Conditionals & Loops](./chapters/resource-02-conditionals-and-loops.md)|
+|[Numbers](./chapters/resource-03-working-with-integers.md)|
+|[Lists](./chapters/resource-04-lists.md)|
+|[Dictionaries](./chapters/resource-05-dictionaries.md)|
+|[Custom Types: Classes](./chapters/resource-06-custom-types-with-classes.md)|
+|[DateTime](./chapters/resource-07-foundations-datetime.md)|
+|[Exceptions](./chapters/resource-08-handling-exceptions.md)|
+|[LINQ](./chapters/resource-09-linq.md)|
+|[Doubles & Decimals](./chapters/resource-10-doubles-and-decimals.md)|
+|[Methods](./chapters/resource-11-foundations-methods.md)|
 
 |:test_tube: Projects|
 |--|
