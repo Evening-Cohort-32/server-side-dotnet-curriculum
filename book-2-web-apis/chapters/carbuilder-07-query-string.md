@@ -1,70 +1,13 @@
 # Filter Orders By Paint Color
-In this chapter we will practice query string params again, the same way you used them to filter service tickets back in Honey Rae's, this time updating the `/api/orders` endpoint to optionally filter the orders by paint color.
+In this exercise you'll practice query string params again, the same way you used them to filter service tickets back in Honey Rae's, this time adding an optional filter to the `/api/orders` endpoint so it can also filter by paint color. Work through the requirements below using [Honey Rae's](./honeyrae-06-query-string.md#capturing-a-query-param-in-an-endpoint) as a reference for the pattern, not a script to copy.
 
-## Capturing query params in an endpoint
-The endpoints in our web APIs are capable of capturing the values passed in through query params by declaring handler params with the same names. Replace the `/api/orders` GET endpoint with this one:
-
-``` csharp
-app.MapGet("/api/orders", (int? paintId) =>
-{
-    foreach (Order order in orders)
-    {
-        order.Wheels = wheels.First(w => w.Id == order.WheelId);
-        order.Technology = technologies.First(w => w.Id == order.TechnologyId);
-        order.PaintColor = paints.First(w => w.Id == order.PaintId);
-        order.Interior = interiors.First(w => w.Id == order.InteriorId);
-    }
-
-    List<Order> filteredOrders = orders.Where(o => !o.Fulfilled).ToList();
-
-    // Now, check for the paintId property to see if we should filter by that as well
-    if (paintId != null)
-    {
-        filteredOrders = filteredOrders.Where(order => order.PaintId == paintId).ToList();
-    }
-
-    return filteredOrders.Select(o => new OrderDTO
-    {
-        Id = o.Id,
-        Timestamp = o.Timestamp,
-        TechnologyId = o.TechnologyId,
-        Technology = new TechnologyDTO
-        {
-            Id = o.Technology.Id,
-            Package = o.Technology.Package,
-            Price = o.Technology.Price
-        },
-        WheelId = o.WheelId,
-        Wheels = new WheelsDTO
-        {
-            Id = o.Wheels.Id,
-            Style = o.Wheels.Style,
-            Price = o.Wheels.Price
-        },
-        InteriorId = o.InteriorId,
-        Interior = new InteriorDTO
-        {
-            Id = o.Interior.Id,
-            Material = o.Interior.Material,
-            Price = o.Interior.Price
-        },
-        PaintId = o.PaintId,
-        PaintColor = new PaintColorDTO
-        {
-            Id = o.PaintColor.Id,
-            Color = o.PaintColor.Color,
-            Price = o.PaintColor.Price
-        },
-    }).ToList();
-});
-```
-This endpoint has a parameter called `paintId` that is a nullable integer, for the same reason `open` was nullable back in Honey Rae's: a missing query param still needs to pass _something_ into the handler, and making the param `int?` lets that missing value come through as `null` instead of the confusing default of `0`.
-
-Try the endpoint with the following urls:
-1. `/api/orders`
-1. `/api/orders?paintId=1`
-
-Notice that in the first case the endpoint still returns all of the orders, because the query param is optional, and you can see in the endpoint that we optionally filter the orders if the `paintId` is not null. With the second request, you should only see orders with the `paintId` of `1`. 
-
+## Requirements
+1. Add an optional `paintId` query string param to the `GET` `/api/orders` endpoint.
+   - Use a nullable type for the param, for the same reason `open` was nullable back in Honey Rae's: a missing param still has to pass _something_ into the handler, and a nullable type lets that come through as `null` instead of a misleading default.
+1. When `paintId` is provided, filter the results down to just the orders with that paint color, on top of whatever filtering the endpoint already does. When it's missing, the endpoint should behave exactly as it did before this exercise.
+1. Test the endpoint with both of these:
+   1. `/api/orders`
+   1. `/api/orders?paintId=1`
+1. Confirm the first case still returns every order it did before, and the second returns only orders with a `paintId` of `1`.
 
 Up Next: [DeShawn's Dog Walking](./deshawns-01-setup.md)
