@@ -2,6 +2,10 @@
 In this chapter we will update Car Builder to submit a new order to the API and retrieve orders from the API. 
 
 ## Submitting orders
+
+<details>
+<summary>🧩 Template path</summary>
+
 Currently the submit function to add an order should look something like this:
 ``` javascript
 export const addCustomOrder = () => {
@@ -29,7 +33,7 @@ To refactor do the following (try to do this before looking at the solution):
     ``` javascript
     export const addCustomOrder = async () => {
     const newOrder = { ...database.orderBuilder };
-    await fetch(`https://localhost:7094/orders`, {
+    await fetch(`https://localhost:7094/api/orders`, {
         method: "POST",
         headers: {
         "Content-Type": "application/json",
@@ -41,10 +45,36 @@ To refactor do the following (try to do this before looking at the solution):
     };
     ```
     </details>
+</details>
 
-1. Use Yaak to get all of the orders to ensure that your order was created. 
+<details>
+<summary>🌱 Project path</summary>
+
+You already have a function that does this exact job (you may have called it `placeOrder`), POSTing the current order to your local `json-server`. It looks something like this:
+``` javascript
+export const placeOrder = async () => {
+    const postOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderBuilder)
+    }
+    await fetch("http://localhost:8088/orders", postOptions)
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+```
+All you need to change is the URL, the same as everywhere else in this project:
+``` javascript
+await fetch(`https://localhost:<port>/api/orders`, postOptions)
+```
+</details>
+
+Use Yaak to get all of the orders to ensure that your order was created. 
 
 ## Fetching Orders from the database
+
+<details>
+<summary>🧩 Template path</summary>
+
 1. The client is still getting the list of orders from the database in the front end. Update the `getOrders` function to be `async` and get its data from the API
 1. You will notice that now that we are using `await` inside the `Orders` function, it must also be `async` (we have to get the orders _inside_ the `Orders` function, otherwise the orders won't refresh when we re-render them).
 1. This means that we also need to `await` a call to the `Orders` function in `CarBuilder`:
@@ -65,7 +95,15 @@ To refactor do the following (try to do this before looking at the solution):
     };
     ```
 1. As you can see, the `async`/`await` syntax is simpler than `.then`, but requires any functions that call an `async` function to also be `async`. This is fine! 
-1. Now test the client to see that the list of orders updates when you submit an order.
+</details>
+
+<details>
+<summary>🌱 Project path</summary>
+
+Your `getOrders` function is already `async`, and it's already awaited all the way up through `Orders`, `CarBuilder`, and your render function in `main.js`, that's the same chain you already built for the rest of your data. Just swap the `json-server` URL in `getOrders` for your new API's `/api/orders` URL, the same way you did for the rest of your data-fetching functions.
+</details>
+
+Now test the client to see that the list of orders updates when you submit an order.
 
 Up Next: [Related Data and Calculated Values](./carbuilder-05-related-data.md)
 

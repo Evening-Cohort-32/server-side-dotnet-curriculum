@@ -35,7 +35,7 @@ Type `Ctrl+C` in the terminal to shut the API down now.
 6. You should see this dialog from VS Code (click Yes):
 ![build and debug assets confirmation](../../assets/honey-raes-assets-confirm.png)
 
-    > :bulb: If you don't see this dialog (this can happen depending on which C# extension(s) you have installed), that's okay. Newer versions of C# Dev Kit actively discourage generating these files by hand, and instead configure debugging on the fly, without ever creating them. We'll cover what that looks like, and what to do about it, the first time you start the debugger in `honeyrae-02`.
+    > :bulb: If you don't see this dialog (this can happen depending on which C# extension(s) you have installed), that's okay. Newer versions of C# Dev Kit actively discourage generating these files by hand, and instead configure debugging on the fly, without ever creating them. We'll cover what that looks like, and what to do about it, the first time you start the debugger in the next exercise.
 
 ## A tour of the scaffolded project
 

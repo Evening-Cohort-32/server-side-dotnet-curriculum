@@ -4,11 +4,11 @@ In this chapter you will create the basic endpoints needed for the functionality
 
 Implement the following:
 
-## `/wheels`, `/technologies`, `/interiors`, `/paintcolors`
+## `/api/wheels`, `/api/technologies`, `/api/interiors`, `/api/paintcolors`
 
 Each of these options collections requires a `GET` endpoint to fetch all of the choices for that option. Add an endpoint for each that returns the whole collection.
 
-## `/orders`
+## `/api/orders`
 
 1. Create an endpoint that gets all orders. You'll come back to add related option data to this endpoint in a later chapter, for now it just needs to return the collection.
 1. Create another endpoint that [creates an order](./honeyrae-07-create.md#creating-a-serviceticket) and adds it to the orders collection.
