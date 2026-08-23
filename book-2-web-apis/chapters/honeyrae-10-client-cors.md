@@ -44,6 +44,9 @@ You should see an empty table, and if you open your browser's dev tools and look
 ```
 Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://localhost:5001/api/servicetickets. (Reason: CORS header 'Access-Control-Allow-Origin' missing).
 ```
+
+> :bug: If you also see a line like `Unchecked runtime.lastError: Could not establish connection. Receiving end does not exist.`, ignore it, it's not related to your API at all. That message comes from a browser extension (an ad blocker, a password manager, anything running its own background script) failing to talk to itself, and it shows up on plenty of pages that have nothing to do with this project. The CORS error above is the one that matters here.
+
 What just happened? CORS stands for _Cross-Origin Resource Sharing_. The client's dev server and the API are running on different ports, and different ports (along with different domains or protocols) count as different _origins_ as far as the browser is concerned. By default, a browser's Same Origin Policy blocks a page from reading a response from any origin other than its own. This is a security feature, it keeps a malicious page from quietly reading data out of some other site your browser happens to be logged into. The server on the other end has to explicitly say "it's fine for a different origin to read this" for the browser to allow it, and right now our API isn't saying that.
 
 Change `_apiUrl` back to `"/api/servicetickets"` and confirm that the table of tickets is back. Now you know exactly what that relative URL was doing for you.

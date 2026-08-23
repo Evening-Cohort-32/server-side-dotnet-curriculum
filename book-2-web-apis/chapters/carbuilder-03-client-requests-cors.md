@@ -101,11 +101,11 @@ Everything downstream of that function, the `Technologies` component and anywher
 ## Testing the API and client - CORS
 We're ready to try the new version of getting technologies!
 
-1. Start the API in debug mode. Check the `DEBUG CONSOLE` tab for your port, same as back in [Honey Rae's exercise 2](./honeyrae-02-testing-web-api.md), you'll need it for the URLs below.
+1. Start the API in debug mode. Check the `DEBUG CONSOLE` tab for your port, same as back in [Honey Rae's exercise 2](./honeyrae-02-testing-web-api.md#using-the-vs-code-debugger-for-c), you'll need it for the URLs below.
 1. Use `serve` to start the front end application
 1. Open the front end app in your browser, and open your dev tools. 
 
-Uh oh. You are probably seeing a blank browser window. Take a look at the console (you might have to refresh to see the error). You should see a familiar CORS error, the same Same-Origin Policy issue from Honey Rae's, except this time there's no proxy set up to hide it from us. This client and this API genuinely are two different origins, and unlike Honey Rae's client, there's no dev-server proxy standing between them, so we need the server-side fix instead.
+Uh oh. You are probably seeing a blank browser window. Take a look at the console (you might have to refresh to see the error). You should see a familiar CORS error, the same Same-Origin Policy issue from Honey Rae's, except this time there's no proxy set up to hide it from us. (If you also see an unrelated `Unchecked runtime.lastError` message in there, that's just a browser extension, see [Honey Rae's exercise 10](./honeyrae-10-client-cors.md#seeing-the-problem-the-proxy-solves) for why.) This client and this API genuinely are two different origins, and unlike Honey Rae's client, there's no dev-server proxy standing between them, so we need the server-side fix instead.
 
 In `Program.cs` of your API code, add the following line below `builder.Services.AddSwaggerGen();`
 ``` csharp

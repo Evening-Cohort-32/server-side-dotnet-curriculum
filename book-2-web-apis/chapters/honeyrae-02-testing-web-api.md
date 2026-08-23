@@ -68,7 +68,7 @@ This data is the result that is returned by the function that is the second argu
 1. The API will start again (this might take a bit longer than before). 
 1. Look at the bottom panel of VS Code. It's probably showing the `TERMINAL` tab, but the debugger sends your app's own console output to a different tab next to it, `DEBUG CONSOLE`. Click over to it, you should see the same kind of host address lines you saw with `dotnet watch run` earlier. This is where you'll find your port from now on any time you're running through the debugger, make a habit of checking here, we'll need it again soon, and it becomes genuinely useful once you start working with Entity Framework in a later book.
 
-    > :bulb: The Debug Console can get noisy, VS Code logs a line for every single assembly your app loads on startup. There's a one-time, global fix for that (and for a related Windows terminal quirk), see [Handy VS Code Settings](./resource-02-vscode-settings.md) whenever you're ready to clean that up.
+    > :bulb: The Debug Console can get noisy, VS Code logs a line for every single assembly your app loads on startup. There's a one-time, global fix for that (and for a related Windows terminal quirk), see [Handy VS Code Settings](./resource-02-vscode-settings.md#quieting-the-debug-console) whenever you're ready to clean that up.
 1. Go to `Program.cs` in VS Code. On the line that has `return forecast`, click to the left of the line number, and you should see a red dot appear next to the line. This indicates that there is a breakpoint set on that line. 
 1. Go back to Yaak and click Send another time. 
 1. Instead of immediately getting the response, you should see that the program in VS Code is stopped on the line where you set the breakpoint. 
