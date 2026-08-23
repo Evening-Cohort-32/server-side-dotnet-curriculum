@@ -1,6 +1,15 @@
 # 🚙🚗 Car Builder Setup
 The main goal of this project is to help you think about how the APIs you are going to build from this point in the course forward fit into a larger full-stack application architecture. This column assumes you have completed the front-end Car Builder project.
 
+## Choose Your Path
+This project has two ways to go, and you need to pick one now, before you build anything.
+
+🧩 **Template path:** you'll connect the [official Car Builder template](https://github.com/nashville-software-school/car-builder) to the API you're about to build. Use this path if your cohort didn't build a Car Builder project in the front end course, or if you didn't get to finish it.
+
+🌱 **Project path:** you'll connect the Car Builder client you already built yourself in the front end course. It's more work, since your project won't look exactly like anyone else's, but it's also more satisfying, you get to see your own project connected to a real backend you built. Use this path if you have a working Car Builder client from earlier in the program.
+
+From here on, sections marked 🧩 apply only to the Template path, and sections marked 🌱 apply only to the Project path. Skip whichever one isn't yours.
+
 ## Project Setup
 1. Use the [instructions](./honeyrae-01-web-api-setup.md) from the first column to create a webapi called `CarBuilder` in your csharp directory. 
 1. Add a `Models` folder, and create the classes required for CarBuilder with their properties:
@@ -27,6 +36,8 @@ The main goal of this project is to help you think about how the APIs you are go
         - `TechnologyId`
         - `PaintId`
         - `InteriorId`
+
+    > 🌱 **Project path:** this list matches the official template exactly. Your own client may fetch more, fewer, or different option categories, check what your client's data layer actually requests before you build your models, and model what your project actually needs instead of copying this list.
 1. Create a DTOs folder inside the Models folder, and add DTOs for each of the models. They can have identical properties as their corresponding Model classes for now. 
 1. Delete the weather-forecast related code.  
 1. Create collections at the top of `Program.cs` as the database for this project. Make sure that you have populated those collections with the data they need (you can leave the orders collection empty). If you don't want to make up your own options data, you can use these:

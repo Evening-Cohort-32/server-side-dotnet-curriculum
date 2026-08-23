@@ -2,9 +2,7 @@
 In this chapter you will connect a Car Builder client to the new .NET API, putting the CORS skills from Honey Rae's to work in a project that isn't set up with a proxy.
 
 ## Refactoring the client
-> You will find it more difficult, but also much more satisfying and fun to update the client you built in the front end. However, if your cohort did not do this project, or you didn't get to it, you can use [this](https://github.com/nashville-software-school/car-builder) template to complete this part of the project. 
-
-:compass: Two paths diverge here, and which one is yours depends on which Car Builder you're holding. Expand the one that matches, and follow it all the way down, the two paths meet back up at the CORS section below.
+Expand whichever path matches your situation, and follow it all the way down, the two paths meet back up at the CORS section below.
 
 <details>
 <summary>🧩 Template path</summary>

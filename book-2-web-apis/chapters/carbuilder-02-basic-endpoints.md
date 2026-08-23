@@ -8,6 +8,8 @@ Implement the following:
 
 Each of these options collections requires a `GET` endpoint to fetch all of the choices for that option. Add an endpoint for each that returns the whole collection.
 
+> 🌱 **Project path:** if you added extra, missing, or differently-named models back in `carbuilder-01` to match your own client, add matching `GET` endpoints for those here too, following the same pattern.
+
 ## `/api/orders`
 
 1. Create an endpoint that gets all orders. You'll come back to add related option data to this endpoint in a later chapter, for now it just needs to return the collection.
