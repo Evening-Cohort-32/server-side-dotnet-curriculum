@@ -13,7 +13,7 @@ In this exercise you'll practice query string params again, the same way you use
 ## Filtering from the client
 The point of this exercise is the query param on the API, not front end work, so here's the client-side half of it directly rather than something to puzzle out.
 
-1. Update `getOrders` to accept an optional `paintId`, and append it to the URL only when one is provided:
+1. In `database.js`, update `getOrders` to accept an optional `paintId`, and append it to the URL only when one is provided:
     ``` javascript
     export const getOrders = async (paintId) => {
       const url = paintId
@@ -24,6 +24,7 @@ The point of this exercise is the query param on the API, not front end work, so
       return data;
     };
     ```
+1. Everything else below goes in `Orders.js`, this filter is only ever used there, so there's no reason to share it with any other module.
 1. Add a `<select>` above the orders list, populated from `getPaints()`, with an option for "All" alongside each paint color:
     ``` javascript
     const paints = await getPaints();
@@ -32,7 +33,7 @@ The point of this exercise is the query param on the API, not front end work, so
         ${paints.map(p => `<option value="${p.id}">${p.color}</option>`).join("")}
     </select>`
     ```
-1. Add a variable to track the current filter, and a change listener that updates it and re-renders, the same `stateChanged` pattern you've already used for the complete-order button:
+1. Add a module-level variable to track the current filter, and a change listener that updates it and re-renders, the same `stateChanged` pattern you've already used for the complete-order button:
     ``` javascript
     let selectedPaintId = "";
 
@@ -43,7 +44,7 @@ The point of this exercise is the query param on the API, not front end work, so
       }
     });
     ```
-1. In the `Orders` component, pass `selectedPaintId` into `getOrders` instead of calling it with no arguments:
+1. In the `Orders` component itself, pass that same `selectedPaintId` into `getOrders` instead of calling it with no arguments:
     ``` javascript
     const orders = await getOrders(selectedPaintId);
     ```
