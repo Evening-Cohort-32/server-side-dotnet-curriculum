@@ -30,10 +30,18 @@ The point of this exercise is the query param on the API, not front end work, so
     ```
     ``` javascript
     `<select id="paintFilter">
-        <option value="">All</option>
-        ${paints.map(p => `<option value="${p.id}">${p.color}</option>`).join("")}
+        <option value="" ${selectedPaintId === "" ? "selected" : ""}>All</option>
+        ${paints
+          .map(
+            (p) =>
+              `<option value="${p.id}" ${
+                parseInt(selectedPaintId) === p.id ? "selected" : ""
+              }>${p.color}</option>`
+          )
+          .join("")}
     </select>`
     ```
+    Every re-render rebuilds this `<select>` from scratch, so without marking the matching `<option>` as `selected`, the dropdown would visually reset to "All" after each `stateChanged` event even though `selectedPaintId` is still correct behind the scenes. `parseInt` is needed because `selectedPaintId` comes from `event.target.value`, always a string, while `p.id` is a number.
 1. Still in `Orders.js`, add a module-level variable to track the current filter, and a change listener that updates it and re-renders. This is the same `stateChanged` technique you already used for the complete-order button, dispatch the same event, you're just reusing the pattern here, this listener doesn't need to live anywhere near that one:
     ``` javascript
     let selectedPaintId = "";
