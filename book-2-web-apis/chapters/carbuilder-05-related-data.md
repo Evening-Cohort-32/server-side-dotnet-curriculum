@@ -2,6 +2,8 @@
 
 In this chapter we will use _composition_ and _calculated properties_ to move the logic for calculating the order total from the front end to the API.
 
+> :bulb: You'll be restarting the debugger a lot in this chapter to test each change, and since `orders` is just an in-memory list, every restart clears it back out. If you'd rather not resubmit an order through the app after every single restart, add a couple directly to the `orders` collection in `Program.cs`, the same way you seeded your other collections back in `carbuilder-01`, just make sure the `PaintId`, `WheelId`, `TechnologyId`, and `InteriorId` values you use match real `Id`s in your other collections.
+
 ## Car Builder's current logic
 
 In the current front end app, the `Orders` component should look something like this:

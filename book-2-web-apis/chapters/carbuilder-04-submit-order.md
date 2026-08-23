@@ -24,8 +24,8 @@ This function does three things that our API can now do for us:
 1. The API can now store the new order so it persists even if the front end app refreshes. 
 
 To refactor do the following (try to do this before looking at the solution):
-1. mark the function as `async`
-1. remove the code we no longer need and replace with a `fetch` call from the API. `await` the response so that the operation finishes before clearing out the order builder and dispatching the state change event. 
+1. Mark the function as `async`
+1. Remove the code we no longer need and replace with a `fetch` call from the API. `await` the response so that the operation finishes before clearing out the order builder and dispatching the state change event. 
 
     <details>
     <summary>The solution:</summary>
