@@ -48,3 +48,4 @@ The purpose of this book is to provide a conceptual introduction to building Web
 |🌐 Resources|
 |--|
 |[REST design principles - naming routes](./chapters/resource-01-rest-concepts.md)|
+|[Handy VS Code Settings](./chapters/resource-02-vscode-settings.md)|
