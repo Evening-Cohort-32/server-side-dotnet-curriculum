@@ -32,7 +32,21 @@ The point of this exercise is the query param on the API, not front end work, so
         ${paints.map(p => `<option value="${p.id}">${p.color}</option>`).join("")}
     </select>`
     ```
-1. Add a change listener on that `<select>` that calls `getOrders` again with the chosen value (or nothing, for "All") and re-renders the orders list, the same way you've been triggering re-renders elsewhere in this app.
+1. Add a variable to track the current filter, and a change listener that updates it and re-renders, the same `stateChanged` pattern you've already used for the complete-order button:
+    ``` javascript
+    let selectedPaintId = "";
+
+    document.addEventListener("change", (event) => {
+      if (event.target.id === "paintFilter") {
+        selectedPaintId = event.target.value;
+        document.dispatchEvent(new CustomEvent("stateChanged"));
+      }
+    });
+    ```
+1. In the `Orders` component, pass `selectedPaintId` into `getOrders` instead of calling it with no arguments:
+    ``` javascript
+    const orders = await getOrders(selectedPaintId);
+    ```
 1. Test it in the browser: changing the dropdown should update which orders are shown.
 
 Up Next: [DeShawn's Dog Walking](./deshawns-01-setup.md)
