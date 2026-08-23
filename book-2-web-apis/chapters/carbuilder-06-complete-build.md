@@ -18,7 +18,7 @@ document.addEventListener("click", (event) => {
 Add the `completeOrder` function to the `database` module:
 ``` javascript
 export const completeOrder = async (orderId) => {
-  await fetch(`https://localhost:<port>/orders/${orderId}/fulfill`, {
+  await fetch(`https://localhost:<port>/api/orders/${orderId}/fulfill`, {
     method: "POST",
   });
   document.dispatchEvent(new CustomEvent("stateChanged"));
@@ -33,7 +33,7 @@ Your task is to create an endpoint in the API that:
 Test the endpoint to make sure that it works. How will you confirm that the endpoint did what you expected it to do?
 
 ## Filtering the Orders
-Finally, update the `Get` `/orders` endpoint to only return orders that are unfulfilled using the `Where` Linq method, and test your solution. When you complete an order, you should see it disappear from the browser without refreshing. 
+Finally, update the `Get` `/api/orders` endpoint to only return orders that are unfulfilled using the `Where` Linq method, and test your solution. When you complete an order, you should see it disappear from the browser without refreshing. 
 
 
 Up Next: [Query String Params](./carbuilder-07-query-string.md)
