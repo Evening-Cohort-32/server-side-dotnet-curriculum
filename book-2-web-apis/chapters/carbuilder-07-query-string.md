@@ -24,16 +24,17 @@ The point of this exercise is the query param on the API, not front end work, so
       return data;
     };
     ```
-1. Everything else below goes in `Orders.js`, this filter is only ever used there, so there's no reason to share it with any other module.
-1. Add a `<select>` above the orders list, populated from `getPaints()`, with an option for "All" alongside each paint color:
+1. In `Orders.js`, add a `<select>` to the template returned by the `Orders` component, before the part that maps over the orders, with an option for "All" alongside each paint color. If `Orders.js` doesn't already have `getPaints` imported and called (you may have removed it back in the related-data exercise, since orders no longer need it to look up their own paint), add that too:
     ``` javascript
     const paints = await getPaints();
+    ```
+    ``` javascript
     `<select id="paintFilter">
         <option value="">All</option>
         ${paints.map(p => `<option value="${p.id}">${p.color}</option>`).join("")}
     </select>`
     ```
-1. Add a module-level variable to track the current filter, and a change listener that updates it and re-renders, the same `stateChanged` pattern you've already used for the complete-order button:
+1. Still in `Orders.js`, add a module-level variable to track the current filter, and a change listener that updates it and re-renders. This is the same `stateChanged` technique you already used for the complete-order button, dispatch the same event, you're just reusing the pattern here, this listener doesn't need to live anywhere near that one:
     ``` javascript
     let selectedPaintId = "";
 
@@ -44,7 +45,7 @@ The point of this exercise is the query param on the API, not front end work, so
       }
     });
     ```
-1. In the `Orders` component itself, pass that same `selectedPaintId` into `getOrders` instead of calling it with no arguments:
+1. Also in `Orders.js`, pass that same `selectedPaintId` into `getOrders` instead of calling it with no arguments:
     ``` javascript
     const orders = await getOrders(selectedPaintId);
     ```
