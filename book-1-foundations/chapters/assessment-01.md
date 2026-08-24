@@ -7,10 +7,13 @@ In this self-assessment, you will be working on a console application named "Bra
 ## Instructions
 
 > 🧨 At any point during development, you can run the `dotnet test` command in your terminal to run the suite of tests for this program and see how you're doing.
+>
+> Getting a "framework not found" error from `dotnet test` or the debugger? See [Missing .NET Runtime](./MISSING_DOTNET_RUNTIME.md).
 
 ### Create the Project
-1. Request the Github Classroom link for the assignment from your instructor.
-1. Clone your new repo that Github classroom created to your local computer and open it in VS Code.
+1. Click the Start Self-Assessment button in the Learning Platform.
+
+    ![Start Self-Assessment button in the Learning Platform](../../assets/request-assessment.png)
 1. For the rest of these instructions, the files will be referring to files inside the `BrassAndPoem` folder. You can look at the `BrassAndPoem.Tests` folder if you wish, but you do not need to modify any code there. 
 
 ## `Console.Clear` and `Console.ReadKey`

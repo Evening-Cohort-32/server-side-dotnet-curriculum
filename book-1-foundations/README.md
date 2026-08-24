@@ -51,6 +51,12 @@ Work you way down through these lessons, one at a time:
 |--|
 |:trumpet: :page_with_curl: [Brass & Poem](./chapters/assessment-01.md)|
 
+## Troubleshooting
+
+| Issue | Resolution |
+|---|---|
+| `dotnet test` or the debugger fails with a "framework not found" error | [Missing .NET Runtime](./chapters/MISSING_DOTNET_RUNTIME.md) |
+
 ## 🔍 Additional Materials
 
 |:compass: Explorer Chapters (after you finish the self assessment or are otherwise waiting)|
