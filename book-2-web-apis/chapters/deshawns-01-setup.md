@@ -4,8 +4,10 @@ In this project you will have the opportunity to build a full stack application 
 ## Setup
 
 1. Use [this](https://github.com/nss-group-projects/dotnet-deshawns-react) template to create your own repo, and clone it locally
+    > :bulb: If your cohort is using .NET 10, check the **Include all branches** checkbox before clicking "Create repository." After cloning, run `git checkout net10` to switch onto the .NET 10 version of the project before continuing — see that branch's README for what's different.
 1. the React app is in a folder called `client`. Navigate to that directory and run `npm install`
 1. Start the API with the VS Code debugger. 
+    > :bulb: Did Swagger just open on its own in a browser tab? That's the `.vscode` folder in this project doing exactly what it's configured to do — more on that further down in this chapter.
 1. in the `client` directory, run `npm run dev` to start the React App. 
 1. Explore the codebase to see what is there. Pay particular attention to `index.jsx`, `apiManager.js`, and `App.jsx`. Write down any questions you have so that you can ask a colleague or your instructors. 
 

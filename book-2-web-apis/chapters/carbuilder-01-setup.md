@@ -38,6 +38,8 @@ From here on, sections marked 🧩 apply only to the Template path, and sections
         - `InteriorId`
 
     > 🌱 **Project path:** this list matches the official template exactly. Your own client may fetch more, fewer, or different option categories, check what your client's data layer actually requests before you build your models, and model what your project actually needs instead of copying this list.
+
+    > 🌱 **Project path:** if one of your option categories shares a name with a built-in C# type (`Type` is a common one, `System.Type` is already in scope), naming your model class that will cause ambiguous-reference errors, the compiler can't tell your class from the built-in one apart. Rename the class to something more specific (`CarType`, for example). The class name doesn't have to match anything your client sends or expects, your route and JSON property names can stay whatever your client already uses.
 1. Create a DTOs folder inside the Models folder, and add DTOs for each of the models. They can have identical properties as their corresponding Model classes for now. 
 1. Delete the weather-forecast related code.  
 1. Create collections at the top of `Program.cs` as the database for this project. Make sure that you have populated those collections with the data they need (you can leave the orders collection empty). If you don't want to make up your own options data, you can use these:

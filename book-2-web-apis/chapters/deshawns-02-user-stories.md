@@ -28,7 +28,7 @@ Back in Honey Rae's, we promised you'd get to practice writing user stories for 
 1. As a user, I want to choose a walker to walk my pet, so that walker will be assigned to my dog. 
     - GIVEN a user is viewing a list of walkers
     - WHEN they click on the "Add Dog" button next to the walker's name
-    -THEN they are presented with a list of dogs which are: in the walker's cities, and not already assigned to this walker. 
+    - THEN they are presented with a list of dogs which are: in the walker's cities, and not already assigned to a walker. 
     - GIVEN a user is viewing the list of dogs possible for that walker
     - WHEN they click on a dog's name,
     - THEN the walker is assigned to that dog, and the user is presented with the dog's details, including the new walker for that dog.  
@@ -36,7 +36,7 @@ Back in Honey Rae's, we promised you'd get to practice writing user stories for 
     - GIVEN a user is viewing any page on the site
     - WHEN they click on the "Cities" link in the Nav bar
     - THEN they are presented with a list of the current cities
-    -  GIVEN a user is viewing the list of cities
+    - GIVEN a user is viewing the list of cities
     - WHEN they enter a City name in the "Add a city" input and click "Add"
     - THEN the city is added to the list of cities
 1. As a user, I want to manage cities for a walker, so that I can accurately show all the cities that they walk in. 
