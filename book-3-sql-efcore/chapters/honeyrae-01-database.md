@@ -37,15 +37,24 @@ This code creates the Customer table with all of the properties from the `Custom
 CREATE TABLE ServiceTicket (
     Id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     CustomerId INTEGER NOT NULL REFERENCES Customer (Id),
-    EmployeeId INTEGER REFERENCES Employee (Id),
     Description TEXT NOT NULL, 
     Emergency BOOLEAN NOT NULL DEFAULT FALSE,
     DateCompleted TIMESTAMP  
 );
 ```
-This table's definition is somewhat more complex. There are two foreign keys, `CustomerId` and `EmployeeId`, so we use the `REFERENCES` keyword to indicated those relationships. `EmployeeId` should be nullable, because an unassigned service ticket will not have a value for that column. We are using the `DEFAULT` keyword to make a service ticket a non-emergency in the event that a value is not provided. And finally, we are using the `TIMESTAMP` data type for `DateCompleted` because that is the date/time type in PostgreSQL that includes the date and time. 
+This table has one foreign key, `CustomerId`, so we use the `REFERENCES` keyword to indicate that relationship. We are using the `DEFAULT` keyword to make a service ticket a non-emergency in the event that a value is not provided. And finally, we are using the `TIMESTAMP` data type for `DateCompleted` because that is the date/time type in PostgreSQL that includes the date and time. Notice there's no `EmployeeId` column here, because a service ticket can have any number of employees assigned to it (including zero), not just one. That relationship needs its own table.
 
-4. Finally, save and run this script using `psql`. `cd` into the `SQL` directory of the projects and run:
+4. A `ServiceTicket` and an `Employee` have a many-to-many relationship: a ticket can have several employees assigned to it, and an employee can be assigned to several tickets. A single foreign key column can't represent that, so we need a separate _join table_ (sometimes called a bridge or junction table) whose only job is to record which employees are assigned to which tickets. Add this table after `ServiceTicket`:
+``` SQL
+CREATE TABLE ServiceTicketEmployee (
+    Id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    ServiceTicketId INTEGER NOT NULL REFERENCES ServiceTicket (Id),
+    EmployeeId INTEGER NOT NULL REFERENCES Employee (Id)
+);
+```
+Each row in `ServiceTicketEmployee` represents one employee's assignment to one ticket. Assigning two employees to the same ticket means adding two rows to this table, both with the same `ServiceTicketId` but a different `EmployeeId`. Both foreign keys are `NOT NULL`, because a row in this table only means something if it points at a real ticket and a real employee, there's no such thing as a "half" assignment.
+
+5. Finally, save and run this script using `psql`. `cd` into the `SQL` directory of the projects and run:
 ``` bash
 psql -U postgres -f 01_HoneyRaes_Create.sql
 ```
@@ -53,7 +62,7 @@ psql -U postgres -f 01_HoneyRaes_Create.sql
 ## Adding data to the database
 1. Add another file to the `SQL` folder of the project called `02_HoneyRaes_Seed.sql`
 1. The first line of the file should be `\c HoneyRaes` to connect the script to that database. 
-1. In that file, use `INSERT` statements to add all of the data that you are currently storing in the collections at the top of `Program.cs` to your SQL database. Make sure to insert the `Customer` and `Employee` rows before you insert the `ServiceTicket` rows. Refer back to the MusicHistory chapter if you can't remember the syntax. 
+1. In that file, use `INSERT` statements to add all of the data that you are currently storing in the collections at the top of `Program.cs` to your SQL database. You now have four collections to insert: `customers`, `employees`, `serviceTickets`, and `serviceTicketEmployees`. Insert them in that order, `Customer` and `Employee` rows first, then `ServiceTicket` rows, and finally `ServiceTicketEmployee` rows, since each `ServiceTicketEmployee` row references a ticket and an employee that need to already exist. Refer back to the MusicHistory chapter if you can't remember the syntax. 
 1. Save that file, and run it with `psql` like you ran the create script. 
 1. Open pgAdmin, and look to see that the database and all of the tables have been created (you can see the tables for a database under `Schemas` -> `public` -> `Tables`)
 1. Write a few basic queries in pgAdmin to see that your data is there. 

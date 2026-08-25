@@ -48,10 +48,11 @@ Test the endpoint in Yaak. It should work, but the `serviceTickets` is `null`. L
             st.Emergency,
             st.DateCompleted 
         FROM Employee e
-        LEFT JOIN ServiceTicket st ON st.EmployeeId = e.Id
+        LEFT JOIN ServiceTicketEmployee ste ON ste.EmployeeId = e.Id
+        LEFT JOIN ServiceTicket st ON st.Id = ste.ServiceTicketId
         WHERE e.Id = @id";
 ```
-Notice we are using `@` in front of the string to allow a multi-line string. Second, we are using a `LEFT JOIN` to get `ServiceTicket`s with the same `EmployeeId` as the employee. We are also using an alias to distinguish between the `Id` of an `Employee` and the `Id` of a `ServiceTicket`.
+Notice we are using `@` in front of the string to allow a multi-line string. Second, an `Employee` and a `ServiceTicket` aren't directly connected to each other anymore, they're only connected through the `ServiceTicketEmployee` join table, so we need two `LEFT JOIN`s to get from one to the other: one to find the join rows for this employee, and a second to use those join rows to find the actual tickets. We are also using an alias to distinguish between the `Id` of an `Employee` and the `Id` of a `ServiceTicket`.
 
 2. Run the query in pgAdmin. Replace `@id` in the pgAdmin query with the id of an employee that has more than one service ticket. Notice that we now have multiple rows. The employee data is duplicated in each row, and the service ticket data is unique. 
 
@@ -95,7 +96,8 @@ app.MapGet("/employees/{id}", (int id) =>
             st.Emergency,
             st.DateCompleted 
         FROM Employee e
-        LEFT JOIN ServiceTicket st ON st.EmployeeId = e.Id
+        LEFT JOIN ServiceTicketEmployee ste ON ste.EmployeeId = e.Id
+        LEFT JOIN ServiceTicket st ON st.Id = ste.ServiceTicketId
         WHERE e.Id = @id";
     // use command parameters to add the specific Id we are looking for to the query
     command.Parameters.AddWithValue("@id", id);
@@ -120,8 +122,6 @@ app.MapGet("/employees/{id}", (int id) =>
             {
                 Id = reader.GetInt32(reader.GetOrdinal("serviceTicketId")),
                 CustomerId = reader.GetInt32(reader.GetOrdinal("CustomerId")),
-                //we don't need to get this from the database, we already know it
-                EmployeeId = id,
                 Description = reader.GetString(reader.GetOrdinal("Description")),
                 Emergency = reader.GetBoolean(reader.GetOrdinal("Emergency")),
                 // Npgsql can't automatically convert NULL in the database to C# null, so we have to check whether it's null before trying to get it
