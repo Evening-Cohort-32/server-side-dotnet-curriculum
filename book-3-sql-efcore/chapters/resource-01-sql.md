@@ -18,14 +18,7 @@ SQL is *written* in one order, but the database evaluates it in a different orde
 
 Each stage hands its result to the next as a working set of rows — filtering, grouping, or reshaping it along the way:
 
-<table style="border: none; border-collapse: collapse;">
-<tr style="border: none;">
-<td width="320" valign="top" style="border: none;">
-
-![Diagram of SQL query order of operations: FROM/JOIN, then WHERE, then GROUP BY, then HAVING, then SELECT, then ORDER BY, then LIMIT](../../assets/sql-order-of-operations.png)
-
-</td>
-<td valign="top" style="border: none;">
+<img src="../../assets/sql-order-of-operations.png" align="left" width="300" alt="Diagram of SQL query order of operations: FROM/JOIN, then WHERE, then GROUP BY, then HAVING, then SELECT, then ORDER BY, then LIMIT">
 
 **① `FROM` / `JOIN` runs first.** The database decides which table(s) the data comes from. If there's a `JOIN`, it builds a combined set of rows by matching rows across tables on the `ON` condition. Nothing has been filtered yet — this is the raw working set everything else operates on.
 
@@ -41,9 +34,7 @@ Each stage hands its result to the next as a working set of rows — filtering, 
 
 **⑦ `LIMIT` runs last,** cutting the already-sorted result down to the requested number of rows. This is also why `LIMIT` only reliably gets you a "top N" when it's paired with `ORDER BY` — without a defined sort, "the first N rows" isn't a meaningful guarantee.
 
-</td>
-</tr>
-</table>
+<br clear="left">
 
 ## SELECT
 
