@@ -8,7 +8,7 @@ In the front-end course, you used a JSON data file to store data (and data chang
 
 Because of the large scope of this book, it's split into two parts: SQL, and Entity Framework Core. Start with the installations, then work your way through SQL before moving on to EF Core. Each part below is collapsible — fold away the one you've finished so you can focus on what's next. Complete every column in a specific part before moving on to the next part:
 
-|[Installations for Book 3](./chapters/book-3-installs.md) :computer: |
+|:computer: [Installations for Book 3](./chapters/book-3-installs.md)|
 |--|
 
 <details>
@@ -40,7 +40,7 @@ Because of the large scope of this book, it's split into two parts: SQL, and Ent
 <details>
 <summary><h2>II. Entity Framework Core</h2></summary>
 
-|#|:tent: <br> Creek River Campground <br> (guided tour) | :book: <br> Loncotes County Library | :haircut: <br> Hillary's Hair Care |
+|#|Creek River Campground <br>:tent: <sub>(guided tour)</sub> |Loncotes County Library <br>:book: <sub>(optional extra practice)</sub> |Hillary's Hair Care <br>:haircut: <sub>(pair programming)</sub>|
 |:-:|:-:|:-:|:-:|
 |1| [Project Setup](./chapters/creek-river-setup.md) |[Project Requirements](./chapters/loncotes-setup.md)|[Project Intro](./chapters/hillarys-project-requirements.md)|
 |2| [Creating the database](./chapters/creek-river-db-context.md) <br><sub style="font-size: 0.85rem;">#encapsulation #inheritance #protected #override #constructor #base</sub>|[Basic Features](./chapters/loncotes-basic-features.md)<br><sub style="font-size: 0.85rem;">#soft-delete</sub>||
@@ -51,9 +51,13 @@ Because of the large scope of this book, it's split into two parts: SQL, and Ent
 |7| [Get reservations](./chapters/creek-river-get-reservations.md) <br><sub style="font-size: 0.85rem;">#ThenInclude #OrderBy </sub>|||
 |8| [Book reservations](./chapters/creek-river-book-reservation.md) |||
 |9| [Calculating fees](./chapters/creek-river-calculated.md) <br><sub style="font-size: 0.85rem;">#field #static #private</sub>|[Loncotes Client App](./chapters/loncotes-client.md)||
-|10|:car:[Inheritance](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/INHERITANCE_INTRO.md)|:tv:[Advanced Linq: Nineties TV](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/LINQ_INTRO.md)|:convenience_store:[Coding Self-Assessment](./chapters/book-3-coding-assessment.md)|
+|10|:car:[Inheritance](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/INHERITANCE_INTRO.md)|||
 
 </details>
+
+|:mortar_board: Coding Self-Assessment|
+|--|
+|:convenience_store: [EF Corner Store](./chapters/book-3-coding-assessment.md)|
 
 ## Troubleshooting Entity Framework Issues
 
@@ -70,6 +74,7 @@ Because of the large scope of this book, it's split into two parts: SQL, and Ent
 |🍯 💻 [Organize Data Access with Repositories](./chapters/honey-raes-repositories.md) |
 |:tent: [Data Validation and Algorithmic Reasoning](./chapters/creek-river-reservation-validation.md) |
 |:haircut:[Direct Many-To-Many](./chapters/hillarys-inferred-many-to-many.md)|
+|:tv: [Advanced Linq: Nineties TV](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/LINQ_INTRO.md)|
 
 
 |:gear: Object-Oriented Programming |
