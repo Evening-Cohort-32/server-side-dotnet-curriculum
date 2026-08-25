@@ -14,6 +14,8 @@ Because of the large scope of this book, it's split into two parts: SQL, and Ent
 <details>
 <summary><h2>I. SQL</h2></summary>
 
+Before diving in, it helps to know the order a SQL query actually executes in — see [Order of Operations](./chapters/resource-01-sql.md#order-of-operations) in the SQL cheatsheet below.
+
 | # |⚡ SQL Bolt|🎵📚 Music History & Poems By Kids|🍯💻 Honey Rae's API|
 |:-:|-|-|-|
 |1|[SELECT queries 101](https://sqlbolt.com/lesson/select_queries_introduction)|:elephant: [Creating a PostgreSQL database using pgAdmin](./chapters/music-history-01-setup.md)|[Creating a database for Honey Rae's API](./chapters/honeyrae-01-database.md)|
@@ -76,6 +78,9 @@ Because of the large scope of this book, it's split into two parts: SQL, and Ent
 |:haircut:[Direct Many-To-Many](./chapters/explorer-hillarys-01-inferred-many-to-many.md)|
 |:tv: [Advanced Linq: Nineties TV](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/LINQ_INTRO.md)|
 
+|🌐 Resources|
+|--|
+|[SQL](./chapters/resource-01-sql.md)|
 
 |:gear: Object-Oriented Programming |
 |-|
