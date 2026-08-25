@@ -50,6 +50,8 @@ app.MapGet("/api/employees", () =>
 });
 ```
 
+Restart the debugger, and test this endpoint in Yaak. You should get back the same list of employees you were getting before, the only difference is that they're now coming from your PostgreSQL database instead of an in-memory collection. If you get an error instead, double check your connection string, particularly your password, and make sure the database and table names match what you created in the last chapter.
+
 ### Wait, what now?
 Yes, that is a lot of new code. It has been commented extensively to explain each line, but there is a larger context that you need to understand what is going on here. 
 

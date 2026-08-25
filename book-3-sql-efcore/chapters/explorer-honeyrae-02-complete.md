@@ -48,4 +48,6 @@ The following endpoints will look similar to their counterparts for the `Employe
 
 The endpoint to update a service ticket's assigned employees is its own case, it's not update-a-row-in-place like the others. Rewriting a ticket's assignments means clearing out its existing `ServiceTicketEmployee` rows and inserting a new row for each employee the client sent, the same replace-everything approach you used for this same endpoint back in Book 2, just as `DELETE`/`INSERT` statements instead of LINQ.
 
+## Cleaning up Program.cs
+Once every endpoint above is rewritten, every `Employee`, `Customer`, and `ServiceTicket` endpoint in your API reads from and writes to the database, none of them fall back to the `customers`, `employees`, `serviceTickets`, or `serviceTicketEmployees` collections you seeded at the top of `Program.cs` all the way back in Book 2. Those collections aren't doing anything anymore. Go ahead and comment them out or delete them entirely, whichever you prefer, your API will behave exactly the same either way.
 

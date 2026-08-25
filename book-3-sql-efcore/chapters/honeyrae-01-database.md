@@ -59,6 +59,8 @@ Each row in `ServiceTicketEmployee` represents one employee's assignment to one 
 psql -U postgres -f 01_HoneyRaes_Create.sql
 ```
 
+6. Open pgAdmin and confirm all four tables exist (`Schemas` -> `public` -> `Tables`): `customer`, `employee`, `serviceticket`, and `serviceticketemployee`. Click into `serviceticketemployee`'s columns to double check it has `serviceticketid` and `employeeid`, both referencing the tables you'd expect, before moving on to seeding it with data.
+
 ## Adding data to the database
 1. Add another file to the `SQL` folder of the project called `02_HoneyRaes_Seed.sql`
 1. The first line of the file should be `\c HoneyRaes` to connect the script to that database. 

@@ -54,7 +54,7 @@ Test the endpoint in Yaak. It should work, but the `serviceTickets` is `null`. L
 ```
 Notice we are using `@` in front of the string to allow a multi-line string. Second, an `Employee` and a `ServiceTicket` aren't directly connected to each other anymore, they're only connected through the `ServiceTicketEmployee` join table, so we need two `LEFT JOIN`s to get from one to the other: one to find the join rows for this employee, and a second to use those join rows to find the actual tickets. We are also using an alias to distinguish between the `Id` of an `Employee` and the `Id` of a `ServiceTicket`.
 
-2. Run the query in pgAdmin. Replace `@id` in the pgAdmin query with the id of an employee that has more than one service ticket. Notice that we now have multiple rows. The employee data is duplicated in each row, and the service ticket data is unique. 
+2. Before touching any C#, run this new query by itself in pgAdmin: open a new query window, paste it in, and replace `@id` with the literal id of an employee that has more than one service ticket. Notice that we now get back multiple rows instead of one. The employee data is duplicated in each row, and the service ticket data is unique. Keep this query window open, you'll want to compare against it again in a moment.
 
 3. If, potentially, we will have more than one row in the results, we need to replace the same endpoint's `if (reader.Read())` block with a `while` loop:
 ``` csharp
@@ -75,6 +75,8 @@ while (reader.Read())
 Inside the loop, we have an `if` to catch whether we've already set the employee data or not (basically, is this the first row or not). Remember, every row in these results will have the same employee data, which we only want to save once, the first time we come across it. 
 
 Second, when we create the employee object, we add an empty `List<ServiceTicket>` as the value of `ServiceTickets` so that we have a place to store all of the service ticket data in each row.
+
+At this point, if you restart the debugger and test the endpoint in Yaak, it won't error, but `serviceTickets` will come back as an empty array `[]` instead of `null`. That's expected, we're not adding anything to that list yet, that's the next step.
 
 4. Finally, we need to check to see if there is service ticket data in any given row (if the employee has no service tickets, we will get back one row with `NULL`s for the service ticket columns), and then add a service ticket to the employee's `ServiceTickets` collection. The whole endpoint will look like this: 
 
@@ -146,7 +148,7 @@ As you can see, this is quite a lot of code inside the handler. But it's importa
 - _Parsing_ that tabular data into strongly-typed .NET objects that our .NET API understands
 - Returning that data in the HTTP response as JSON.  
 
-If you are having a hard time understanding _why_ the `while` and `if` statements are necessary, take a look at the results of this query in pgAdmin again. the reader object will go through the table of results row-by-row, one row per iteration of the `while` loop. Think about what needs to be done with each row, and try to map that to the code in the handler above. 
+If you are having a hard time understanding _why_ the `while` and `if` statements are necessary, take another look at the results of this query in the pgAdmin query window from step 2. The reader object will go through that same table of results row-by-row, one row per iteration of the `while` loop. Think about what needs to be done with each row, and try to map that to the code in the handler above. 
 
 Up Next: [Creating and Updating an Employee](./honeyrae-04-create.md)
 
