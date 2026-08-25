@@ -27,7 +27,7 @@ if (campsite != null && newRes.TotalNights > campsite.CampsiteType.MaxReservatio
 This code gets the campsite for the reservation from the database with the campsite type. Then we use the `TotalNights` property, and make sure it's not longer than the `CampsiteType`'s `MaxReservationDays`. 
 
 ## Challenges
-1. Add logic to the handler to check that the reservation does not conflict with another reservation for that campsite that already exists (a new Checkin is allowed to happen on the same day as an existing Checkout). 
+1. Add logic to the handler to check that the reservation does not conflict with another reservation for that campsite that already exists (a new Checkin is allowed to happen on the same day as an existing Checkout). A cancelled reservation (one with a `CancelledDate`) shouldn't count as a conflict, those dates are free again.
 1. A reservation cannot be made for a same-day checkin or (more obviously) a check-in in the past. Prevent this with logic in the handler
 1. Open-ended reservations are not allowed. Make sure that the reservation has both a CheckinDate and a CheckoutDate
 

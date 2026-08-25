@@ -14,7 +14,7 @@ Because of the large scope of this book, it's split into two parts: SQL, and Ent
 <details>
 <summary><h2>I. SQL</h2></summary>
 
-Before diving in, it helps to know the order a SQL query actually executes in — see [Order of Operations](./chapters/resource-01-sql.md#order-of-operations) in the SQL cheatsheet below.
+Before diving in, it helps to know the order a SQL query actually executes in — see [SQL - Order of Operations](./chapters/resource-02-sql-order-of-operations.md).
 
 | # |⚡ SQL Bolt|🎵📚 Music History & Poems By Kids|🍯💻 Honey Rae's API|
 |:-:|-|-|-|
@@ -39,7 +39,7 @@ Before diving in, it helps to know the order a SQL query actually executes in �
 
 </details>
 
-<details>
+<details open>
 <summary><h2>II. Entity Framework Core</h2></summary>
 
 |#|Creek River Campground <br>:tent: <sub>(guided tour)</sub> |Loncotes County Library <br>:book: <sub>(optional extra practice)</sub> |Hillary's Hair Care <br>:haircut: <sub>(pair programming)</sub>|
@@ -51,9 +51,11 @@ Before diving in, it helps to know the order a SQL query actually executes in �
 |5| [Delete a campsite](./chapters/creekriver-05-delete-campsite.md) |[Late Fees](./chapters/loncotes-05-calculate-fees.md)||
 |6| [Update a campsite](./chapters/creekriver-06-campsite-update.md) |||
 |7| [Get reservations](./chapters/creekriver-07-get-reservations.md) <br><sub style="font-size: 0.85rem;">#ThenInclude #OrderBy </sub>|||
-|8| [Book reservations](./chapters/creekriver-08-book-reservation.md) |||
-|9| [Calculating fees](./chapters/creekriver-09-calculated.md) <br><sub style="font-size: 0.85rem;">#field #static #private</sub>|[Loncotes Client App](./chapters/loncotes-06-client.md)||
-|10|:car:[Inheritance](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/INHERITANCE_INTRO.md)|||
+|8| [Book reservations](./chapters/creekriver-08-book-reservation.md) <br><sub style="font-size: 0.85rem;">#soft-delete</sub>|||
+|9| [Calculating fees](./chapters/creekriver-09-calculated.md) <br><sub style="font-size: 0.85rem;">#field #static #private</sub>|||
+|10| [Planning: Amenities and Activities](./chapters/creekriver-10-planning-activities.md) <br><sub style="font-size: 0.85rem;">#manytomany</sub>|||
+|11| [Campsite Amenities](./chapters/creekriver-11-campsite-amenities.md) <br><sub style="font-size: 0.85rem;">#manytomany-inferred</sub>|||
+|12| [Reservation Activities](./chapters/creekriver-12-reservation-activities.md) <br><sub style="font-size: 0.85rem;">#manytomany-payload #Sum</sub>|||
 
 </details>
 
@@ -75,12 +77,13 @@ Before diving in, it helps to know the order a SQL query actually executes in �
 |🍯 💻 [Organize Data Access with Repositories](./chapters/explorer-honeyrae-03-repositories.md) |
 |:tent: [Data Validation and Algorithmic Reasoning](./chapters/explorer-creekriver-01-reservation-validation.md) |
 | :book: [Automapper to Map Models to DTO's](./chapters/explorer-loncotes-01-automapper.md) |
-|:haircut:[Direct Many-To-Many](./chapters/explorer-hillarys-01-inferred-many-to-many.md)|
+| :book: [Loncotes React Client](./chapters/explorer-loncotes-02-client.md) |
 |:tv: [Advanced Linq: Nineties TV](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/LINQ_INTRO.md)|
 
 |🌐 Resources|
 |--|
-|[SQL](./chapters/resource-01-sql.md)|
+|[SQL Cheatsheet](./chapters/resource-01-sql.md)|
+|[SQL - Order of Operations](./chapters/resource-02-sql-order-of-operations.md)|
 
 |:gear: Object-Oriented Programming |
 |-|

@@ -67,15 +67,15 @@ Work you way down through these lessons, one at a time:
 
 |🌐 Resources|
 |--|
-|[Strings & Console I/O](./chapters/resource-01-interacting-with-console.md)|
-|[Conditionals & Loops](./chapters/resource-02-conditionals-and-loops.md)|
-|[Numbers](./chapters/resource-03-working-with-integers.md)|
-|[Lists](./chapters/resource-04-lists.md)|
-|[Dictionaries](./chapters/resource-05-dictionaries.md)|
-|[Custom Types: Classes](./chapters/resource-06-custom-types-with-classes.md)|
-|[DateTime](./chapters/resource-07-foundations-datetime.md)|
-|[Exceptions](./chapters/resource-08-handling-exceptions.md)|
-|[LINQ](./chapters/resource-09-linq.md)|
+|[Strings & Console I/O Cheatsheet](./chapters/resource-01-interacting-with-console.md)|
+|[Conditionals & Loops Cheatsheet](./chapters/resource-02-conditionals-and-loops.md)|
+|[Numbers Cheatsheet](./chapters/resource-03-working-with-integers.md)|
+|[Lists Cheatsheet](./chapters/resource-04-lists.md)|
+|[Dictionaries Cheatsheet](./chapters/resource-05-dictionaries.md)|
+|[Custom Types: Classes Cheatsheet](./chapters/resource-06-custom-types-with-classes.md)|
+|[DateTime Cheatsheet](./chapters/resource-07-foundations-datetime.md)|
+|[Exceptions Cheatsheet](./chapters/resource-08-handling-exceptions.md)|
+|[LINQ Cheatsheet](./chapters/resource-09-linq.md)|
 |[Doubles & Decimals](./chapters/resource-10-doubles-and-decimals.md)|
 |[Methods](./chapters/resource-11-foundations-methods.md)|
 

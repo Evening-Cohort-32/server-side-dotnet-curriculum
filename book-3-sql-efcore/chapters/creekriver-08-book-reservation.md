@@ -42,6 +42,36 @@ In this chapter you will add endpoints to create a reservation and cancel a rese
 1. Test the endpoint again to make sure that the logic works. We have not yet exhausted the edge cases that could break this endpoint. See if you can come up with some more! Do you have ideas about how to fix them? Try [this explorer chapter](./explorer-creekriver-01-reservation-validation.md) if you want to see some of them. 
 
 ## Cancelling a Reservation
-See if you can implement this endpoint on your own! You can use the endpoint for deleting a campsite as a reference. 
+Guests cancel reservations sometimes, so we need a way to handle that. Deleting the row outright, the way you did for a campsite, would work, but it would also erase any record that the reservation ever existed. For a booking history, that's usually not what you want, you'd rather be able to say "this reservation was cancelled" than have no record of it at all. Instead of removing the row, let's just mark it as cancelled. This is called a _soft delete_: rather than using `Remove`, we flag a row as inactive (or, in this case, cancelled) and leave it in the database.
+
+1. Add a nullable `CancelledDate` property to `Reservation.cs` and `ReservationDTO`:
+    ``` csharp
+    public DateTime? CancelledDate { get; set; }
+    ```
+1. Since this adds a new column, create and run a new migration:
+    ``` bash
+    dotnet ef migrations add ReservationCancelledDate
+    ```
+    ``` bash
+    dotnet ef database update
+    ```
+1. Add the endpoint:
+    ``` csharp
+    app.MapPost("/api/reservations/{id}/cancel", (CreekRiverDbContext db, int id) =>
+    {
+        Reservation reservation = db.Reservations.SingleOrDefault(r => r.Id == id);
+        if (reservation == null)
+        {
+            return Results.NotFound();
+        }
+        reservation.CancelledDate = DateTime.Now;
+        db.SaveChanges();
+        return Results.NoContent();
+    });
+    ```
+    This should look familiar, it's the same lookup-check-update-save shape as updating a campsite's details, we're just setting one field instead of several, and we never call `Remove`.
+1. Test it: pick a reservation, `POST` to `/api/reservations/{id}/cancel`, then `GET /api/reservations` and confirm that reservation is still there, just with a `cancelledDate` now.
+
+You'll use this same pattern again soon for materials and patrons in Loncotes County Library, marking a row inactive instead of deleting it, and filtering it out of the normal "get all" results by default.
 
 Up Next: [Calculating Fees](./creekriver-09-calculated.md)

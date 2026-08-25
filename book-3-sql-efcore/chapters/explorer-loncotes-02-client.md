@@ -32,5 +32,3 @@ The first developer was able complete the following features:
 ### Challenges:
 1. The librarians want to be able to filter the materials in the front-end application by genre and material type. Add inputs to the materials list to allow a user to do that, and update the function that makes the api request to use the `genreId` and `materialTypeId` query string params. 
 1. When a user is deactivated, instead of a `Deactivate` button, there should be a `Reactivate` button in the materials list component. Add an API endpoint to handle the reactivation on the server side, and make a request to that endpoint in the click handler for the `Reactivate` button. When they are reactivated, the user should once again have a `Deactivate` button. 
-
-Up Next: [Advanced Linq](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/LINQ_INTRO.md) (this is another practice chapter from a different curriculum. Start on column 3 in this curriculum when you have finished the advanced linq practice)

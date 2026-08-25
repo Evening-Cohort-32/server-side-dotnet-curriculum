@@ -16,6 +16,8 @@ Customers often cancel appointments, so she will need to be able to make this ch
 
 Hillary needs the ability to add new customers and stylists to her system. Occasionally stylists move on to other jobs, and she needs to deactivate them so that new appointments are not accidentally made with them. However, she does not want them completely removed from the system, because she needs to keep records of appointments from former stylists even if she no longer employs them.
 
+> :bulb: `Appointment` and `Service` are a many-to-many relationship, the same shape as Creek River's campsites and amenities. Use [that chapter](./creekriver-11-campsite-amenities.md) as a reference for the pattern, not a script to copy.
+
 ## Planning 
 1. Start by creating some wireframes for this application. Hillary didn't mention how the app should look, or how to organize it and navigate through it. This is up to you. She is hoping you will build a clean, professional interface that is easy to use.
 

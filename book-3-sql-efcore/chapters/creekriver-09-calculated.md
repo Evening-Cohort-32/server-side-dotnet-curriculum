@@ -60,10 +60,7 @@ This property multiplies the fee per night for this campsite by the total nights
 
 Fortunately, the endpoint to get reservations already includes `Campsite` and `CampsiteType`, so test it again to see the `totalCost` values appear in the JSON response for each reservation. 
 
-## Summary
-This is the end of the walk-through for Entity Framework Core. Before moving to the second column, do the "Up Next" Chapter on Inheritance. After finishing the other columns, check out the explorer chapters for this project.
-
-Up Next: [Inheritance](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/INHERITANCE_INTRO.md) - this is from another repo, come back to this repo to start [Loncotes County Library](./loncotes-01-setup.md) after finishing the inheritance chapter.
+Up Next: [Planning Two New Features: Amenities and Activities](./creekriver-10-planning-activities.md)
 
 ## 🔍 Additional Materials
 1. [Access Modifiers](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers)
