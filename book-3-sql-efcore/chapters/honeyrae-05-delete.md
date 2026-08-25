@@ -33,3 +33,5 @@ Things to note:
 
 ## Summary
 This is the end of the tutorial on using Npgsql to work with a PostgreSQL database in a .NET web API. This is really only an introduction to this technology, and is meant to show you how much goes into communicating with a database. In the next part, we are going to start using Npgsql with another technology called Entity Framework Core. It will abstract away much of the work that you did in this part. _However_: Knowing how to work with Npgsql (and ADO.NET, the library that Npgsql is based on) is worthwhile, and many developers and codebases use it without Entity Framework Core. If you have time, look at the explorer chapters that go further in depth on Npgsql. It is also worth knowing that other .NET developers may be more familiar with ADO.NET, which is used to connect to Sql Server and Oracle databases, not PostgreSQL. Npgsql works in almost exactly the same way, and uses most of the same method names.   
+
+Up Next: [Back to Book 3](../README.md)

@@ -28,7 +28,7 @@ Some things to highlight:
 1. We add `RETURNING Id` to the end of the query so that we get the new `Id` for the employee back after it has been created. 
 1. We use command parameters to add the data from the incoming employee object to the database query. 
 1. We don't need a reader object because we don't really need any other data than the new id back from the database. To get this, we call `ExecuteScalar` instead of `ExecuteReader`, which returns the value of the first column of the first row. 
-1. Because C# doesn't know what type to expect from `ExecuteScalar` (after all, it could be anything), we add `(int)` in front of the method call to tell the compiler that the value should be an integer. This is called _type casting_. There is an explorer chapter in Book 1 about these which is worthwhile to go back to. 
+1. Because C# doesn't know what type to expect from `ExecuteScalar` (after all, it could be anything), we add `(int)` in front of the method call to tell the compiler that the value should be an integer. This is called _type casting_, first covered back in Book 1's [Calculated Properties](../../book-1-foundations/chapters/loop-08-classes-calculated.md) chapter. The [Numbers Cheatsheet](../../book-1-foundations/chapters/resource-03-working-with-integers.md) is worthwhile to go back to if you want a quick refresher. 
 
 Test out the endpoint in Yaak. Make sure you use the `POST` method, and add a JSON body with one object. You should only need `name` and `specialty` properties on that object. 
 

@@ -148,7 +148,7 @@ As you can see, this is quite a lot of code inside the handler. But it's importa
 - _Parsing_ that tabular data into strongly-typed .NET objects that our .NET API understands
 - Returning that data in the HTTP response as JSON.  
 
-If you are having a hard time understanding _why_ the `while` and `if` statements are necessary, take another look at the results of this query in the pgAdmin query window from step 2. The reader object will go through that same table of results row-by-row, one row per iteration of the `while` loop. Think about what needs to be done with each row, and try to map that to the code in the handler above. 
+If you are having a hard time understanding _why_ the `while` and `if` statements are necessary, take another look at the results of this query in the pgAdmin query window from step 1. The reader object will go through that same table of results row-by-row, one row per iteration of the `while` loop. Think about what needs to be done with each row, and try to map that to the code in the handler above. 
 
 Up Next: [Creating and Updating an Employee](./honeyrae-04-create.md)
 
