@@ -68,11 +68,11 @@ Because of the large scope of this book, it's split into two parts: SQL, and Ent
 ## 🔍 Additional Materials
 |:compass: Explorer Chapters|
 |-|
-| :book: [Automapper to Map Models to DTO's](./chapters/loncotes-automapper.md) |
 |🍯 💻 [Handling Related Data On Delete](./chapters/honey-raes-cascade-delete.md) |
 |🍯 💻 [Finishing Honey Rae's with Npgsql](./chapters/honey-raes-complete.md) |
 |🍯 💻 [Organize Data Access with Repositories](./chapters/honey-raes-repositories.md) |
 |:tent: [Data Validation and Algorithmic Reasoning](./chapters/creek-river-reservation-validation.md) |
+| :book: [Automapper to Map Models to DTO's](./chapters/loncotes-automapper.md) |
 |:haircut:[Direct Many-To-Many](./chapters/hillarys-inferred-many-to-many.md)|
 |:tv: [Advanced Linq: Nineties TV](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/LINQ_INTRO.md)|
 
