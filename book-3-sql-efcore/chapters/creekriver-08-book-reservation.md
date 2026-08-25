@@ -12,7 +12,7 @@ In this chapter you will add endpoints to create a reservation and cancel a rese
         return Results.Created($"/api/reservations/{newRes.Id}", newRes);
     });
     ```
-1. Test the endpoint with a JSON reservation object in Postman (or Swagger). If you used valid values for all of the properties, you should get a `201` response with the new reservation in the body. This is the format for that JSON object:
+1. Test the endpoint with a JSON reservation object in Yaak (or Swagger). If you used valid values for all of the properties, you should get a `201` response with the new reservation in the body. This is the format for that JSON object:
     ``` json
     {
         "userProfileId": 1,

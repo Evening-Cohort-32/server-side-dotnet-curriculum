@@ -33,7 +33,7 @@ This code block largely follows the same patterns as the previous endpoint. We n
 The command text is different, because we are using a `WHERE` clause to find only one employee. But each time this endpoint receives a request, there could be a different `id` passed into the URL. Because of this, we need to use _parameters_ to allow us to put a different `id` in the SQL query each time. `@id` is the parameter we put in the query as a placeholder for the eventual value that will go there before the query is executed. The SQL command object has a `Parameters` property, and there is a method that let's us set the value for a parameter by name called `AddWithValue`. Finally, we use an `if` instead of `while` to check for data, because we only need the data reader to check for one row (because this query can only return a maximum of one row - ids are unique, so the `WHERE` clause can only return a maximum of one employee).  
 
 ### Adding `ServiceTicket`s to the `Employee` object
-Test the endpoint in Postman. It should work, but the `serviceTickets` is `null`. Let's fix that!
+Test the endpoint in Yaak. It should work, but the `serviceTickets` is `null`. Let's fix that!
 
 1. First, we need to change our SQL query. Make this the command text:
 ```csharp

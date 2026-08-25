@@ -30,7 +30,7 @@ Some things to highlight:
 1. We don't need a reader object because we don't really need any other data than the new id back from the database. To get this, we call `ExecuteScalar` instead of `ExecuteReader`, which returns the value of the first column of the first row. 
 1. Because C# doesn't know what type to expect from `ExecuteScalar` (after all, it could be anything), we add `(int)` in front of the method call to tell the compiler that the value should be an integer. This is called _type casting_. There is an explorer chapter in Book 1 about these which is worthwhile to go back to. 
 
-Test out the endpoint in Postman. Make sure you use the `POST` method, and add a JSON body with one object. You should only need `name` and `specialty` properties on that object. 
+Test out the endpoint in Yaak. Make sure you use the `POST` method, and add a JSON body with one object. You should only need `name` and `specialty` properties on that object. 
 
 ## Updating an Employee
 
