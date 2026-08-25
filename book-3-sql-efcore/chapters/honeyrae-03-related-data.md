@@ -35,7 +35,7 @@ The command text is different, because we are using a `WHERE` clause to find onl
 ### Adding `ServiceTicket`s to the `Employee` object
 Test the endpoint in Yaak. It should work, but the `serviceTickets` is `null`. Let's fix that!
 
-1. Go back to the `/api/employees/{id}` endpoint you just wrote above, and replace its `command.CommandText` line with this:
+1. Before touching any C#, let's write and test the new query itself. Open a new query window in pgAdmin and paste in this query (everything between the quotes below is SQL, leave off the `command.CommandText = @"` and the trailing `";`, those are C#, not SQL), replacing `@id` with the id of an employee you know is assigned to more than one ticket. Look at your `ServiceTicketEmployee` table in pgAdmin if you're not sure which employee id that is. If none of your employees happen to be assigned to more than one ticket, that's fine, any employee id still works, you'll just get back one row (or a single row of `NULL`s, if that employee has no tickets at all) instead of several:
 ```csharp
  command.CommandText = @"
         SELECT 
@@ -52,9 +52,9 @@ Test the endpoint in Yaak. It should work, but the `serviceTickets` is `null`. L
         LEFT JOIN ServiceTicket st ON st.Id = ste.ServiceTicketId
         WHERE e.Id = @id";
 ```
-Notice we are using `@` in front of the string to allow a multi-line string. Second, an `Employee` and a `ServiceTicket` aren't directly connected to each other anymore, they're only connected through the `ServiceTicketEmployee` join table, so we need two `LEFT JOIN`s to get from one to the other: one to find the join rows for this employee, and a second to use those join rows to find the actual tickets. We are also using an alias to distinguish between the `Id` of an `Employee` and the `Id` of a `ServiceTicket`.
+If you picked an employee with more than one ticket, notice that we now get back multiple rows instead of one, the employee data is duplicated in each row, and the service ticket data is unique. Keep this query window open, you'll want to compare against it again in a moment.
 
-2. Before touching any C#, run this new query by itself in pgAdmin: open a new query window, paste it in, and replace `@id` with the literal id of an employee that has more than one service ticket. Notice that we now get back multiple rows instead of one. The employee data is duplicated in each row, and the service ticket data is unique. Keep this query window open, you'll want to compare against it again in a moment.
+2. Now go back to the `/api/employees/{id}` endpoint you just wrote above, and replace its `command.CommandText` line with this same query. Notice we are using `@` in front of the string to allow a multi-line string. Second, an `Employee` and a `ServiceTicket` aren't directly connected to each other anymore, they're only connected through the `ServiceTicketEmployee` join table, so we need two `LEFT JOIN`s to get from one to the other: one to find the join rows for this employee, and a second to use those join rows to find the actual tickets. We are also using an alias to distinguish between the `Id` of an `Employee` and the `Id` of a `ServiceTicket`.
 
 3. If, potentially, we will have more than one row in the results, we need to replace the same endpoint's `if (reader.Read())` block with a `while` loop:
 ``` csharp
