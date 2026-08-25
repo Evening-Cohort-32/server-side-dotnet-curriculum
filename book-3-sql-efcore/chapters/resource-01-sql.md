@@ -20,19 +20,23 @@ Each stage hands its result to the next as a working set of rows — filtering, 
 
 <img src="../../assets/sql-order-of-operations.png" align="left" width="300" alt="Diagram of SQL query order of operations: FROM/JOIN, then WHERE, then GROUP BY, then HAVING, then SELECT, then ORDER BY, then LIMIT">
 
+<div style="font-size: 1.15em;">
+
 **① `FROM` / `JOIN` runs first.** The database decides which table(s) the data comes from. If there's a `JOIN`, it builds a combined set of rows by matching rows across tables on the `ON` condition. Nothing has been filtered yet — this is the raw working set everything else operates on.
-
+<br><br>
 **② `WHERE` runs next, one row at a time.** Each row from step ① is tested against the `WHERE` condition; failing rows are discarded. Because grouping hasn't happened yet, `WHERE` has no concept of a "group" — this is exactly why you can't put an aggregate function like `COUNT(*)` in a `WHERE` clause. There's no group for it to count yet.
-
+<br><br>
 **③ `GROUP BY` runs on whatever rows survived `WHERE`.** Matching rows collapse into groups, one group per distinct value (or combination of values) in the `GROUP BY` column(s). This is also the point where aggregate functions (`COUNT`, `SUM`, `MAX`, etc.) actually get computed — one result per group.
-
+<br><br>
 **④ `HAVING` runs after groups exist**, so it can test conditions on those groups — including on the aggregate values computed in step ③. Think of `HAVING` as `WHERE`'s counterpart, but for groups instead of individual rows.
-
+<br><br>
 **⑤ `SELECT` runs after all the filtering and grouping is done.** Only now does the database figure out which columns — or computed expressions and aliases — to actually return. This is why a `WHERE`, `GROUP BY`, or `HAVING` clause can't reference an alias you defined in `SELECT`: none of them have run `SELECT` yet at the point they execute.
-
+<br><br>
 **⑥ `ORDER BY` runs after `SELECT`,** so unlike the clauses above it, it *can* reference a `SELECT` alias — that column already exists by this point.
-
+<br><br>
 **⑦ `LIMIT` runs last,** cutting the already-sorted result down to the requested number of rows. This is also why `LIMIT` only reliably gets you a "top N" when it's paired with `ORDER BY` — without a defined sort, "the first N rows" isn't a meaningful guarantee.
+
+</div>
 
 <br clear="left">
 
