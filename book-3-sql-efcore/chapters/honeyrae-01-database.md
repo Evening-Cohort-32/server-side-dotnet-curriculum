@@ -1,6 +1,8 @@
 # Creating a PostgreSQL database for Honey Rae's API
 In this part of Book 3 we will use a .NET package called Npgsql (based on a better-known set of libraries called ADO.NET) which allows our .NET applications to send SQL queries to a database and read the data that comes back when the queries are executed. But first, we need to create the database that the API will send requests to. 
 
+> :bulb: If you did Book 2's "Further Development of the Honey Rae's API" explorer chapter and created an `explorer` branch for it, switch back to `main` first (`git switch main`) before starting here. These exercises assume the project state from the end of the guided tour, not whatever extra endpoints you added on that branch.
+
 ## Write the script to create the database
 1. Navigate to the HoneyRaesAPI directory in your terminal. Add a folder to it called `SQL` using the `mkdir` command. 
 1. Add a file called `01_HoneyRaes_Create.sql` to that `SQL` directory using the `touch` command. 

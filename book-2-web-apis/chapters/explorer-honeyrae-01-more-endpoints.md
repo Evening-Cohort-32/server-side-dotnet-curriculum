@@ -5,6 +5,8 @@ This chapter will require you to think about how to name your routes. To assist 
 
 If you get stuck, ask for help! These exercises intentionally go beyond what you've learned in the course so far. 
 
+> :bulb: This is a good point to start using git on `HoneyRaesAPI`. Run `git init`, then `git add -A && git commit -m "Honey Rae's API through Book 2"` to save your current, working state, then `git switch -c explorer` to create and switch to a branch for this chapter's changes. If you continue on to Book 3's SQL section later, switch back to `main` first, that walkthrough assumes the project state from the end of the guided tour, not whatever you add here.
+
 ### 1. Emergencies
 Create an endpoint to return all of the service tickets that are incomplete and are emergencies
 
