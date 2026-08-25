@@ -35,7 +35,7 @@ The command text is different, because we are using a `WHERE` clause to find onl
 ### Adding `ServiceTicket`s to the `Employee` object
 Test the endpoint in Yaak. It should work, but the `serviceTickets` is `null`. Let's fix that!
 
-1. First, we need to change our SQL query. Make this the command text:
+1. Go back to the `/api/employees/{id}` endpoint you just wrote above, and replace its `command.CommandText` line with this:
 ```csharp
  command.CommandText = @"
         SELECT 
@@ -56,7 +56,7 @@ Notice we are using `@` in front of the string to allow a multi-line string. Sec
 
 2. Run the query in pgAdmin. Replace `@id` in the pgAdmin query with the id of an employee that has more than one service ticket. Notice that we now have multiple rows. The employee data is duplicated in each row, and the service ticket data is unique. 
 
-3. If, potentially, we will have more than one row in the results, we need to replace the `if` block with a `while` loop:
+3. If, potentially, we will have more than one row in the results, we need to replace the same endpoint's `if (reader.Read())` block with a `while` loop:
 ``` csharp
 while (reader.Read())
 {
