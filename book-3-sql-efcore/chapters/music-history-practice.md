@@ -3,22 +3,24 @@ In this chapter you will write several queries to answer questions about the dat
 
 > <small>It is definitely ok to examine the full tables of data to gut check your answers, _however_: it is not necessarily helpful for your learning to examine all of the data before you write the queries. This database is very small, and it is easy to see, for example, that a genre has a particular id. You might be tempted to search for songs by a particular genre_id. But with a much larger database, it would not be so easy to find that genre name in a table of 1000 genres, and you would have to write a SQL query to find that genre_id. If the request for data only provides you with a genre name to search for songs, write a query that assumes that's the only thing you know about the data you're searching for (in addition to the tables and columns that are available). Your SQL queries themselves are your main window into the data, the sooner you treat them as such the better. </small> 
 
+> ⭐ Exercises marked with a star are the ones you need to complete before moving on — they cover skills (and in a few cases, data) that later chapters build on. Everything else is optional extra practice you can come back to anytime.
+
 ## Setup
 1. Open pgAdmin. 
 1. Open a query window on the MusicHistory database
 1. Save the query right away in `~/workspace/sql/MusicHistory` as `MusicHistoryPracticeQueries.sql`. Now you can save your work as you make progress (you can click the save button, or `Alt`+`S` whenever you want to save.)
 1. Add these exercises to the file:
 ```text
--- 1. Query all of the entries in the `genre` table
--- 2. Query all the entries in the `artist` table and order by the artist's name. HINT: use the ORDER BY keywords
--- 3. Write a `SELECT` query that lists all the songs in the `song` table and include the artist name
+-- 1. ⭐ Query all of the entries in the `genre` table
+-- 2. ⭐ Query all the entries in the `artist` table and order by the artist's name. HINT: use the ORDER BY keywords
+-- 3. ⭐ Write a `SELECT` query that lists all the songs in the `song` table and include the artist name
 -- 4. Write a `SELECT` query that lists all the artists that have a Pop album
 -- 5. Write a `SELECT` query that lists all the artists that have a Jazz or Rock album
 -- 6. Write a `SELECT` statement that lists the albums with no songs
--- 7. Using the `INSERT` statement, add one of your favorite artists to the `artist` table.
--- 8. Using the `INSERT` statement, add one, or more, albums by your artist to the `album` table.
--- 9. Using the `INSERT` statement, add some songs that are on that album to the `song` table.
--- 10. Write a `SELECT` query that provides the song titles, album title, and artist name for all of the data you just entered in. Use the [`LEFT JOIN`](https://www.tutorialspoint.com/sql/sql-using-joins.htm) keyword sequence to connect the tables, and the `WHERE` keyword to filter the results to the album and artist you added.
+-- 7. ⭐ Using the `INSERT` statement, add one of your favorite artists to the `artist` table.
+-- 8. ⭐ Using the `INSERT` statement, add one, or more, albums by your artist to the `album` table.
+-- 9. ⭐ Using the `INSERT` statement, add some songs that are on that album to the `song` table.
+-- 10. ⭐ Write a `SELECT` query that provides the song titles, album title, and artist name for all of the data you just entered in. Use the [`LEFT JOIN`](https://www.tutorialspoint.com/sql/sql-using-joins.htm) keyword sequence to connect the tables, and the `WHERE` keyword to filter the results to the album and artist you added.
 --  > **NOTE:** Direction of join matters. Try the following statements and see the difference in results.
 --
 --    ```sql

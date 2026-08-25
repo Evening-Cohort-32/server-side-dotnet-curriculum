@@ -6,29 +6,40 @@ In the front-end course, you used a JSON data file to store data (and data chang
 1. **SQL** - (Structured Query Language) a language used by many relational databases to provide the ability to _query_ the data stored in the database, as well as make changes to that data. Every relational database implements SQL slightly differently, though the skills learned in using one system largely transfer to the others, especially at the conceptual level (but largely the syntax as well). Some other relational databases are called Oracle, SQL Server, and MySQL.
 1. **Entity Framework Core** - EF Core is a set of .NET packages that allow your .NET application to send _SQL queries_ to the _PostgreSQL_ server. _Postgres_ will execute that query, and return the data, if any, that the query produced. EF Core will receive that response, and turn the data into C# objects that you can use in your application. Technologies like EF Core are called _Object Relational Mapping_ frameworks, or ORMs. 
 
-Because of the large scope of this book, it is split into three parts, roughly corresponding to the three technologies above. Start with the installations, and work your way down. Complete every column in a specific part before moving on to the next part:
+Because of the large scope of this book, it's split into two parts: SQL, and Entity Framework Core. Start with the installations, then work your way through SQL before moving on to EF Core. Each part below is collapsible — fold away the one you've finished so you can focus on what's next. Complete every column in a specific part before moving on to the next part:
 
 |[Installations for Book 3](./chapters/book-3-installs.md) :computer: |
 |--|
 
-## I. Learning to write SQL
+<details>
+<summary><h2>I. SQL</h2></summary>
 
-|:zap: [Getting started with SQL Bolt](https://sqlbolt.com/)|
-|-|
-|:elephant: [Creating a PostgreSQL database using pgAdmin](./chapters/music-history-setup.md)|
-|:headphones: [Music History](./chapters/music-history-practice.md) |
-|:page_with_curl: [Using SQL scripts to create databases](./chapters/poki-setup.md)|
-|:black_nib: [Poems By Kids](./chapters/poki-practice.md)|
+| # |⚡ SQL Bolt|🎵📚 Music History & Poems By Kids|🍯💻 Honey Rae's API|
+|:-:|-|-|-|
+|1|[SELECT queries 101](https://sqlbolt.com/lesson/select_queries_introduction)|:elephant: [Creating a PostgreSQL database using pgAdmin](./chapters/music-history-setup.md)|[Creating a database for Honey Rae's API](./chapters/honey-rae-database.md)|
+|2|[Queries with constraints (Pt. 1)](https://sqlbolt.com/lesson/select_queries_with_constraints)|:headphones: [Music History Practice Queries](./chapters/music-history-practice.md)|[Using Npgsql to make our first query](./chapters/honey-res-npgsql.md)|
+|3|[Queries with constraints (Pt. 2)](https://sqlbolt.com/lesson/select_queries_with_constraints_pt_2)|:page_with_curl: [Using SQL scripts to create databases](./chapters/poki-setup.md)|[Getting related data](./chapters/honey-raes-related-data.md)|
+|4|[Filtering and sorting Query results](https://sqlbolt.com/lesson/filtering_sorting_query_results)|:black_nib: [Poems By Kids](./chapters/poki-practice.md)|[Inserting and Updating rows](./chapters/honey-raes-create.md)|
+|5|[Review: Simple SELECT Queries](https://sqlbolt.com/lesson/select_queries_review)||[Deleting a row](./chapters/honey-raes-delete.md)|
+|6|[Multi-table queries with JOINs](https://sqlbolt.com/lesson/select_queries_with_joins)|||
+|7|[OUTER JOINs](https://sqlbolt.com/lesson/select_queries_with_outer_joins)|||
+|8|[A short note on NULLs](https://sqlbolt.com/lesson/select_queries_with_nulls)|||
+|9|[Queries with expressions](https://sqlbolt.com/lesson/select_queries_with_expressions)|||
+|10|[Queries with aggregates (Pt. 1)](https://sqlbolt.com/lesson/select_queries_with_aggregates)|||
+|11|[Queries with aggregates (Pt. 2)](https://sqlbolt.com/lesson/select_queries_with_aggregates_pt_2)|||
+|12|[Order of execution of a Query](https://sqlbolt.com/lesson/select_queries_order_of_execution)|||
+|13|[Inserting rows](https://sqlbolt.com/lesson/inserting_rows)|||
+|14|[Updating rows](https://sqlbolt.com/lesson/updating_rows)|||
+|15|[Deleting rows](https://sqlbolt.com/lesson/deleting_rows)|||
+|16|[Creating tables](https://sqlbolt.com/lesson/creating_tables)|||
+|17|[Altering tables](https://sqlbolt.com/lesson/altering_tables)|||
+|18|[Dropping tables](https://sqlbolt.com/lesson/dropping_tables)|||
 
-## II. Querying a SQL database from a Web API
-| # |🍯💻 Honey Rae's API|
-|-|-|
-|1| [Creating a database for Honey Rae's API](./chapters/honey-rae-database.md) |
-|2| [Using Npgsql to make our first query](./chapters/honey-res-npgsql.md) |
-|3| [Getting related data](./chapters/honey-raes-related-data.md) |
-|4| [Inserting and Updating rows](./chapters/honey-raes-create.md) |
-|5| [Deleting a row](./chapters/honey-raes-delete.md) |
-## III. Entity Framework Core
+</details>
+
+<details>
+<summary><h2>II. Entity Framework Core</h2></summary>
+
 |#|:tent: <br> Creek River Campground <br> (guided tour) | :book: <br> Loncotes County Library | :haircut: <br> Hillary's Hair Care |
 |:-:|:-:|:-:|:-:|
 |1| [Project Setup](./chapters/creek-river-setup.md) |[Project Requirements](./chapters/loncotes-setup.md)|[Project Intro](./chapters/hillarys-project-requirements.md)|
@@ -41,6 +52,8 @@ Because of the large scope of this book, it is split into three parts, roughly c
 |8| [Book reservations](./chapters/creek-river-book-reservation.md) |||
 |9| [Calculating fees](./chapters/creek-river-calculated.md) <br><sub style="font-size: 0.85rem;">#field #static #private</sub>|[Loncotes Client App](./chapters/loncotes-client.md)||
 |10|:car:[Inheritance](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/INHERITANCE_INTRO.md)|:tv:[Advanced Linq: Nineties TV](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/LINQ_INTRO.md)|:convenience_store:[Coding Self-Assessment](./chapters/book-3-coding-assessment.md)|
+
+</details>
 
 ## Troubleshooting Entity Framework Issues
 
