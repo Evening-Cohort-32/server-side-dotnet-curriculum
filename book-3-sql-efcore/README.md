@@ -45,8 +45,8 @@ Before diving in, it helps to know the order a SQL query actually executes in â€
 |#|Creek River Campground <br>:tent: <sub>(guided tour)</sub> |Loncotes County Library <br>:book: <sub>(optional extra practice)</sub> |Hillary's Hair Care <br>:haircut: <sub>(pair programming)</sub>|
 |:-:|:-:|:-:|:-:|
 |1| [Project Setup](./chapters/creekriver-01-setup.md) |[Project Requirements](./chapters/loncotes-01-setup.md)|[Project Intro](./chapters/hillarys-01-project-requirements.md)|
-|2| [Creating the database](./chapters/creekriver-02-db-context.md) <br><sub style="font-size: 0.85rem;">#encapsulation #inheritance #protected #override #constructor #base</sub>|[Basic Features](./chapters/loncotes-02-basic-features.md)<br><sub style="font-size: 0.85rem;">#soft-delete</sub>||
-|3| [Get campsites](./chapters/creekriver-03-get-campsites.md) <br><sub style="font-size: 0.85rem;">#Include #Single</sub>|[Get Available Materials](./chapters/loncotes-03-get-available-materials.md)<br><sub style="font-size: 0.85rem;">#All</sub>||
+|2| [Creating the database](./chapters/creekriver-02-db-context.md) <br><sub style="font-size: 0.85rem;">#encapsulation #inheritance #protected #override #constructor #base</sub>|[Basic Features](./chapters/loncotes-02-basic-features.md)||
+|3| [Get campsites](./chapters/creekriver-03-get-campsites.md) <br><sub style="font-size: 0.85rem;">#Include #Single</sub>|[Get Available Materials](./chapters/loncotes-03-get-available-materials.md)||
 |4| [Create a campsite](./chapters/creekriver-04-create-campsite.md) |[Get Overdue Checkouts](./chapters/loncotes-04-overdue-checkouts.md)||
 |5| [Delete a campsite](./chapters/creekriver-05-delete-campsite.md) |[Late Fees](./chapters/loncotes-05-calculate-fees.md)||
 |6| [Update a campsite](./chapters/creekriver-06-campsite-update.md) |||
