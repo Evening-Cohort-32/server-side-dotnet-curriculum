@@ -5,7 +5,7 @@ In this chapter we will cover adding and updating an employee in the database. T
 
 Add this endpoint to the API:
 ``` csharp
-app.MapPost("/employees", (Employee employee) =>
+app.MapPost("/api/employees", (Employee employee) =>
 {
     using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
     connection.Open();
@@ -36,7 +36,7 @@ Test out the endpoint in Yaak. Make sure you use the `POST` method, and add a JS
 
 Add this endpoint to `Program.cs`:
 ``` csharp
-app.MapPut("/employees/{id}", (int id, Employee employee) =>
+app.MapPut("/api/employees/{id}", (int id, Employee employee) =>
 {
     if (id != employee.Id)
     {

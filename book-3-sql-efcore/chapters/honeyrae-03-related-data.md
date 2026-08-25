@@ -1,10 +1,10 @@
 # Getting an Employee with their ServiceTickets
 In this chapter we will cover getting an employee by id with their service tickets, which come from a separate table.
 
-## Replacing the `/employees/{id}` endpoint
+## Replacing the `/api/employees/{id}` endpoint
 Replace your current endpoint with this:
 ``` csharp
-app.MapGet("/employees/{id}", (int id) =>
+app.MapGet("/api/employees/{id}", (int id) =>
 {
     Employee employee = null;
     using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
@@ -27,7 +27,7 @@ app.MapGet("/employees/{id}", (int id) =>
     return employee;
 });
 ```
-### Comparing this endpoint with  `GET` `/employees`
+### Comparing this endpoint with  `GET` `/api/employees`
 This code block largely follows the same patterns as the previous endpoint. We need to create a connection, open it, and create a command. 
 
 The command text is different, because we are using a `WHERE` clause to find only one employee. But each time this endpoint receives a request, there could be a different `id` passed into the URL. Because of this, we need to use _parameters_ to allow us to put a different `id` in the SQL query each time. `@id` is the parameter we put in the query as a placeholder for the eventual value that will go there before the query is executed. The SQL command object has a `Parameters` property, and there is a method that let's us set the value for a parameter by name called `AddWithValue`. Finally, we use an `if` instead of `while` to check for data, because we only need the data reader to check for one row (because this query can only return a maximum of one row - ids are unique, so the `WHERE` clause can only return a maximum of one employee).  
@@ -79,7 +79,7 @@ Second, when we create the employee object, we add an empty `List<ServiceTicket>
 4. Finally, we need to check to see if there is service ticket data in any given row (if the employee has no service tickets, we will get back one row with `NULL`s for the service ticket columns), and then add a service ticket to the employee's `ServiceTickets` collection. The whole endpoint will look like this: 
 
 ``` csharp
-app.MapGet("/employees/{id}", (int id) =>
+app.MapGet("/api/employees/{id}", (int id) =>
 {
     Employee employee = null;
     using NpgsqlConnection connection = new NpgsqlConnection(connectionString);

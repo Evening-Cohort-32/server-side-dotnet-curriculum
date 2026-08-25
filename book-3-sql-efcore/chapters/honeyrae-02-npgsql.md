@@ -21,7 +21,7 @@ var connectionString = "Host=localhost;Port=5432;Username=postgres;Password=<you
 
 3. Replace the endpoint that gets all employees with this one:
 ``` csharp
-app.MapGet("/employees", () =>
+app.MapGet("/api/employees", () =>
 {
     // create an empty list of employees to add to. 
     List<Employee> employees = new List<Employee>();
@@ -57,7 +57,7 @@ First, to get this out of the way, you don't need to understand how your applica
 
 > IMPORTANT: As you can see, connections strings can contain sensitive data like passwords. This is the last time in this course you will see a connection string in a file that you would push to Github. You will learn how to keep these secrets out of your code later in this book! 
 
-One of the things you can do with connections is create SQL commands. The text of those commands will look just like a SQL query. One of the things you can do with commands is _execute_ them with the `ExecuteReader` method. that method returns a `DataReader` object, which gives you access to all the data that the query produced. 
+One of the things you can do with connections is create SQL commands. The text of those commands will look just like a SQL query. One of the things you can do with commands is _execute_ them with the `ExecuteReader` method. That method returns a `DataReader` object, which gives you access to all the data that the query produced. 
 
 The hardest part to understand here is `reader.Read()`. The data that comes back from the database is in a tabular format. You have seen a graphical representation of it in pgAdmin. There is a table of results with columns and rows. The reader only reads _one row of this table at a time_. Every time the `Read` method is called, it moves down a row. It then examines whether there is a row to read or not (if not, that means the end of the results have been reached), and returns a _boolean_ to say so. `while (reader.Read()) {}` says "Move down a row. If there is data there, do whatever is in the braces. Otherwise, stop."
 

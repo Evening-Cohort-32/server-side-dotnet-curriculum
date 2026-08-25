@@ -4,7 +4,7 @@ In this chapter we will cover deleting an employee by id.
 ## Adding the endpoint
 Add this endpoint to `Program.cs`
 ``` csharp
-app.MapDelete("/employees/{id}", (int id) =>
+app.MapDelete("/api/employees/{id}", (int id) =>
 {
     using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
     connection.Open();

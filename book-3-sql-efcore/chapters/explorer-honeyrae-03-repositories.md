@@ -75,7 +75,7 @@ We can use a rudimentary version of the repository pattern to keep the logic for
     - This line registers the `EmployeeRepository` as a service that can be used in our project's endpoints. 
 1. Now we can update the endpoint that gets all employees to use the `GetEmployees` method from the `EmployeeRepository` to get the data.
     ``` csharp
-    app.MapGet("/employees", (EmployeeRepository repo) =>
+    app.MapGet("/api/employees", (EmployeeRepository repo) =>
     {
         List<Employee> employees = repo.GetEmployees();
         return employees;

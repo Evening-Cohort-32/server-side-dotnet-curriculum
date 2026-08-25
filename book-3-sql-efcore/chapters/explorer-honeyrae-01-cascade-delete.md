@@ -4,7 +4,7 @@ In the exercises, you saw that there is an issue deleting employees that are ass
 ## Option 1: Restrict
 It may be that the correct behavior is that deleting an employee with service tickets should simply not be allowed. In that case, you need to catch the error that would result from trying to delete such an employee, and returning a message to the user that the employee cannot be deleted:
 ``` csharp
-app.MapDelete("/employees/{id}", (int id) =>
+app.MapDelete("/api/employees/{id}", (int id) =>
 {
     try
     {
@@ -27,7 +27,7 @@ app.MapDelete("/employees/{id}", (int id) =>
 ## Option 2: Cascade Delete Manually
 It could be that the app's owner doesn't care about keeping assignment history for employees who don't work there anymore. If that's the case, it is safe to delete this employee's rows out of `ServiceTicketEmployee` before deleting the employee:
 ``` csharp
-app.MapDelete("/employees/{id}", (int id) =>
+app.MapDelete("/api/employees/{id}", (int id) =>
 {
     using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
     connection.Open();
@@ -54,7 +54,7 @@ ON DELETE CASCADE;
 ```
 Then the endpoint can go back to how it was before we did the manual delete:
 ``` csharp
-app.MapDelete("/employees/{id}", (int id) =>
+app.MapDelete("/api/employees/{id}", (int id) =>
 {
     using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
     connection.Open();

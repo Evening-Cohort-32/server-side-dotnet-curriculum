@@ -63,6 +63,8 @@ psql -U postgres -f 01_HoneyRaes_Create.sql
 1. Add another file to the `SQL` folder of the project called `02_HoneyRaes_Seed.sql`
 1. The first line of the file should be `\c HoneyRaes` to connect the script to that database. 
 1. In that file, use `INSERT` statements to add all of the data that you are currently storing in the collections at the top of `Program.cs` to your SQL database. You now have four collections to insert: `customers`, `employees`, `serviceTickets`, and `serviceTicketEmployees`. Insert them in that order, `Customer` and `Employee` rows first, then `ServiceTicket` rows, and finally `ServiceTicketEmployee` rows, since each `ServiceTicketEmployee` row references a ticket and an employee that need to already exist. Refer back to the MusicHistory chapter if you can't remember the syntax. 
+
+    > :bulb: Just like in the MusicHistory chapter, don't include the `Id` column in any of these `INSERT` statements, leave it out and let `GENERATED ALWAYS AS IDENTITY` assign it automatically. As long as you insert each table's rows in the same order they appear in its `Program.cs` collection, the auto-generated `Id`s will land in that same order (1, 2, 3, ...), which means they'll still match up correctly wherever you reference them as a foreign key (`CustomerId`, `ServiceTicketId`, `EmployeeId`), even though you never typed the `Id` values yourself.
 1. Save that file, and run it with `psql` like you ran the create script. 
 1. Open pgAdmin, and look to see that the database and all of the tables have been created (you can see the tables for a database under `Schemas` -> `public` -> `Tables`)
 1. Write a few basic queries in pgAdmin to see that your data is there. 

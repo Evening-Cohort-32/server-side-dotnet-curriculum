@@ -4,7 +4,7 @@ In this chapter you will replace the rest of the endpoints from the Honey Rae's 
 ## Using `IsDBNull` to check for nullable columns
 One issue with `null` values in C# is that they cannot be directly from the database's NULL. This is because in the database, `NULL` represents an absence of value, rather than a value of `null`, as it is in C#. This means that you need to check for NULL database values before trying to get a string or other type out of a column which is nullable. Here is an example of this with `DateCompleted` (a nullable column in the `ServiceTicket` table):
 ``` csharp
-app.MapGet("/servicetickets", () =>
+app.MapGet("/api/servicetickets", () =>
 {
     List<ServiceTicket> serviceTickets = new List<ServiceTicket>();
     using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
