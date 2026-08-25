@@ -29,8 +29,8 @@ Hillary needs the ability to add new customers and stylists to her system. Occas
 1. Create an ERD using the entities provided in the technical requirements. Remember that a many-to-many relationship will need a table in addition to the entities listed above. After your first draft of the ERD, make sure that the data model you have created will support the features listed in the user stories. 
 
 ## Setting up the codebase
-1. Follow the [steps](./creek-river-setup.md) for creating an api in column one (don't forget to create a gitignore file) 
-1. Follow the [steps for creating the database](./creek-river-db-context.md) from column one. 
+1. Follow the [steps](./creekriver-01-setup.md) for creating an api in column one (don't forget to create a gitignore file) 
+1. Follow the [steps for creating the database](./creekriver-02-db-context.md) from column one. 
 1. run `git init`
 1. run `git remote add origin` with the SSH address of the GH repo you created with the issue tickets
 1. create a `client` directory inside the project

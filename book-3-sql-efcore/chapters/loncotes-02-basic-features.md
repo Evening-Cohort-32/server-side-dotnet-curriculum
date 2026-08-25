@@ -41,4 +41,4 @@ The librarians need to be able to checkout items for patrons. Add an endpoint to
 ### Return a Material
 The librarians need an endpoint to mark a checked out item as returned by item id. Add an endpoint expecting a checkout id, and update the checkout with a return date of `DateTime.Today`. 
 
-Up Next: [Get Available Materials](./loncotes-get-available-materials.md)
+Up Next: [Get Available Materials](./loncotes-03-get-available-materials.md)

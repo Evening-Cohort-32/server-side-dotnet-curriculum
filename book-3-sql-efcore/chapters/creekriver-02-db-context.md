@@ -109,7 +109,7 @@ We are ready to actually run the tool that will create our PostgreSQL database f
     - dotnet user-secrets
     - connection string
 
-Up Next: [Getting Campsites](./creek-river-get-campsites.md)
+Up Next: [Getting Campsites](./creekriver-03-get-campsites.md)
 
 ## 🔍 Additional Materials
 1. [Constructors](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/constructors?source=recommendations)

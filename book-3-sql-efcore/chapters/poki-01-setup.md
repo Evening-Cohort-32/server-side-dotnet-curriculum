@@ -72,4 +72,4 @@ psql -U postgres -f poki.sql
 7. Execute the query `SELECT * FROM author`
 8. If you see results, your database is set up correctly!
 
-Up Next: [PoemsByKids Exercises](./poki-practice.md)
+Up Next: [PoemsByKids Exercises](./poki-02-practice.md)

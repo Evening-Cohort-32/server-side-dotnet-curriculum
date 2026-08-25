@@ -90,4 +90,4 @@ app.MapGet("/api/checkouts/overdue", (LoncotesLibraryDbContext db) =>
 
 Test the endpoint to make sure that it works. Breaking tasks like this one down with an algorithm can make figuring out how to solve new problems easier. We started with the basic logic using variables (`daysCheckedOut` and `allowedCheckoutDays`). Step by step we figured out how to determine the values of each of those.
 
-Up Next: [Late Fees](./loncontes-calculate-fees.md)
+Up Next: [Late Fees](./loncotes-05-calculate-fees.md)

@@ -54,4 +54,4 @@ A few more things to note:
     - with an id for a campsite that does not exist
         - This should break in the debugger because `Single` throws an Exception. Let the code continue to see the `500` response in Postman (or Swagger, if that's what you're using). Try to add error handling to this endpoint to prevent the `500` response, and send a `404` instead when a non-existent campsite is requested. 
 
-Up Next: [Create a Campsite](./creek-river-create-campsite.md)
+Up Next: [Create a Campsite](./creekriver-04-create-campsite.md)

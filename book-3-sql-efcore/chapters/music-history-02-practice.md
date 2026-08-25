@@ -41,4 +41,4 @@ In this chapter you will write several queries to answer questions about the dat
 
 Remember that if you have a lot of queries in one file, and only want to run one (or a few) of them at once, just highlight the query that you want to run before clicking the execute button or hitting `F5`. 
 
-Up Next: [Creating Databases with SQL scripts](./poki-setup.md)
+Up Next: [Creating Databases with SQL scripts](./poki-01-setup.md)

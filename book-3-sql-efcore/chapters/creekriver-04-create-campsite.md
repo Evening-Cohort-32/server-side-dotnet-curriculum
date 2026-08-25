@@ -15,4 +15,4 @@ The  `SaveChanges` method (inherited in `CreekRiverDbContext` from the `DbContex
 
 The `Results.Created` methods creates a `201` response, indicating that a new campsite was created. The first argument in that method call is the URL where the new campsite can be accessed. `Created` will add a "location" header to the HTTP response that the client can use if it needs it. The second argument will be the body of the HTTP response (the new campsite). EF Core _automatically_ adds the new Id to the campsite object.
 
-Up Next: [Delete a Campsite](./creek-river-delete-campsite.md)
+Up Next: [Delete a Campsite](./creekriver-05-delete-campsite.md)

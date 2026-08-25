@@ -39,9 +39,9 @@ In this chapter you will add endpoints to create a reservation and cancel a rese
         return Results.BadRequest("Invalid data submitted");
     }
     ```
-1. Test the endpoint again to make sure that the logic works. We have not yet exhausted the edge cases that could break this endpoint. See if you can come up with some more! Do you have ideas about how to fix them? Try [this explorer chapter](./creek-river-reservation-validation.md) if you want to see some of them. 
+1. Test the endpoint again to make sure that the logic works. We have not yet exhausted the edge cases that could break this endpoint. See if you can come up with some more! Do you have ideas about how to fix them? Try [this explorer chapter](./explorer-creekriver-01-reservation-validation.md) if you want to see some of them. 
 
 ## Cancelling a Reservation
 See if you can implement this endpoint on your own! You can use the endpoint for deleting a campsite as a reference. 
 
-Up Next: [Calculating Fees](./creek-river-calculated.md)
+Up Next: [Calculating Fees](./creekriver-09-calculated.md)

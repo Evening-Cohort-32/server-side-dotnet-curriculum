@@ -29,4 +29,4 @@ Test this endpoint with a payload that looks something like this:
 }
 ```
 
-Up Next: [Getting Reservations](./creek-river-get-reservations.md)
+Up Next: [Getting Reservations](./creekriver-07-get-reservations.md)

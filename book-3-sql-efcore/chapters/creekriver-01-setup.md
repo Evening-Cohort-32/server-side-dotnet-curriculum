@@ -102,7 +102,7 @@ Creating the data models for this application will be almost identical to the pr
 
 In the next chapter we will use these models to configure and provide access to the database. 
 
-Up Next: [DbContext](./creek-river-db-context.md)
+Up Next: [DbContext](./creekriver-02-db-context.md)
 
 ## 🔍 Additional Materials
 

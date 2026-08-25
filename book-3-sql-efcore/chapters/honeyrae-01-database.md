@@ -60,4 +60,4 @@ psql -U postgres -f 01_HoneyRaes_Create.sql
 
 > You many have noticed at this point that the table and column names are being saved in PostgreSQL as lower case, regardless of the casing when you name them. PostgreSQL will lower any upper casing before creating the tables, and luckily this is also true when you write queries (you can `SELECT` from `Customer` or `customer` and both will work). Continue using PascalCase for the names of tables and columns, as this will make your queries look more like the class and property names in C#. 
 
-Up Next: [Connecting to the database from the Web API](./honey-res-npgsql.md)
+Up Next: [Connecting to the database from the Web API](./honeyrae-02-npgsql.md)

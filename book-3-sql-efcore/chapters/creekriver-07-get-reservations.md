@@ -109,4 +109,4 @@ Try the endpoint out. You will notice that the `reservations` property for the `
 ```
 This is the expected behavior, because the framework will try to serialize every public property of a class instance to the JSON output. If we don't explicitly set the value of a property, the JSON will have the property's default value, which in the case of a `List` is `null`.
 
-Up Next: [Booking Reservations](./creek-river-book-reservation.md)
+Up Next: [Booking Reservations](./creekriver-08-book-reservation.md)

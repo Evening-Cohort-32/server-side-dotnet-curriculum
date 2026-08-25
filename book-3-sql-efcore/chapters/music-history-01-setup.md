@@ -183,4 +183,4 @@ It is usually a good idea to save SQL scripts like the ones we wrote today for f
 
 1. Go back to the foreign key definitions in the `CREATE TABLE` statements using `REFERENCES`. See if you can write down an explanation of what each of those column definitions means. For example: "The xId column is of type y, and is required/not required. It is a foreign key that references the x table's Id column". Being able to use this kind of vocabulary in this context is important. You can write these down and share with an instructor during a 1-on-1 if you are uncertain about your understanding. 
 
-Up Next: [Music History Practice Queries](./music-history-practice.md)
+Up Next: [Music History Practice Queries](./music-history-02-practice.md)

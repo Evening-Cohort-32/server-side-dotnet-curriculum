@@ -66,4 +66,4 @@ Some comments on this endpoint:
 
 Test this endpoint as well, and check the database with pgAdmin to ensure that the data was updated in the database as you expect. 
 
-Up Next: [Deleting an Employee](./honey-raes-delete.md)
+Up Next: [Deleting an Employee](./honeyrae-05-delete.md)

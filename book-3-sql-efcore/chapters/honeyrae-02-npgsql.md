@@ -67,4 +67,4 @@ Finally, this code block uses `using` statements for creating the connection, co
 
 Ok, that still might not make sense yet. Read through the code and the explanation a few times. After working through the rest of this book, this syntax will feel less bewildering. If it's still confusing then, ask an instructor for help!
 
-Up Next: [Getting Related Data](./honey-raes-related-data.md)
+Up Next: [Getting Related Data](./honeyrae-03-related-data.md)
