@@ -82,13 +82,10 @@ Before diving in, it helps to know the order a SQL query actually executes in ‚Ä
 
 |üåê Resources|
 |--|
-|[SQL - Order of Operations](./chapters/resource-02-sql-order-of-operations.md)|
-|[SQL Cheatsheet](./chapters/resource-01-sql.md)|
-
-|:gear: Object-Oriented Programming |
-|-|
 | [Classes](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/tutorials/classes) |
 |[OOP in C#](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/tutorials/oop) |
+|[SQL - Order of Operations](./chapters/resource-02-sql-order-of-operations.md)|
+|[SQL Cheatsheet](./chapters/resource-01-sql.md)|
 
 |:test_tube: Projects|
 |-|
