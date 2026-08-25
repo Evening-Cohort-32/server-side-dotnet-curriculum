@@ -4,19 +4,41 @@ A quick syntax reference for the SQL you'll write in this book — PostgreSQL sp
 
 ## Order of Operations
 
-SQL is *written* in one order, but the database evaluates it in a different order internally. Knowing the *execution* order explains a lot of "why can't I do that" moments:
+SQL is *written* in one order, but the database evaluates it in a different order internally:
 
-```
-FROM / JOIN   -- pick the tables, combine rows
-WHERE         -- filter individual rows
-GROUP BY      -- collapse rows into groups
-HAVING        -- filter entire groups
-SELECT        -- pick/compute the columns to return
-ORDER BY      -- sort the results
-LIMIT         -- cut down to N rows
+| You write it in this order | It actually runs in this order |
+|---|---|
+| `SELECT` | `FROM` / `JOIN` |
+| `FROM` / `JOIN` | `WHERE` |
+| `WHERE` | `GROUP BY` |
+| `GROUP BY` | `HAVING` |
+| `HAVING` | `SELECT` |
+| `ORDER BY` | `ORDER BY` |
+| `LIMIT` | `LIMIT` |
+
+Each stage below hands its result to the next one as a working set of rows — filtering, grouping, or reshaping it along the way:
+
+```mermaid
+flowchart TD
+    A["FROM / JOIN\nPick the table(s). If there's a JOIN,\ncombine matching rows into wider rows."]
+    B["WHERE\nTest each row one at a time.\nRows that fail are thrown out."]
+    C["GROUP BY\nCollapse the surviving rows into groups\nby matching column value(s)."]
+    D["HAVING\nTest each group. Groups that fail\nare thrown out."]
+    E["SELECT\nOnly now are the actual columns\n(and aliases) picked or computed."]
+    F["ORDER BY\nSort the final rows."]
+    G["LIMIT\nCut the sorted results down to N rows."]
+    A --> B --> C --> D --> E --> F --> G
 ```
 
-This is why you can't reference a `SELECT` alias in a `WHERE` clause (`WHERE` runs before `SELECT` does), but you *can* reference one in `ORDER BY` (which runs after `SELECT`). It's also why `WHERE` filters rows one at a time, while `HAVING` filters entire groups after `GROUP BY` has already collapsed the rows together.
+What that means at each stage, specifically:
+
+1. **`FROM` / `JOIN` runs first.** The database decides which table(s) the data comes from. If there's a `JOIN`, it builds a combined set of rows by matching rows across tables on the `ON` condition. Nothing has been filtered yet — this is the raw working set everything else operates on.
+2. **`WHERE` runs next, one row at a time.** Each row from step 1 is tested against the `WHERE` condition; failing rows are discarded. Because grouping hasn't happened yet, `WHERE` has no concept of a "group" — this is exactly why you can't put an aggregate function like `COUNT(*)` in a `WHERE` clause. There's no group for it to count yet.
+3. **`GROUP BY` runs on whatever rows survived `WHERE`.** Matching rows collapse into groups, one group per distinct value (or combination of values) in the `GROUP BY` column(s). This is also the point where aggregate functions (`COUNT`, `SUM`, `MAX`, etc.) actually get computed — one result per group.
+4. **`HAVING` runs after groups exist**, so it can test conditions on those groups — including on the aggregate values computed in step 3. Think of `HAVING` as `WHERE`'s counterpart, but for groups instead of individual rows.
+5. **`SELECT` runs after all the filtering and grouping is done.** Only now does the database figure out which columns — or computed expressions and aliases — to actually return. This is why a `WHERE`, `GROUP BY`, or `HAVING` clause can't reference an alias you defined in `SELECT`: none of them have run `SELECT` yet at the point they execute.
+6. **`ORDER BY` runs after `SELECT`,** so unlike the clauses above it, it *can* reference a `SELECT` alias — that column already exists by this point.
+7. **`LIMIT` runs last,** cutting the already-sorted result down to the requested number of rows. This is also why `LIMIT` only reliably gets you a "top N" when it's paired with `ORDER BY` — without a defined sort, "the first N rows" isn't a meaningful guarantee.
 
 ## SELECT
 
