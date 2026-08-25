@@ -11,7 +11,7 @@ Because of the large scope of this book, it's split into two parts: SQL, and Ent
 |:computer: [Installations for Book 3](./chapters/installs-01-installations.md)|
 |--|
 
-<details>
+<details open>
 <summary><h2>I. SQL</h2></summary>
 
 Before diving in, it helps to know the order a SQL query actually executes in — see [SQL - Order of Operations](./chapters/resource-02-sql-order-of-operations.md).
@@ -82,8 +82,8 @@ Before diving in, it helps to know the order a SQL query actually executes in �
 
 |🌐 Resources|
 |--|
-|[SQL Cheatsheet](./chapters/resource-01-sql.md)|
 |[SQL - Order of Operations](./chapters/resource-02-sql-order-of-operations.md)|
+|[SQL Cheatsheet](./chapters/resource-01-sql.md)|
 
 |:gear: Object-Oriented Programming |
 |-|
