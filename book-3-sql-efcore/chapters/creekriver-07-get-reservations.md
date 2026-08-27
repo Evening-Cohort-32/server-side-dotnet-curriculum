@@ -46,7 +46,7 @@ Here it might be helpful to imagine the SQL query that this method chain will pr
 1. The first `Include` will `JOIN` the `UserProfiles` table
 1. The second `Include` will further `JOIN` the `Campsites` table
 1. `ThenInclude` is called when you want to `JOIN` to a table that is not the original table. It must immediately follow the `Include` call that `JOIN`s the table that you wish to `JOIN` to. In this case, because we can only get to `CampsiteTypes` from `Campsites`, and not the original `Reservations` table, we call `ThenInclude` to add `CampsiteTypes` data to the `Campsites` data right after the `Include` call to `JOIN` `Campsites`
-1. `OrderBy` is a regular Linq method (see the explorer chapter on advanced Linq!), but corresponds directly to the `ORDER BY` keywords in SQL. 
+1. `OrderBy` is a regular LINQ method (see the [Advanced LINQ: Nineties TV](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/LINQ_INTRO.md) explorer chapter!), but corresponds directly to the `ORDER BY` keywords in SQL. The [LINQ Cheatsheet](../../book-1-foundations/chapters/resource-09-linq.md) is worth a look too if any of the LINQ syntax here feels rusty.
 1. We create a new `ReservationDTO` for each reservation, and populate the `UserProfileDTO` and `CampsiteDTO` (and the `CampsiteDTO`'s `CampsiteTypDTO`!) data from the nested objects in the results.
 
 The full SQL query this generates will be something like this:
@@ -108,5 +108,7 @@ Try the endpoint out. You will notice that the `reservations` property for the `
 }
 ```
 This is the expected behavior, because the framework will try to serialize every public property of a class instance to the JSON output. If we don't explicitly set the value of a property, the JSON will have the property's default value, which in the case of a `List` is `null`.
+
+That's a lot of code just to shape a response, and you'll be writing more of it like this for every endpoint that returns a DTO with related data. If you'd rather not build up nested DTOs by hand every time, try [this explorer exercise](./explorer-creekriver-02-automapper.md), which shows how a package called AutoMapper can do it for you.
 
 Up Next: [Booking Reservations](./creekriver-08-book-reservation.md)

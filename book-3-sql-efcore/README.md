@@ -68,6 +68,7 @@ Before diving in, it helps to know the order a SQL query actually executes in �
 | Issue | Resolution |
 |---|---|
 | Cannot apply migrations because of pending changes to DBContext | [Override OnConfiguring](./chapters/UPDATE_DBCONTEXT.md) |
+| "The Entity Framework tools version '_x_' is older than that of the runtime '_y_'" warning when running a `dotnet ef` command | Your global EF Core tools are out of date, even if you just installed .NET 10 — the SDK version and the `dotnet-ef` tool version are tracked separately. Run `dotnet tool update --global dotnet-ef` to update it, then try the command again. |
 
 ## 🔍 Additional Materials
 |:compass: Explorer Chapters|
@@ -76,6 +77,7 @@ Before diving in, it helps to know the order a SQL query actually executes in �
 |🍯 💻 [Finishing Honey Rae's with Npgsql](./chapters/explorer-honeyrae-02-complete.md) |
 |🍯 💻 [Organize Data Access with Repositories](./chapters/explorer-honeyrae-03-repositories.md) |
 |:tent: [Data Validation and Algorithmic Reasoning](./chapters/explorer-creekriver-01-reservation-validation.md) |
+|:tent: [Mapping to DTOs with AutoMapper](./chapters/explorer-creekriver-02-automapper.md) |
 | :book: [Automapper to Map Models to DTO's](./chapters/explorer-loncotes-01-automapper.md) |
 | :book: [Loncotes React Client](./chapters/explorer-loncotes-02-client.md) |
 |:tv: [Advanced Linq: Nineties TV](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/LINQ_INTRO.md)|
