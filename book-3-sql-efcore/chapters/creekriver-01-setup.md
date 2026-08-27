@@ -4,6 +4,20 @@ In this project we will build an API for the reservations website of Creek River
 ## Creating the Project
 1. In the csharp directory of your workspace create the web api project like this: `dotnet new webapi -o CreekRiver -minimal`
 1. Inside the `CreekRiver` directory, run `dotnet new gitignore`
+1. Just like with Honey Rae's, the scaffolded `Program.cs` comes with `builder.Services.AddOpenApi();` and `app.MapOpenApi();`, which only serve a raw OpenAPI JSON document, no browsable UI. Restore Swashbuckle the same way you did back in `honeyrae-01-web-api-setup`:
+    ``` bash
+    dotnet add package Swashbuckle.AspNetCore
+    ```
+    Then replace `builder.Services.AddOpenApi();` with:
+    ``` csharp
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+    ```
+    and replace `app.MapOpenApi();` with:
+    ``` csharp
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    ```
 1. Install these required dependencies with:
     ``` bash
     dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 10.0
