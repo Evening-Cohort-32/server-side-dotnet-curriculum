@@ -6,7 +6,7 @@ After finishing the projects in this book and Book 2, you will have noticed that
 
 What do we do when we have tedious, repetitive code? Make it DRYer! How do we do that? We write reusable code that can be used everywhere that we need to create DTO objects. 
 
-What would this reusable code need to do? It would need to take an object of one type and convert that object to another type. Using Loncotes County Library as an example, if we have an instance of `Material`, we want to be able to turn its data into an instance of `MaterialDto`. If we have an instance of `Genre`, we want to turn it into a `GenreDto`. Aside from the fact that `Material` and `Genre` have different properties, the process is exactly the same (you know this, because you have written a lot of endpoints that map instances of a model class to instances of a DTO class).  
+What would this reusable code need to do? It would need to take an object of one type and convert that object to another type. Using Loncotes County Library as an example, if we have an instance of `Material`, we want to be able to turn its data into an instance of `MaterialDTO`. If we have an instance of `Genre`, we want to turn it into a `GenreDTO`. Aside from the fact that `Material` and `Genre` have different properties, the process is exactly the same (you know this, because you have written a lot of endpoints that map instances of a model class to instances of a DTO class).  
 
 What if we had code that could be told which classes map to which other classes? What if it had methods that would take an object of one type as an input along with a target type, and return a new object of the target type with the data from the input object?
 
@@ -30,7 +30,7 @@ public targetType Map<targetType, inputType>(inputType inputObject)
 
 Here's an example of our theoretical `Map` method in use:
 ``` csharp
-MaterialDto material = Map<MaterialDto, Material>(inputMaterialObject);
+MaterialDTO material = Map<MaterialDTO, Material>(inputMaterialObject);
 ```
 
 We could implement code to do this on our own. But someone else already did, when they wrote `AutoMapper`! The rest of this chapter is a demo on implementing AutoMapper in Loncotes County Library.
@@ -108,13 +108,13 @@ Replace the endpoint to get a single material with the following code:
 app.MapGet("/api/materials/{id}", (IMapper mapper, LoncotesLibraryDbContext db, int id) =>
 {
     var material = db.Materials
-    .ProjectTo<MaterialDto>(mapper.ConfigurationProvider)
+    .ProjectTo<MaterialDTO>(mapper.ConfigurationProvider)
     .SingleOrDefault(m => m.Id == id);
 
     return material != null ? Results.Ok(material) : Results.NotFound();
 });
 ```
-Test the endpoint out and examine the data in the response. Notice that the material data includes the materialType, genre, and checkout data even though this code does not use `Include` to join the data. This is because, by default, `ProjectTo` will try to populate any properties present in the target class (in this case, `MaterialDto`). This means that practically speaking, if you have properties that you want to _exclude_ for a certain query, one of the easiest ways to do that is to create another DTO with exactly the properties that you want that endpoint to return. Often this will mean that you might have up to as many DTO classes as GET endpoints in your application (and that's fine!).
+Test the endpoint out and examine the data in the response. Notice that the material data includes the materialType, genre, and checkout data even though this code does not use `Include` to join the data. This is because, by default, `ProjectTo` will try to populate any properties present in the target class (in this case, `MaterialDTO`). This means that practically speaking, if you have properties that you want to _exclude_ for a certain query, one of the easiest ways to do that is to create another DTO with exactly the properties that you want that endpoint to return. Often this will mean that you might have up to as many DTO classes as GET endpoints in your application (and that's fine!).
 
 Second, notice that `ProjectTo` comes before `SingleOrDefault` in the method chain. This is because `SingleOrDefault` returns a `Material` instance, which doesn't have access to the `ProjectTo` method.
 

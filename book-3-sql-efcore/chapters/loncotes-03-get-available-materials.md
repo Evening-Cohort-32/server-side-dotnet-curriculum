@@ -52,7 +52,7 @@ app.MapGet("/api/materials/available", (LoncotesLibraryDbContext db) =>
     return db.Materials
     .Where(m => m.OutOfCirculationSince == null)
     .Where(m => m.Checkouts.All(co => co.ReturnDate != null))
-    .Select(material => new MaterialDto
+    .Select(material => new MaterialDTO
     {
         Id = material.Id,
         MaterialName = material.MaterialName,

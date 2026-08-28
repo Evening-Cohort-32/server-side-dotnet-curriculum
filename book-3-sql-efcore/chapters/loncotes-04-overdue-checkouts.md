@@ -27,7 +27,7 @@ We need to use `Where` again, but logic for which materials are overdue is somew
     ```
     daysCheckedOut > checkout.Material.MaterialType.CheckoutDays
     ```
-1. Days checked out is a little more complex. If we subtract the `CheckoutDate` from `DateTime.Today`, we will get a `TimeSpan` that represents the amount of time the material has been checked out. That `TimeSpan` has a `Days` property that tells us how many days that `TimeSpan` represents:
+1. Days checked out is a little more complex, but you've actually already done this exact calculation before, it's the same subtraction `TotalNights` used back in Creek River: `DateTime` minus `DateTime` gives you a `TimeSpan`, and its `Days` property tells you how many whole days it spans. Subtracting `CheckoutDate` from `DateTime.Today` gets us that same thing for a checkout:
     ``` 
     (DateTime.Today - checkout.CheckoutDate).Days > checkout.Material.MaterialType.CheckoutDays
     ```
@@ -53,16 +53,16 @@ app.MapGet("/api/checkouts/overdue", (LoncotesLibraryDbContext db) =>
         (DateTime.Today - co.CheckoutDate).Days >
         co.Material.MaterialType.CheckoutDays &&
         co.ReturnDate == null)
-        .Select(co => new CheckoutDto
+        .Select(co => new CheckoutDTO
         {
             Id = co.Id,
             MaterialId = co.MaterialId,
-            Material = new MaterialDto
+            Material = new MaterialDTO
             {
                 Id = co.Material.Id,
                 MaterialName = co.Material.MaterialName,
                 MaterialTypeId = co.Material.MaterialTypeId,
-                MaterialType = new MaterialTypeDto
+                MaterialType = new MaterialTypeDTO
                 {
                     Id = co.Material.MaterialTypeId,
                     Name = co.Material.MaterialType.Name,
@@ -72,7 +72,7 @@ app.MapGet("/api/checkouts/overdue", (LoncotesLibraryDbContext db) =>
                 OutOfCirculationSince = co.Material.OutOfCirculationSince
             },
             PatronId = co.PatronId,
-            Patron = new PatronDto
+            Patron = new PatronDTO
             {
                 Id = co.Patron.Id,
                 FirstName = co.Patron.FirstName,
