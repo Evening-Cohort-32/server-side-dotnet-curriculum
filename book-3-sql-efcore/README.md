@@ -69,6 +69,7 @@ Before diving in, it helps to know the order a SQL query actually executes in �
 |---|---|
 | Cannot apply migrations because of pending changes to DBContext | [Override OnConfiguring](./chapters/UPDATE_DBCONTEXT.md) |
 | "The Entity Framework tools version '_x_' is older than that of the runtime '_y_'" warning when running a `dotnet ef` command | Your global EF Core tools are out of date, even if you just installed .NET 10 — the SDK version and the `dotnet-ef` tool version are tracked separately. Run `dotnet tool update --global dotnet-ef` to update it, then try the command again. |
+| A `dotnet ef` command (`migrations add`, `database update`) fails with a build/file-lock error | The app is probably still running. `dotnet ef` commands build your project themselves, and can't do that while the compiled output is locked by an app that's already running. Stop the debugger, or `Ctrl+C` out of a running `dotnet watch run`, then try again. |
 
 ## 🔍 Additional Materials
 |:compass: Explorer Chapters|

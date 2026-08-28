@@ -4,7 +4,7 @@ In this project we will build an API for the reservations website of Creek River
 ## Creating the Project
 1. In the csharp directory of your workspace create the web api project like this: `dotnet new webapi -o CreekRiver -minimal`
 1. Inside the `CreekRiver` directory, run `dotnet new gitignore`
-1. Just like with Honey Rae's, the scaffolded `Program.cs` comes with `builder.Services.AddOpenApi();` and `app.MapOpenApi();`, which only serve a raw OpenAPI JSON document, no browsable UI. Restore Swashbuckle the same way you did back in `honeyrae-01-web-api-setup`:
+1. Just like with Honey Rae's, the scaffolded `Program.cs` comes with `builder.Services.AddOpenApi();` and `app.MapOpenApi();`, which only serve a raw OpenAPI JSON document, no browsable UI. Restore Swashbuckle the same way you did back when you first set up Honey Rae's:
     ``` bash
     dotnet add package Swashbuckle.AspNetCore
     ```
@@ -34,6 +34,7 @@ In this project we will build an API for the reservations website of Creek River
     ``` bash
     dotnet user-secrets set 'CreekRiverDbConnectionString' 'Host=localhost;Port=5432;Username=postgres;Password=<your_postgresql_password>;Database=CreekRiver'
     ```
+    > :bulb: `dotnet user-secrets init` ties this project to its own private secrets file by adding a `UserSecretsId` (a GUID) to `CreekRiver.csproj`. `dotnet user-secrets set` then writes into that file, completely outside this project's folder, at `~/.microsoft/usersecrets/<UserSecretsId>/secrets.json` on Mac/Linux, or `%APPDATA%\Microsoft\UserSecrets\<UserSecretsId>\secrets.json` on Windows. That's what keeps it out of git. Each project gets its own separate file this way, but the string key you set it under, `CreekRiverDbConnectionString` here, matters just as much: it's whatever name your `Program.cs` asks `builder.Configuration` for later. When you reuse this command for a future project, make sure you change that key, not just the connection string's values, or your new project's `Program.cs` won't find its secret under the name it's actually looking for.
 
 ## Models
 Creating the data models for this application will be almost identical to the process for Honey Rae's. The biggest difference is that our model, in addition to defining the types that we'll use in the .NET application, will also be used by Entity Framework to determine what tables to create in the database. This requires a few small additions to the code. 

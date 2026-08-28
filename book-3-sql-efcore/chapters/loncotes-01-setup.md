@@ -8,6 +8,7 @@ This is the ERD for the library's database:
 ## Setting up the project
 
 1. Use the [instructions](./creekriver-01-setup.md#creating-the-project) from the Creek River Project to create a new web api project called `LoncotesLibrary`, with a database called `LoncotesLibrary`.
+    > :bulb: When you get to the `dotnet user-secrets set` step in those instructions, don't reuse `CreekRiverDbConnectionString` as the key, pick a new key name for this project instead (e.g. `LoncotesLibraryDbConnectionString`), and use that same key later when you read it with `builder.Configuration` in `Program.cs`. It's an easy step to miss when copy-pasting, the connection string's `Database=` value is right there to remind you to update it, but the key name right next to it isn't.
 1. Use the ERD to [create models](./creekriver-01-setup.md#models) for the application. Remember that nullable types that are marked as `NOT NULL` (`NN` on this ERD image) require the `[Required]` attribute to be not nullable when you run the database migration. Also remember that nullable `DateTime`s should have the type `DateTime?`.
 1. Use _composition_ to add properties to the models that store related data. For example: A checkout has a `MaterialId` property for the foreign key. Add a `Material` property to store the related data associated with that foreign key.
 1. Create DTO classes that correspond to each of the database models.

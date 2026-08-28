@@ -81,6 +81,8 @@ The middle of these three statements is the most important. It makes an instance
 ## Creating the database
 We are ready to actually run the tool that will create our PostgreSQL database from our C# code!
 
+> :bulb: Make sure the app isn't currently running before you run a `dotnet ef` command, stop the debugger, or `Ctrl+C` out of a running `dotnet watch run`, first. These commands need to build your project themselves, and they can fail with a strange, hard-to-diagnose error if the compiled output is still locked by an app that's already running. This applies every time you run a `dotnet ef` command for the rest of this book, not just here.
+
 1. Run the following in the main project directory:
     ``` bash
     dotnet ef migrations add InitialCreate

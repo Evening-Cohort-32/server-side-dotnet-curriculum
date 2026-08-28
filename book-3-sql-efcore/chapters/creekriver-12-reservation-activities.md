@@ -100,6 +100,7 @@ app.MapGet("/api/reservations", (CreekRiverDbContext db) =>
             UserProfileId = r.UserProfileId,
             CheckinDate = r.CheckinDate,
             CheckoutDate = r.CheckoutDate,
+            CancelledDate = r.CancelledDate,
             UserProfile = new UserProfileDTO
             {
                 Id = r.UserProfile.Id,

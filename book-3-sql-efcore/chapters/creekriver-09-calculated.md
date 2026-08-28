@@ -22,7 +22,7 @@ public int TotalNights
 }
 ```
 
-As you can see, the property only has a `get`, not a `set`, so it will not correspond to a column in the database. However, when creating the JSON (serializing) from the C# objects, ASP.NET will evaluate the calculated properties and add them to the JSON. 
+As you can see, the property only has a `get`, not a `set`, so it will not correspond to a column in the database. However, when ASP.NET serializes a `ReservationDTO` instance into JSON for the response, it will still evaluate calculated properties like this one and include them. 
 
 Test this out by hitting the `/api/reservations` endpoint. Now you will see a calculated value for the total number of nights for a reservation. You can imagine that it would be handy to have this value on the client side to display, and keeps the front end code cleaner by moving this business logic to the server side. This allows the client to focus on _how to display data_, not _how to calculate the data to display_. 
 

@@ -48,6 +48,10 @@ Guests cancel reservations sometimes, so we need a way to handle that. Deleting 
     ``` csharp
     public DateTime? CancelledDate { get; set; }
     ```
+1. Adding a property to `ReservationDTO` doesn't automatically add it to the response, the `/api/reservations` endpoint from a few exercises back builds each `ReservationDTO` by hand, one property at a time, so it needs to be updated too. Add `CancelledDate` to that endpoint's `Select`, alongside `CheckoutDate`:
+    ``` csharp
+    CancelledDate = r.CancelledDate,
+    ```
 1. Since this adds a new column, create and run a new migration:
     ``` bash
     dotnet ef migrations add ReservationCancelledDate
