@@ -50,6 +50,7 @@ Work you way down through these lessons, one at a time:
 |:mortar_board: Coding Self-Assessment|
 |--|
 |:trumpet: :page_with_curl: [Brass & Poem](./chapters/assessment-01.md)|
+|:thinking: [Brass & Poem: Self-Reflection](./chapters/assessment-01-reflections.md)|
 
 ## Troubleshooting
 
