@@ -62,6 +62,7 @@ Before diving in, it helps to know the order a SQL query actually executes in â€
 |:mortar_board: Coding Self-Assessment|
 |--|
 |:convenience_store: [EF Corner Store](./chapters/assessment-03.md)|
+|:thinking: [EF Corner Store: Self-Reflection](./chapters/assessment-03-reflections.md)|
 
 ## Troubleshooting Entity Framework Issues
 

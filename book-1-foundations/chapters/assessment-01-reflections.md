@@ -2,23 +2,23 @@
 
 ## What this is
 
-You've passed the automated tests for Brass & Poem — nice work. Before your 1:1
+You've passed the automated tests for Brass & Poem. Nice work. Before your 1:1
 review with an instructor, work through the questions below on your own and write
 down real answers, not just a checkmark. Try to explain each one out loud or in
 writing, the way you would to someone who's never seen the code.
 
-This is individual — there's no team to review it with here. Be honest with
+This is individual. There's no team to review it with here. Be honest with
 yourself about where you're solid and where you're not; that's the whole point.
 
 Some of these questions are ones your instructor will likely ask you directly,
 using your own Brass & Poem code as the starting point. Others aren't something
-your code naturally gives an instructor a reason to bring up — this list is your
-only real check on those, so don't skip them just because no one's going to quiz
+your code naturally gives an instructor a reason to bring up, so this list is your
+only real check on those. Don't skip them just because no one's going to quiz
 you on them.
 
-- 🗣️ **We'll probably talk about this together** — your Brass & Poem code gives a
+- 🗣️ **We'll probably talk about this together.** Your Brass & Poem code gives a
   natural, concrete way to get into it.
-- 📓 **Self-check only** — nothing in Brass & Poem forces this to come up, so this
+- 📓 **Self-check only.** Nothing in Brass & Poem forces this to come up, so this
   is on you. Ask your instructor if anything here is unclear.
 
 ## Console I/O & Strings

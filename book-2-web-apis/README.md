@@ -36,6 +36,7 @@ The purpose of this book is to provide a conceptual introduction to building Web
 |:mortar_board: Coding Self-Assessment|
 |--|
 |:potato: [Tuber Treats](./chapters/assessment-02.md)|
+|:thinking: [Tuber Treats: Self-Reflection](./chapters/assessment-02-reflections.md)|
 
 ## 🔍 Additional Materials
 
