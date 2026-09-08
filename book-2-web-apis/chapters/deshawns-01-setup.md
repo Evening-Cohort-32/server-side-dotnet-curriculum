@@ -8,7 +8,7 @@ In this project you will have the opportunity to build a full stack application 
 1. The React app is in a folder called `client`. Navigate to that directory and run `npm install`
 1. Start the API with the VS Code debugger. 
     > :bulb: Did Swagger just open on its own in a browser tab? That's the `.vscode` folder in this project doing exactly what it's configured to do — more on that further down in this chapter.
-1. in the `client` directory, run `npm run dev` to start the React App. 
+1. In the `client` directory, run `npm run dev` to start the React App. 
 1. Explore the codebase to see what is there. Pay particular attention to `index.jsx`, `apiManager.js`, and `App.jsx`. Write down any questions you have so that you can ask a colleague or your instructors. 
 
 ## Proxy Settings
