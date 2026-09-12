@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    --bg: #c9c29c;
+    --box: #f5f0e1;
+    --border: #a89f78;
+    --text: #3a3327;
+    --client-tint: #dfe6d6;
+    --client-border: #97ac82;
+    --api-tint: #ecdfc9;
+    --api-border: #c9a877;
+    --db-tint: #ead2b3;
+    --db-border: #c08f4d;
+    --accent: #6b6142;
+    --green: #3f5330;
+    --amber: #7a4f1f;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Segoe UI', Helvetica, Arial, sans-serif; }
+  #wrap {
+    display: inline-block;
+    background: var(--bg);
+    padding: 56px 64px;
+    border-radius: 28px;
+  }
+  .title {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 17px;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 600;
+  }
+  .panels {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+  }
+  .panel {
+    background: #d9d2ab;
+    border-radius: 22px;
+    padding: 26px 30px 32px;
+    border: 3px solid #b0a67c;
+  }
+  .panel-title {
+    font-size: 19px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .panel-sub {
+    font-size: 13.5px;
+    text-align: center;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 96px repeat(3, 108px);
+    grid-auto-rows: 64px;
+    gap: 6px;
+    position: relative;
+    margin-top: 34px;
+  }
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .rowlabel {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text);
+    padding-right: 8px;
+    text-align: right;
+  }
+  .cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 2px solid;
+    position: relative;
+  }
+  .cell.client { background: var(--client-tint); border-color: var(--client-border); }
+  .cell.api { background: var(--api-tint); border-color: var(--api-border); }
+  .cell.db { background: var(--db-tint); border-color: var(--db-border); }
+  .badge {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--box);
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--text);
+  }
+  .slice-outline {
+    position: absolute;
+    border: 4px solid #2f6b3f;
+    border-radius: 16px;
+    pointer-events: none;
+  }
+  .slice-tag {
+    position: absolute;
+    background: #2f6b3f;
+    color: #f5f0e1;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .caption {
+    margin-top: 18px;
+    font-size: 13.5px;
+    color: var(--text);
+    text-align: center;
+    line-height: 1.45;
+    max-width: 420px;
+  }
+  .caption b.bad { color: #8a2f2f; }
+  .caption b.good { color: #2f6b3f; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div class="title">Vertical Slice vs. Horizontal Layers</div>
+  <div class="subtitle">Two orders you could build the same full-stack project in</div>
+
+  <div class="panels">
+
+    <div class="panel">
+      <div class="panel-title">Horizontal</div>
+      <div class="panel-sub">one whole layer, across every feature</div>
+      <div class="grid" id="grid-h">
+        <div class="head"></div>
+        <div class="head">Feature A</div>
+        <div class="head">Feature B</div>
+        <div class="head">Feature C</div>
+
+        <div class="rowlabel">Client</div>
+        <div class="cell client"><div class="badge">7</div></div>
+        <div class="cell client"><div class="badge">8</div></div>
+        <div class="cell client"><div class="badge">9</div></div>
+
+        <div class="rowlabel">API</div>
+        <div class="cell api"><div class="badge">4</div></div>
+        <div class="cell api"><div class="badge">5</div></div>
+        <div class="cell api"><div class="badge">6</div></div>
+
+        <div class="rowlabel">Database</div>
+        <div class="cell db"><div class="badge">1</div></div>
+        <div class="cell db"><div class="badge">2</div></div>
+        <div class="cell db"><div class="badge">3</div></div>
+      </div>
+      <div class="caption">Every table, then every endpoint, then every page. <b class="bad">Nothing runs end-to-end until step 9.</b></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Vertical (a "slice")</div>
+      <div class="panel-sub">one whole feature, through every layer</div>
+      <div class="grid" id="grid-v">
+        <div class="head"></div>
+        <div class="head">Feature A</div>
+        <div class="head">Feature B</div>
+        <div class="head">Feature C</div>
+
+        <div class="rowlabel">Client</div>
+        <div class="cell client"><div class="badge">3</div></div>
+        <div class="cell client"><div class="badge">6</div></div>
+        <div class="cell client"><div class="badge">9</div></div>
+
+        <div class="rowlabel">API</div>
+        <div class="cell api"><div class="badge">2</div></div>
+        <div class="cell api"><div class="badge">5</div></div>
+        <div class="cell api"><div class="badge">8</div></div>
+
+        <div class="rowlabel">Database</div>
+        <div class="cell db"><div class="badge">1</div></div>
+        <div class="cell db"><div class="badge">4</div></div>
+        <div class="cell db"><div class="badge">7</div></div>
+
+        <div class="slice-outline" style="left: 96px; top: 58px; width: 108px; height: 202px;"></div>
+        <div class="slice-tag" style="left: 96px; top: -12px;">vertical slice</div>
+      </div>
+      <div class="caption"><b class="good">Feature A works end-to-end after step 3</b> &mdash; long before B or C exist.</div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

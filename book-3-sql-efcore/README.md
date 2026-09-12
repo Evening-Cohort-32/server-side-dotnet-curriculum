@@ -90,6 +90,8 @@ Before diving in, it helps to know the order a SQL query actually executes in â€
 |[OOP in C#](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/tutorials/oop) |
 |[SQL - Order of Operations](./chapters/resource-02-sql-order-of-operations.md)|
 |[SQL Cheatsheet](./chapters/resource-01-sql.md)|
+|[Request Lifecycle](./chapters/resource-03-request-lifecycle.md)|
+|[Vertical Slices vs. Horizontal Layers](./chapters/resource-04-vertical-vs-horizontal-development.md)|
 
 |:test_tube: Projects|
 |-|

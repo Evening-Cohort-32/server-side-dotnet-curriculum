@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    --bg: #c9c29c;
+    --box: #f5f0e1;
+    --border: #a89f78;
+    --text: #3a3327;
+    --tag: #e3dcc0;
+    --client-tint: #dfe6d6;
+    --client-border: #97ac82;
+    --server-tint: #ead9c4;
+    --server-border: #c49f6d;
+    --accent: #6b6142;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Segoe UI', Helvetica, Arial, sans-serif; }
+  #wrap {
+    display: inline-block;
+    background: var(--bg);
+    padding: 56px 64px;
+    border-radius: 28px;
+  }
+  .title {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+  .subtitle {
+    font-size: 17px;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 36px;
+    font-weight: 600;
+  }
+  .zones {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+  .zone {
+    display: flex;
+    flex-direction: column;
+    border-radius: 22px;
+    padding: 26px 30px;
+    border: 3px solid;
+  }
+  .zone.client { background: var(--client-tint); border-color: var(--client-border); }
+  .zone.server { background: var(--server-tint); border-color: var(--server-border); }
+  .zone-label {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  .zone.client .zone-label { color: #3f5330; }
+  .zone.server .zone-label { color: #7a4f1f; }
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .node {
+    background: var(--box);
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 22px;
+    text-align: center;
+    min-width: 220px;
+  }
+  .node .name {
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--text);
+  }
+  .node .role {
+    font-size: 13px;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 6px;
+  }
+  .link .lbl {
+    font-size: 12.5px;
+    color: var(--text);
+    opacity: 0.85;
+  }
+  .link .req .lbl { text-align: left; }
+  .link .res .lbl { text-align: right; }
+  .arrowline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .arrowline.req { color: #3f5330; justify-content: flex-start; }
+  .arrowline.res { color: #7a4f1f; justify-content: flex-end; }
+  .arrowline .lbl { font-size: 13px; font-weight: 600; white-space: nowrap; }
+  .arrowline .arrow { font-size: 16px; font-weight: 800; }
+
+  .crossing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 22px;
+    min-width: 160px;
+  }
+  .crossing .divider {
+    width: 0;
+    border-left: 3px dashed #8a8058;
+    align-self: stretch;
+    margin: 0 auto;
+  }
+  .crossing-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  .crossing .badge {
+    background: var(--box);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .crossing .badge.req { color: #3f5330; }
+  .crossing .badge.res { color: #7a4f1f; }
+  .crossing .arrow-big { font-size: 22px; font-weight: 800; }
+  .crossing .arrow-big.req { color: #3f5330; }
+  .crossing .arrow-big.res { color: #7a4f1f; }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 4px;
+  }
+  .row3 {
+    display: flex;
+    align-items: center;
+  }
+  .footnote {
+    margin-top: 30px;
+    font-size: 14.5px;
+    color: var(--text);
+    max-width: 1100px;
+    text-align: center;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div class="title">The Full Round Trip</div>
+  <div class="subtitle">One request, from a click in the browser to a row in the database, and all the way back</div>
+
+  <div class="zones">
+
+    <div class="zone client">
+      <div class="zone-label">Client (Browser)</div>
+      <div class="row3">
+        <div class="node">
+          <div class="name">React Router</div>
+          <div class="role">matches the URL to a route</div>
+        </div>
+        <div class="col">
+          <div class="arrowline req"><span class="arrow">&#8594;</span><span class="lbl">renders</span></div>
+          <div class="arrowline res"><span class="lbl">re-renders</span><span class="arrow">&#8592;</span></div>
+        </div>
+        <div class="node">
+          <div class="name">Component</div>
+          <div class="role">calls the API on load</div>
+        </div>
+        <div class="col">
+          <div class="arrowline req"><span class="arrow">&#8594;</span><span class="lbl">calls</span></div>
+          <div class="arrowline res"><span class="lbl">.then(setState)</span><span class="arrow">&#8592;</span></div>
+        </div>
+        <div class="node">
+          <div class="name">apiManager.js</div>
+          <div class="role">fetch()</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="crossing">
+      <div class="crossing-inner">
+        <div class="badge req">fetch("/api/...")</div>
+        <div class="arrow-big req">&#8594;</div>
+        <div class="divider"></div>
+        <div class="arrow-big res">&#8592;</div>
+        <div class="badge res">200 OK, JSON</div>
+      </div>
+    </div>
+
+    <div class="zone server">
+      <div class="zone-label">Server</div>
+      <div class="row3">
+        <div class="node">
+          <div class="name">Minimal API</div>
+          <div class="role">Program.cs endpoint</div>
+        </div>
+        <div class="col">
+          <div class="arrowline req"><span class="arrow">&#8594;</span><span class="lbl">LINQ query</span></div>
+          <div class="arrowline res"><span class="lbl">C# objects</span><span class="arrow">&#8592;</span></div>
+        </div>
+        <div class="node">
+          <div class="name">DbContext</div>
+          <div class="role">EF Core</div>
+        </div>
+        <div class="col">
+          <div class="arrowline req"><span class="arrow">&#8594;</span><span class="lbl">SQL</span></div>
+          <div class="arrowline res"><span class="lbl">rows</span><span class="arrow">&#8592;</span></div>
+        </div>
+        <div class="node">
+          <div class="name">PostgreSQL</div>
+          <div class="role">the database</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footnote">Every arrow going right is part of the <b>request</b>: the component asking for data. Every arrow going left is part of the <b>response</b>: the data making its way back up to something rendered on screen.</div>
+</div>
+</body>
+</html>
