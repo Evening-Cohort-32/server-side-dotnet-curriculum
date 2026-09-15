@@ -37,7 +37,7 @@ The above material is _checked out_, and we know that because it has a checkout 
 ### Using the `All` Linq method
 Start with the same query for getting all circulating materials:
 ``` csharp
-app.MapGet("/materials/available", (LoncotesLibraryDbContext db) =>
+app.MapGet("/api/materials/available", (LoncotesLibraryDbContext db) =>
 {
     return db.Materials
     .Where(m => m.OutOfCirculationSince == null)

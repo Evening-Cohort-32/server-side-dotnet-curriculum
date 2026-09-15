@@ -2,7 +2,7 @@
 In this chapter you will add logic to the reservation create handler to validate the reservation data
 
 ## CheckinDate is after CheckoutDate
-[Time only moves forward](https://youtu.be/yKbJ9leUNDE), so it doesn't make sense for the CheckinDate to be after the CheckoutDate. Let's add some logic to our handler to make sure such a reservation could never be made. Add this before the `try` in :
+[Time only moves forward](https://youtu.be/yKbJ9leUNDE), so it doesn't make sense for the CheckinDate to be after the CheckoutDate. Let's add some logic to our handler to make sure such a reservation could never be made. Add this before the `try` in `POST /api/reservations`:
 ``` csharp 
 // Check if reservation checkout is before or the same day as checkin
 if (newRes.CheckoutDate <= newRes.CheckinDate)
@@ -18,13 +18,14 @@ The `CampsiteType` table tells us what the maximum number of nights a campsite m
 ``` csharp
 // check if reservation is too long
 Campsite campsite = db.Campsites.Include(c => c.CampsiteType).Single(c => c.Id == newRes.CampsiteId);
-if (campsite != null && newRes.TotalNights > campsite.CampsiteType.MaxReservationDays)
+int totalNights = (newRes.CheckoutDate - newRes.CheckinDate).Days;
+if (campsite != null && totalNights > campsite.CampsiteType.MaxReservationDays)
 {
     return Results.BadRequest("Reservation exceeds maximum reservation days for this campsite type");
 }
 ```
 
-This code gets the campsite for the reservation from the database with the campsite type. Then we use the `TotalNights` property, and make sure it's not longer than the `CampsiteType`'s `MaxReservationDays`. 
+This code gets the campsite for the reservation from the database with the campsite type. Then we calculate the total nights the same way `TotalNights` does on `ReservationDTO`, `newRes` here is the plain `Reservation` from the request body, which doesn't have that property, and make sure it's not longer than the `CampsiteType`'s `MaxReservationDays`. 
 
 ## Challenges
 1. Add logic to the handler to check that the reservation does not conflict with another reservation for that campsite that already exists (a new Checkin is allowed to happen on the same day as an existing Checkout). A cancelled reservation (one with a `CancelledDate`) shouldn't count as a conflict, those dates are free again.

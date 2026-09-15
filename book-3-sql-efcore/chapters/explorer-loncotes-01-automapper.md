@@ -82,25 +82,33 @@ We could implement code to do this on our own. But someone else already did, whe
     ```csharp
     using AutoMapper.QueryableExtensions;
 
-    app.MapGet("/materialtypes", (LoncotesLibraryDbContext db, IMapper mapper) =>
+    app.MapGet("/api/materialtypes", (LoncotesLibraryDbContext db, IMapper mapper) =>
     {
-        return db.MaterialTypes.ProjectTo<MaterialDTO>(mapper.ConfigurationProvider).ToList();
+        return db.MaterialTypes.ProjectTo<MaterialTypeDTO>(mapper.ConfigurationProvider).ToList();
     });
 
     // //Get Genres
-    app.MapGet("/genres", (LoncotesLibraryDbContext db, IMapper mapper) =>
+    app.MapGet("/api/genres", (LoncotesLibraryDbContext db, IMapper mapper) =>
     {
         return db.Genres.ProjectTo<GenreDTO>(mapper.ConfigurationProvider).ToList();
     });
+    ```
+1. `Patron` needs its own approach. `Balance` is calculated in C# from a patron's `Checkouts` (and each checkout's `Material` and `MaterialType`), it isn't a real database column, so there's no SQL for EF Core to translate it into. `ProjectTo` builds its whole query as one SQL statement, so it only works when every property it needs can be expressed in SQL.
 
+    The fix is the same one you already used to calculate `Balance` in the first place: `Include` the data it needs and pull the patrons into memory with `ToList()`. Then use AutoMapper's plain `Map` method instead of `ProjectTo`, it converts an object (or list) you already have in memory rather than building a query, so it works fine here. Replace the endpoint that gets all patrons with this:
+    ```csharp
     //Get Patrons
-    app.MapGet("/patrons", (LoncotesLibraryDbContext db, IMapper mapper) =>
+    app.MapGet("/api/patrons", (LoncotesLibraryDbContext db, IMapper mapper) =>
     {
-        return db.Patrons.ProjectTo<PatronDTO>(mapper.ConfigurationProvider).ToList();
+        List<Patron> patrons = db.Patrons
+            .Include(p => p.Checkouts)
+                .ThenInclude(c => c.Material)
+                    .ThenInclude(m => m.MaterialType)
+            .ToList();
+        return mapper.Map<List<PatronDTO>>(patrons);
     });
     ```
-
-1. Test these three endpoints to make sure that they work.
+1. Test all three endpoints to make sure that they work.
 
 ## Getting Single Items and Related Data
 Replace the endpoint to get a single material with the following code:

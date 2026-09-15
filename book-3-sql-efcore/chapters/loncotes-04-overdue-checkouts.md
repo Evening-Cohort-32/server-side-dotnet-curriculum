@@ -5,7 +5,7 @@ The librarians want to see all overdue checkouts so that they can send emails to
 
 Start with what you already know how to do:
 ``` csharp
-app.MapGet("/checkouts/overdue", (LoncotesLibraryDbContext db) =>
+app.MapGet("/api/checkouts/overdue", (LoncotesLibraryDbContext db) =>
 {
     return db.Checkouts
     .Include(p => p.Patron)
