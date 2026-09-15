@@ -191,4 +191,4 @@ Test this endpoint with a body like:
 ## Summary
 This is the end of the walk-through for Entity Framework Core. Before moving to the second column, do the "Up Next" Chapter on Inheritance. After finishing the other columns, check out the explorer chapters for this project.
 
-Up Next: [Inheritance](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/INHERITANCE_INTRO.md) - this is from another repo, come back to this repo to start [Loncotes County Library](./loncotes-01-setup.md) after finishing the inheritance chapter.
+Up Next: [Inheritance](./explorer-creekriver-04-inheritance.md), then [Loncotes County Library](./loncotes-01-setup.md) once you've finished it.

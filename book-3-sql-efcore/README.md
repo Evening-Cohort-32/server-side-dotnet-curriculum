@@ -68,7 +68,7 @@ Before diving in, it helps to know the order a SQL query actually executes in ‚Ä
 
 | Issue | Resolution |
 |---|---|
-| Cannot apply migrations because of pending changes to DBContext | [Override OnConfiguring](./chapters/UPDATE_DBCONTEXT.md) |
+| Cannot apply migrations because of pending changes to DBContext | [Override OnConfiguring](./chapters/resource-05-override-onconfiguring.md) |
 | "The Entity Framework tools version '_x_' is older than that of the runtime '_y_'" warning when running a `dotnet ef` command | Your global EF Core tools are out of date, even if you just installed .NET 10 ‚Äî the SDK version and the `dotnet-ef` tool version are tracked separately. Run `dotnet tool update --global dotnet-ef` to update it, then try the command again. |
 | A `dotnet ef` command (`migrations add`, `database update`) fails with a build/file-lock error | The app is probably still running. `dotnet ef` commands build your project themselves, and can't do that while the compiled output is locked by an app that's already running. Stop the debugger, or `Ctrl+C` out of a running `dotnet watch run`, then try again. |
 
@@ -82,7 +82,7 @@ Before diving in, it helps to know the order a SQL query actually executes in ‚Ä
 |:tent: [Mapping to DTOs with AutoMapper](./chapters/explorer-creekriver-02-automapper.md) |
 | :book: [Automapper to Map Models to DTO's](./chapters/explorer-loncotes-01-automapper.md) |
 | :book: [Loncotes React Client](./chapters/explorer-loncotes-02-client.md) |
-|:tv: [Advanced Linq: Nineties TV](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/LINQ_INTRO.md)|
+|:tv: [Advanced Linq: Nineties TV](./chapters/explorer-creekriver-03-advanced-linq.md)|
 
 |üåê Resources|
 |--|
@@ -95,4 +95,4 @@ Before diving in, it helps to know the order a SQL query actually executes in ‚Ä
 
 |:test_tube: Projects|
 |-|
-|[Adventurer's Quest](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/QUEST.md) (practice with fields and constructors)|
+|[Adventurer's Quest](./chapters/project-01-adventurers-quest.md) (practice with fields and constructors)|

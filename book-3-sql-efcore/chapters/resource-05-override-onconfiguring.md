@@ -1,3 +1,4 @@
+# Override OnConfiguring
 Add the following code right above the existing `OnModelCreating` method in your DB Context module.
 
 ```cs
