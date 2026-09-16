@@ -199,4 +199,4 @@ useEffect(() => {
 Make sure that the component works with the API. Once you have tested the component, you can remove the `testWorkOrders` data from the file. 
 
 
-Up Next: [Referencing the Same Entity Twice](./biancas-foreign-keys.md)
+Up Next: [Referencing the Same Entity Twice](./biancas-08-foreign-keys.md)

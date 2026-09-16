@@ -10,7 +10,7 @@ Giuseppe Shepherd learned how to make the perfect pizza as a child from his nonn
 ### Orders
 Giuseppe's (Joe, to his friends) restaurant has a dining room and delivery service available, and an order can either be placed for a particular table number or for delivery. Each order at the restaurant can have multiple pizzas on it.
 
-Each order can potentially have two employees assigned to it for different purposes - Joe can tell if an order is for delivery if an employee has been assigned as the deliverer for that order. Orders are also _always_ associated with the employee that took the order (at a table or over the phone). This means `Order` will need two separate references to `Employee`. See [Referencing the Same Entity Twice](./biancas-foreign-keys.md) in Bianca's Bikes for the pattern to use for this (not as code to copy - your entities and properties are your own).
+Each order can potentially have two employees assigned to it for different purposes - Joe can tell if an order is for delivery if an employee has been assigned as the deliverer for that order. Orders are also _always_ associated with the employee that took the order (at a table or over the phone). This means `Order` will need two separate references to `Employee`. See [Referencing the Same Entity Twice](./biancas-08-foreign-keys.md) in Bianca's Bikes for the pattern to use for this (not as code to copy - your entities and properties are your own).
 
 Joe needs to see what the total cost for the order will be based on the total cost of all of the pizzas on that order. He also needs to see if the customer left a tip. Joe's restaurant is located in a magical place with no sales tax. For record-keeping purposes, Joe also needs to know the date and time an order was placed.    
 

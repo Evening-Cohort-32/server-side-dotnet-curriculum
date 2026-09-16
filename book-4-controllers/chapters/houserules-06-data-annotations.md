@@ -1,5 +1,5 @@
 # Data Validation with Data Annotations
-You've already seen how Data Annotations validate incoming data in [Bianca's Bikes](./biancas-validation.md) — `[MaxLength]` on a property, the automatic `400` response from `[ApiController]`, and displaying the `errors` from that response in the client. This chapter is practice applying that same pattern to House Rules. If any of it feels unfamiliar, go back and reread that chapter first.
+You've already seen how Data Annotations validate incoming data in [Bianca's Bikes](./biancas-10-validation.md) — `[MaxLength]` on a property, the automatic `400` response from `[ApiController]`, and displaying the `errors` from that response in the client. This chapter is practice applying that same pattern to House Rules. If any of it feels unfamiliar, go back and reread that chapter first.
 
 ## Instructions
 1. Restrict `Chore.Name` (and `ChoreDto.Name`, if you have one) to a maximum length of 100 characters, with a custom `ErrorMessage`.
@@ -17,4 +17,4 @@ An example of what a failed request's response body looks like:
 1. Use `[EmailAddress]` to validate that a registering user has input a valid email, and `[MaxLength]` to ensure the submitted username is less than 50 characters, the same as you did for `RegistrationDTO` in Bianca's Bikes.
 1. You've already used `[Required]` to make nullable types `NOT NULL` in the database. Try adding it to properties on `Chore` and `RegistrationDto` to require them on submission as well, not just at the database level.
 
-Up Next: [More features for House Rules](./house-rules-more-features.md)
+Up Next: [More features for House Rules](./houserules-07-more-features.md)

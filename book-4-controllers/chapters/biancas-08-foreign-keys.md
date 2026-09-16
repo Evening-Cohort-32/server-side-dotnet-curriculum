@@ -61,4 +61,4 @@ Test the endpoint again. Each work order in the response will now have both a `m
 
 Notice that nothing sets `InitiatedByUserProfileId` yet when a new work order gets created. We'll take care of that in the next chapter.
 
-Up Next: [Creating a Work Order](./biancas-create-work-order.md)
+Up Next: [Creating a Work Order](./biancas-09-create-work-order.md)

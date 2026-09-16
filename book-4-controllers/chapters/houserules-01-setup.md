@@ -135,4 +135,4 @@ This project does not include template code, so there is some additional setup r
 1. Save the connection string for a database called `HouseRules` to the user secret `HouseRulesDbConnectionString`.
 1. Save the password (you can choose it) for the admin user of the app to the `AdminPassword` user secret. 
 
-Up Next: [House Rules Data Model](./house-rules-data-model.md)
+Up Next: [House Rules Data Model](./houserules-02-data-model.md)

@@ -71,7 +71,7 @@ Now that the message is more useful, update `CreateWorkOrder` to check for it:
 1. Add `[Required]` and `[MaxLength(50)]` to `RegistrationDTO.UserName`.
 1. Update the `Register` component to display validation errors the same way `CreateWorkOrder` does now.
 
-Up Next: [Assigning and Completing Work Orders](./biancas-update-work-orders.md)
+Up Next: [Assigning and Completing Work Orders](./biancas-11-update-work-orders.md)
 
 ## 🔍 Additional Materials
 1. [Available Data Annotations](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations?view=net-8.0)

@@ -19,7 +19,7 @@ Add a file to the Controllers directory called `UserProfileController.cs`. You c
 
 ## `ChoreController`
 
-Add a `ChoreController` to the Controllers directory. It will need the `HouseRulesDbContext` as a [dependency](./biancas-dependency-injection.md#dependency-injection-with-constructors), so create a private field to hold an instance of it, and use the constructor to set its value (this is the same way it is done in the `UserProfileController`).
+Add a `ChoreController` to the Controllers directory. It will need the `HouseRulesDbContext` as a [dependency](./biancas-04-dependency-injection.md#dependency-injection-with-constructors), so create a private field to hold an instance of it, and use the constructor to set its value (this is the same way it is done in the `UserProfileController`).
 
 ### Endpoints
 
@@ -51,4 +51,4 @@ The following endpoints should be accessible to admin users only:
    - This endpoint will unassign a chore to a user.
    - Pass the `userId` in as a query string param, as in the other endpoints above.
 
-Up Next: [Client Views](./house-rules-client-views.md)
+Up Next: [Client Views](./houserules-04-client-views.md)

@@ -160,7 +160,7 @@ And finally use it in the `BikeDetails` component:
 Test the functionality of the app. Click on the details buttons for a few bikes. You should see this if everything is working correctly:
 ![Bianca's details view](../../assets/biancas-details-view.png) 
 
-Up Next: [Bikes in Garage](./biancas-bikes-in-garage.md)
+Up Next: [Bikes in Garage](./biancas-06-bikes-in-garage.md)
 
 ## ✍️ Reflections
 Think about the process we went through to add each of these features:

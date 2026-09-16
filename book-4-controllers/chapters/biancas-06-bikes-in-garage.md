@@ -66,4 +66,4 @@ export const getBikesInShopCount = () => {
 
 Test out the endpoint to make sure it works! If you haven't added any data to the database, there should be only one bike in the garage.
 
-Up Next: [Managing Work Orders](./biancas-work-orders.md)
+Up Next: [Managing Work Orders](./biancas-07-work-orders.md)

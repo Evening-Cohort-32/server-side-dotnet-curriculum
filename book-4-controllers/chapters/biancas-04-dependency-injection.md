@@ -126,4 +126,4 @@ public AuthController(BiancasBikesDbContext context, UserManager<IdentityUser> u
 
 Follow this dependency injection pattern when creating new controllers for your APIs. 
 
-Up Next: [Getting Bikes](./biancas-get-bikes.md)
+Up Next: [Getting Bikes](./biancas-05-get-bikes.md)

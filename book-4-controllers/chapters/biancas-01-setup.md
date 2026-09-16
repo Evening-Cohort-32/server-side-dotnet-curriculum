@@ -32,4 +32,4 @@ Bianca's Bike Shop has asked us to build an application that Bianca, her mechani
 ## Logging In
 The React client should show the login view when it starts. Look for the email address of the `IdentityUser` already seeded in the database in the `OnModelCreating` method of the `BiancasBikesDbContext` class. Login with that email address and the password you saved to the user-secrets as `AdminPassword`. (If you just used "password", as it is in the bash command above, use "password"). After logging in, you should see an error (we will fix that in a future chapter).  
 
-Up Next: [Bianca's Bike Tour](./biancas-tour.md)
+Up Next: [Bianca's Bike Tour](./biancas-02-tour.md)

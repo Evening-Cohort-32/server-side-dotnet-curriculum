@@ -28,4 +28,4 @@ Some helpful tips for implementing this feature:
         - unassigns that chore
     - Finally, re-fetch the chore with its assignments from the database to update the state. 
 
-Up Next: [Server-Side Data Validation](./house-rules-data-annotations.md)
+Up Next: [Server-Side Data Validation](./houserules-06-data-annotations.md)

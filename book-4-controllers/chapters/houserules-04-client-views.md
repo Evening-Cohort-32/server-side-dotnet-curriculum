@@ -15,4 +15,4 @@ In this chapter we will create React components that use the endpoints we create
 1. Create a component called `ChoreDetails` that shows the details for a chore along with a list of the current assignees and the most recent completion. This component should be viewable only by admins. Add "Details" links to the `ChoresList` items, but conditionally render them based on whether the `loggedInUser` is an Admin (you will have already created the logic to do this for the delete button). 
 1. Create a component called `CreateChore` that allows admins to create new chores in the system. The component should contain a form to collect a name, difficulty, and chore frequency. Add a link in the `ChoreList` component to a view using the `CreateChore` component that is only accessible to admins.   
 
-Up Next: [Completing and Assigning Chores](./house-rules-complete-assign.md)
+Up Next: [Completing and Assigning Chores](./houserules-05-complete-assign.md)
