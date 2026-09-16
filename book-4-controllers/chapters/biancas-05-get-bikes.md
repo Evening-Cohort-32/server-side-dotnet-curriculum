@@ -74,6 +74,8 @@ The JSX in `BikeList` is already set up to use the data we're receiving from the
 </>
 ```
 Test the solution by logging in. If everything is set up correctly you should see this screen:
+<br>
+
 ![Bianca's Bikes View](../../assets/biancas-home-view.png)
 
 ## Display Bike Details
@@ -158,6 +160,8 @@ And `BikeDetails` already uses it via `getBikeDetails`:
   };
 ```
 Test the functionality of the app. Click on the details buttons for a few bikes. You should see this if everything is working correctly:
+<br>
+
 ![Bianca's details view](../../assets/biancas-details-view.png) 
 
 Up Next: [Bikes in Garage](./biancas-06-bikes-in-garage.md)
