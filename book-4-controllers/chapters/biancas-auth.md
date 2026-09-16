@@ -55,7 +55,7 @@ The diagram above shows the basic workflow:
         ```
     - If they don't match, the API returns 401 (Unauthorized)
 1. Once the browser gets the cookie, it saves it, and will send it back to the API with future requests. This is how the API can know that the request it is getting is from a client that has logged in. 
-1. When the client send a request to log out, the API will send back an expired cookie on the `set-cookie` header:
+1. When the client sends a request to log out, the API will send back an expired cookie on the `set-cookie` header:
     ```
     set-cookie: BiancasLoginCookie=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; secure; samesite=strict; httponly
     ```

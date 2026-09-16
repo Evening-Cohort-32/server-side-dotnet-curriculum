@@ -1,5 +1,5 @@
 # A Tour of Bianca's Bike Shop
-In this chapter we will introduce the concept of a controller and how to add controller methods to create endpoints with routes. Depending on how you like to work, you will read this carefully now, or skim it. Some like to have all the details up front, and others like to learn them later after working through the exercises. After you finish the exercises in this book (all three columns), come back to these tour chapters again to solidify your conceptual understanding. 
+In this chapter we will introduce the concept of a controller and how to add controller methods to create endpoints with routes. Depending on how you like to work, you will read this carefully now, or skim it. Some like to have all the details up front, and others like to learn them later after working through the exercises. After you finish Bianca's exercises, come back to these tour chapters again to solidify your conceptual understanding. 
 
 ## `Program.cs`
 This file is generally very different from previous books, and this is partially because of all of the authentication logic that wasn't there before (we'll look at that in the next chapter.) Notice, however, that there are no endpoints. Instead, that is all replaced with one statement:
