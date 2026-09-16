@@ -3,6 +3,7 @@ Bianca's Bike Shop has asked us to build an application that Bianca, her mechani
 
 ## Setup
 1. Use [this](https://github.com/nashville-software-school/dotnet-biancas-template) template repository to create your own repo, and clone the code on your machine.
+    > :bulb: If your cohort is using .NET 10, check the **Include all branches** checkbox before clicking "Create repository." After cloning, run `git checkout net10` to switch onto the .NET 10 version of the project before continuing — see that branch's README for what's different.
 1. In the project directory, run `dotnet restore` to install dependencies.
 1. Run this: 
     ``` bash
