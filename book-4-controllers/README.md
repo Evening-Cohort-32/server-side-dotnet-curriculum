@@ -21,7 +21,7 @@ This book focuses on creating web APIs using a broader range of tools and techno
 |3|[Auth](./chapters/biancas-auth.md)|[Basic Endpoints](./chapters/house-rules-basic-endpoints.md)||
 |4|[Dependency Injection](./chapters/biancas-dependency-injection.md) <br><sub style="font-size: 0.85rem;">#constructor #field #private</sub>|[Basic Views](./chapters/house-rules-client-views.md)||
 |5|[Display Bikes](./chapters/biancas-get-bikes.md)|[Complete and Assign Chores](./chapters/house-rules-complete-assign.md)||
-|6|[Bikes in Garage](./chapters/biancas-bikes-in-garage.md)|[Data Validation](./chapters/house-rules-data-annotations.md)<br><sub style="font-size: 0.85rem;">#data annotations</sub>||
+|6|[Bikes in Garage](./chapters/biancas-bikes-in-garage.md)|[Data Validation](./chapters/house-rules-data-annotations.md)||
 |7|[Work Orders](./chapters/biancas-work-orders.md)|[More Features](./chapters/house-rules-more-features.md)||
 |8|[Referencing the Same Entity Twice](./chapters/biancas-foreign-keys.md)<br><sub style="font-size: 0.85rem;">#ForeignKey</sub>|||
 |9|[Create A Work Order](./chapters/biancas-create-work-order.md)|||
