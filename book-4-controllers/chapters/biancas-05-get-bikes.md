@@ -46,21 +46,21 @@ Notice this replaces the `BikeDTO` projection you saw in the tour chapter with t
 The `Authorize` attribute is commented out for now, so that we can test the method in Yaak without logging in. Test the method to see that the bike objects now include their owners. Once you have confirmed that the endpoint works, _uncomment_ the `Authorize` attribute to ensure that only logged in users will be able to access it. 
 
 ### Accessing the API from React
-We need to implement the `getBikes` function in the `bikeManager` module to use in the `BikeList` component:
+The `getBikes` function is already implemented in the `bikeManager` module for the `BikeList` component to use:
 >bikeManager.js
 ``` javascript
 export const getBikes = () => {
   return fetch(apiUrl).then((res) => res.json());
 };
 ```
-Now we need to implement the `getAllBikes` function in the `BikeList` component:
+And `BikeList` already calls it via `getAllBikes`:
 ``` javascript
  const getAllBikes = () => {
     getBikes().then(setBikes);
   };
 ```
 ### Adding `BikeCard`s to `BikeList`
-Finally, we need to update the JSX in `BikeList` to use the data we are receiving from the API using the `BikeCard` component and `map`:
+The JSX in `BikeList` is already set up to use the data we're receiving from the API with the `BikeCard` component and `map`:
 ``` jsx
 <>
     <h2>Bikes</h2>
@@ -145,13 +145,13 @@ Comment out the `Authorize` attribute to test the endpoint in Yaak before moving
 
 ### Accessing the API from React
 
-Add the `getBikeById` function to the `bikeManager` module:
+The `getBikeById` function is already implemented in the `bikeManager` module:
 ``` javascript
 export const getBikeById = (id) => {
   return fetch(`${apiUrl}/${id}`).then((res) => res.json());
 };
 ```
-And finally use it in the `BikeDetails` component:
+And `BikeDetails` already uses it via `getBikeDetails`:
 ``` javascript
  const getBikeDetails = (id) => {
     getBikeById(id).then(setBike);
