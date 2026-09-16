@@ -3,7 +3,7 @@ In this chapter you will complete a feature to show a list of Bikes on the home 
 
 ## Display All Bikes
 
-### The API enpdoint
+### The API endpoint
 The `BikeList` component should display a list of bikes, each represented by a `BikeCard`. Let's investigate the `BikeCard` component to see what kind of data it is expecting:
 ``` jsx
 <Card color="dark" outline style={{ marginBottom: "4px" }}>

@@ -11,9 +11,9 @@ Add a file to the Controllers directory called `UserProfileController.cs`. You c
 ### Additional Endpoint for `UserProfileController`
 
 1. `GET` `/api/userprofile/{id}`
-   - This endpoint will get a UserProfile along with its assigned chores (through the `ChoreAssignment` table),as well as the user's completed chores (through the `CompletedChore` table).
+   - This endpoint will get a UserProfile along with its assigned chores (through the `ChoreAssignment` table), as well as the user's completed chores (through the `ChoreCompletion` table).
    - It should be accessible to any logged in user, regardless of role. That means using the `Authorize` attribute without specifying a role.
-   - Use `Include` and `ThenInclude` for `ChoreAssignment` and for `CompletedChore` to include the `Chore` data in both cases.
+   - Use `Include` and `ThenInclude` for `ChoreAssignment` and for `ChoreCompletion` to include the `Chore` data in both cases.
    - As a reminder, you can test the endpoint in postman without logging in by commenting out the `Authorize` attribute.
    - If you haven't already, you will need to add collections to the `UserProfile` to store that related data.
 

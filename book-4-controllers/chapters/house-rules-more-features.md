@@ -12,6 +12,4 @@ Once a chore has not been completed for as many days as its `ChoreFrequencyDays`
 Create a page that is visible to all authenticated users that shows the user their assigned chores, allowing them to mark their chores as complete. If the chore does not currently need to be completed, do not display it. You will need to make use of the calculated property you made for the previous task. 
 
 ___
-This is the end of the HouseRules project. Below is a link to an unrelated exercise about Interfaces that you should complete before moving on to column 3. 
-
-Up Next: [Interfaces](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/INTERFACES_INTRO.md)
+This is the end of the HouseRules project.

@@ -11,7 +11,7 @@ The `Action` column is currently empty in the table of work orders. The `Mechani
     onChange={(e) => {
     assignMechanic(wo, parseInt(e.target.value));
     }}
-    value={wo.userProfileId || 0}
+    value={wo.mechanicUserProfileId || 0}
 >
     <option value="0">Choose mechanic</option>
     {mechanics.map((m) => (
@@ -23,7 +23,7 @@ The `Action` column is currently empty in the table of work orders. The `Mechani
 </Input>
 </td>
 <td>
-{wo.userProfile && (
+{wo.mechanicUserProfile && (
     <Button
     onClick={() => completeWorkOrder(wo.id)}
     color="success"
@@ -85,7 +85,7 @@ public IActionResult UpdateWorkOrder(WorkOrder workOrder, int id)
 
     //These are the only properties that we want to make editable
     workOrderToUpdate.Description = workOrder.Description;
-    workOrderToUpdate.UserProfileId = workOrder.UserProfileId;
+    workOrderToUpdate.MechanicUserProfileId = workOrder.MechanicUserProfileId;
     workOrderToUpdate.BikeId = workOrder.BikeId;
 
     _dbContext.SaveChanges();
@@ -114,7 +114,7 @@ Finally, update the component to use the above function:
 ``` javascript
 const assignMechanic = (workOrder, mechanicId) => {
     const clone = structuredClone(workOrder);
-    clone.userProfileId = mechanicId || null;
+    clone.mechanicUserProfileId = mechanicId || null;
     updateWorkOrder(clone).then(() => {
       getIncompleteWorkOrders().then(setWorkOrders);
     });

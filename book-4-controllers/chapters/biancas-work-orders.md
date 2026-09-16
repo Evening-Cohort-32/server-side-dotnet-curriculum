@@ -14,8 +14,8 @@ const testWorkOrders = [
     description: "bent fork",
     dateInitiated: "2023-07-12T00:00:00",
     dateCompleted: null,
-    userProfile: null,
-    userProfileId: null,
+    mechanicUserProfile: null,
+    mechanicUserProfileId: null,
     bikeId: 1,
     bike: {
       id: 1,
@@ -41,7 +41,7 @@ const testWorkOrders = [
     description: "broken brakes",
     dateInitiated: "2023-07-15T00:00:00",
     dateCompleted: null,
-    userProfile: {
+    mechanicUserProfile: {
       id: 1,
       firstName: "Tony",
       lastName: "The Tiger",
@@ -50,7 +50,7 @@ const testWorkOrders = [
       roles: ["Admin"],
       identityUserId: "asdgfasdfvousdag",
     },
-    userProfileId: 1,
+    mechanicUserProfileId: 1,
     bikeId: 2,
     bike: {
       id: 2,
@@ -104,8 +104,8 @@ export default function WorkOrderList({ loggedInUser }) {
               <td>{wo.description}</td>
               <td>{new Date(wo.dateInitiated).toLocaleDateString()}</td>
               <td>
-                {wo.userProfile
-                  ? `${wo.userProfile.firstName} ${wo.userProfile.lastName}`
+                {wo.mechanicUserProfile
+                  ? `${wo.mechanicUserProfile.firstName} ${wo.mechanicUserProfile.lastName}`
                   : "unassigned"}
               </td>
               <td></td>
@@ -164,10 +164,10 @@ public class WorkOrderController : ControllerBase
         .ThenInclude(b => b.Owner)
         .Include(wo => wo.Bike)
         .ThenInclude(b => b.BikeType)
-        .Include(wo => wo.UserProfile)
+        .Include(wo => wo.MechanicUserProfile)
         .Where(wo => wo.DateCompleted == null)
         .OrderBy(wo => wo.DateInitiated)
-        .ThenByDescending(wo => wo.UserProfileId == null).ToList());
+        .ThenByDescending(wo => wo.MechanicUserProfileId == null).ToList());
     }
 }
 ```
@@ -175,7 +175,7 @@ public class WorkOrderController : ControllerBase
 - The route for this controller will be `/api/workorder`. 
 - the `WorkOrderController` constructor is _injecting_ an instance of the `BiancasBikesDbContext` class to use to access the database. 
 - There is one endpoint in the class, `GetIncompleteWorkOrders`. 
-- The query in the method uses `OrderBy` and `ThenByDescending` to order the work orders first by when they were created, so that the oldest appear first. Then they are further sorted by whether an employee has been assigned to them or not. If the work order does not have a `UserProfileId`, it will appear before one that does. 
+- The query in the method uses `OrderBy` and `ThenByDescending` to order the work orders first by when they were created, so that the oldest appear first. Then they are further sorted by whether an employee has been assigned to them or not. If the work order does not have a `MechanicUserProfileId`, it will appear before one that does. 
 - notice that we had to use `Include` twice for `Bike`. Once, to be able to call `ThenInclude` for `Owner`, and a second time to be able to call `ThenInclude` for `BikeType`. 
 
 ## Connect the Endpoint and Component
@@ -199,4 +199,4 @@ useEffect(() => {
 Make sure that the component works with the API. Once you have tested the component, you can remove the `testWorkOrders` data from the file. 
 
 
-Up Next: [Creating a Work Order](./biancas-create-work-order.md)
+Up Next: [Referencing the Same Entity Twice](./biancas-foreign-keys.md)

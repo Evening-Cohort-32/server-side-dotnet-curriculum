@@ -12,11 +12,11 @@ The data that the component needs is fairly simple: an integer representing the 
 ### Implement the algorithm
 1. Step 1:
     ``` csharp
-    int inventory = _dbContext.Bikes.ToList();
+    List<Bike> inventory = _dbContext.Bikes.ToList();
     ```
 1. Step 2: 
     ``` csharp
-    int inventory = _dbContext
+    List<Bike> inventory = _dbContext
         .Bikes
         .Where(b => b.WorkOrders.Any(wo => wo.DateCompleted == null))
         .ToList();

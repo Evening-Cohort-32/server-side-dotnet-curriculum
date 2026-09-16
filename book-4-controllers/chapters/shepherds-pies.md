@@ -10,7 +10,7 @@ Giuseppe Shepherd learned how to make the perfect pizza as a child from his nonn
 ### Orders
 Giuseppe's (Joe, to his friends) restaurant has a dining room and delivery service available, and an order can either be placed for a particular table number or for delivery. Each order at the restaurant can have multiple pizzas on it.
 
-Each order can potentially have two employees assigned to it for different purposes - Joe can tell if an order is for delivery if an employee has been assigned as the deliverer for that order. Orders are also _always_ associated with the employee that took the order (at a table or over the phone).  
+Each order can potentially have two employees assigned to it for different purposes - Joe can tell if an order is for delivery if an employee has been assigned as the deliverer for that order. Orders are also _always_ associated with the employee that took the order (at a table or over the phone). This means `Order` will need two separate references to `Employee`. See [Referencing the Same Entity Twice](./biancas-foreign-keys.md) in Bianca's Bikes for the pattern to use for this (not as code to copy - your entities and properties are your own).
 
 Joe needs to see what the total cost for the order will be based on the total cost of all of the pizzas on that order. He also needs to see if the customer left a tip. Joe's restaurant is located in a magical place with no sales tax. For record-keeping purposes, Joe also needs to know the date and time an order was placed.    
 
@@ -60,7 +60,7 @@ Only employees will use this system as logged on users. They need to be able to:
 1. Update an order
     - Add a pizza to an order ( linked from order details view)
     - Remove a pizza from an order
-    - Assign an employee to deliver the pizza (see chapters below for correctly setting up the data model for this feature)
+    - Assign an employee to deliver the pizza (see the note above about `Order`'s two references to `Employee` for correctly setting up the data model for this feature)
 1. Update a pizza that is on an order
     - change cheese or sauce type, or size
     - add and remove toppings
@@ -73,5 +73,3 @@ You will not be able to complete this project efficiently without proper plannin
 1. Create wireframes of the different views that the UI will need in order to fulfill requirements. These can be very simple, but make sure you have an idea of how the user is going to access each view, and how any forms will need to look to allow the user to input data. 
 1. Use the project requirements to create user stories. Make issues on Github once you have a repo, and add those issues to a Github project. 
 1. Once you have started coding, create a new branch for each feature you work on. Merge that branch into main before you start working on the next feature. 
-
-[Multiple Foreign Key Properties](./shepherds-pies-foreign-keys.md)

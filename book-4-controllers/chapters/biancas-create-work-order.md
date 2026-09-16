@@ -107,19 +107,30 @@ Let's add a link to the form in the list component:
 You should be able to test navigating to the form and filling it out. Check the console for confirmation that the form is collecting data. 
 
 ## Creating the Endpoint
-Add this method to the `WorkOrderController` class:
+The previous chapter added an `InitiatedByUserProfileId` to `WorkOrder`, but nothing sets it yet. Whoever is logged in and submitting the form is the employee that opened the work order, so the endpoint can look that employee up the same way `AuthController.Me()` does: using the `NameIdentifier` claim from the cookie to find the matching `UserProfile`.
+
+Add a `using` directive to the top of `WorkOrderController.cs`:
+``` csharp
+using System.Security.Claims;
+```
+Then add this method to the `WorkOrderController` class:
 ``` csharp
 [HttpPost]
 [Authorize]
 public IActionResult CreateWorkOrder(WorkOrder workOrder)
 {
+    string identityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    UserProfile initiatingEmployee = _dbContext.UserProfiles.SingleOrDefault(up => up.IdentityUserId == identityUserId);
+
     workOrder.DateInitiated = DateTime.Now;
+    workOrder.InitiatedByUserProfileId = initiatingEmployee.Id;
     _dbContext.WorkOrders.Add(workOrder);
     _dbContext.SaveChanges();
     return Created($"/api/workorder/{workOrder.Id}", workOrder);
 }
 ```
 - This endpoint will map to a `POST` request with the url `/api/workorder`. 
+- The client never sends `InitiatedByUserProfileId` in the request body. The API determines it from who is logged in, the same way it determines `DateInitiated` on its own, so that a user can't claim a work order was opened by someone else.
 
 ## Using the Endpoint in the UI
 Add another function to the `workOrderManager`:
@@ -132,7 +143,7 @@ export const createWorkOrder = (workOrder) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(workOrder),
-  }).then((res) => res.json);
+  }).then((res) => res.json());
 };
 ```
 
@@ -156,4 +167,4 @@ const navigate = useNavigate();
 
 There is nothing new here. Go ahead and test the create feature to see that the new work order gets added to the list of work orders. 
 
-Up Next: [Assigning and Completing Work Orders](./biancas-update-work-orders.md)
+Up Next: [Data Validation with Data Annotations](./biancas-validation.md)

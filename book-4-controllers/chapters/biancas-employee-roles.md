@@ -2,7 +2,7 @@
 Most applications that have users need to manage what those users can do. Some users need admin privileges, while others may not need access to see everything, let alone edit anything (read-only access). This chapter will demonstrate a strategy for managing and using a role-based access control (RBAC). 
 
 ## The `AuthorizedRoute` component
-Most of the route elements in the application are going to be wrapped with the `AuthorizedRoute` component that has been created for this repository. The component accepts an array of role names as a prop, and will check if the logged-in user has any of those roles. if `all` is provided as another option, as in `<AuthorizedRoute roles={["Admin", "Employee"} all>`, then the `AuthorizedRoute` will only allow access if _all_ of the listed roles are true of the logged-in user. If no roles are provided, the user must merely be logged in to view the route. 
+Most of the route elements in the application are going to be wrapped with the `AuthorizedRoute` component that has been created for this repository. The component accepts an array of role names as a prop, and will check if the logged-in user has any of those roles. if `all` is provided as another option, as in `<AuthorizedRoute roles={["Admin", "Employee"]} all>`, then the `AuthorizedRoute` will only allow access if _all_ of the listed roles are true of the logged-in user. If no roles are provided, the user must merely be logged in to view the route. 
 
 The Employees menu item links to a route that requires admin privileges:
 ``` jsx
@@ -201,11 +201,10 @@ Finally, update the functions in `UserProfileList` to use the data access functi
 ```
 You should now be able to test the promote and demote functionality for users. Promotion and Demotion is only allowed by admins (because `Roles = "Admin"`) is passed into the `Authorize` attribute on the controller methods. The route should only even be visible to admins because of the `roles={["Admin"]}` prop passed to `AuthorizedRoute` for the route. 
 
-Sign in as a non-admin to see that an attempt to navigate to `/employees` results in a redirect to the `Login` component. `Employees` shouldnot appear on the navbar for no-admins. 
+Sign in as a non-admin to see that an attempt to navigate to `/employees` results in a redirect to the `Login` component. `Employees` should not appear on the navbar for non-admins. 
 
 The code in this chapter is complex, and you only are responsible for knowing how to use the `Authorize` attribute to protect an endpoint based on roles.
 
+This is the end of Bianca's Bike Shop. Before moving on to House Rules or Shepherd's Pies, complete the exercise below on Interfaces, an unrelated concept that is still part of this book's required work.
 
-
-
-    
+Up Next: [Interfaces](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-1-orientation/chapters/INTERFACES_INTRO.md)
