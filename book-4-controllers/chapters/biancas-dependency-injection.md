@@ -86,7 +86,17 @@ public class BikeController : ControllerBase
     [Authorize]
     public IActionResult Get()
     {
-        return Ok(_dbContext.Bikes.ToList());
+        return Ok(_dbContext
+            .Bikes
+            .Select(b => new BikeDTO
+            {
+                Id = b.Id,
+                Brand = b.Brand,
+                Color = b.Color,
+                BikeTypeId = b.BikeTypeId,
+                OwnerId = b.OwnerId
+            })
+            .ToList());
     }
 }
 ```

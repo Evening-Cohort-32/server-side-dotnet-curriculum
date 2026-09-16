@@ -104,15 +104,24 @@ public IActionResult Me()
     var roles = User.FindAll(ClaimTypes.Role).Select(r => r.Value).ToList();
     if (profile != null)
     {
-        profile.UserName = User.FindFirstValue(ClaimTypes.Name);
-        profile.Email = User.FindFirstValue(ClaimTypes.Email);
-        profile.Roles = roles;
-        return Ok(profile);
+        var userDto = new UserProfileDTO
+        {
+            Id = profile.Id,
+            FirstName = profile.FirstName,
+            LastName = profile.LastName,
+            Address = profile.Address,
+            IdentityUserId = identityUserId,
+            UserName = User.FindFirstValue(ClaimTypes.Name),
+            Email = User.FindFirstValue(ClaimTypes.Email),
+            Roles = roles
+        };
+
+        return Ok(userDto);
     }
     return NotFound();
 }
 ```
-This is an endpoint from the `AuthController` that gets the userProfile for a logged in user (a common use case that most front-end applications need). The `[Authorize]` attribute on this method tells the framework to require a cookie in order to access this resource. A request without a cookie will get an automatic `401` response. The `User` property is inherited from `ControllerBase`, and contains all of the data from the cookie (each of the "claims"). In this case, this method is getting the user Id (to look up the user's `UserProfile`) as well as all of the roles for that user.
+This is an endpoint from the `AuthController` that gets the userProfile for a logged in user (a common use case that most front-end applications need). The `[Authorize]` attribute on this method tells the framework to require a cookie in order to access this resource. A request without a cookie will get an automatic `401` response. The `User` property is inherited from `ControllerBase`, and contains all of the data from the cookie (each of the "claims"). In this case, this method is getting the user Id (to look up the user's `UserProfile`) as well as all of the roles for that user. Notice this builds a `UserProfileDTO` rather than returning the `UserProfile` entity directly, since `UserName`, `Email`, and `Roles` aren't columns on `UserProfile` itself, they come from the cookie's claims instead.
 
 > UserProfileController.cs
 ``` csharp
@@ -120,10 +129,23 @@ This is an endpoint from the `AuthController` that gets the userProfile for a lo
 [Authorize(Roles = "Admin")]
 public IActionResult Get()
 {
-    return Ok(_dbContext.UserProfiles.ToList());
+    return Ok(_dbContext
+        .UserProfiles
+        .Include(up => up.IdentityUser)
+        .Select(up => new UserProfileDTO
+        {
+            Id = up.Id,
+            FirstName = up.FirstName,
+            LastName = up.LastName,
+            Address = up.Address,
+            IdentityUserId = up.IdentityUserId,
+            Email = up.IdentityUser.Email,
+            UserName = up.IdentityUser.UserName
+        })
+        .ToList());
 }
 ```
-This method from the `UserProfileController` gets the data for all users. This data should only be available to Admin users (it will be used to terminate employees, hire new ones, as well as upgrading an employee to be an Admin). `[Authorize(Roles = "Admin")]` ensures that this resource will only be accessible to authenticated users that also have the `Admin` role associated with their user id. A logged in user that is not an Admin will receive a `403` (Forbidden) response when trying to access this resource.
+This method from the `UserProfileController` gets the data for all users. This data should only be available to Admin users (it will be used to terminate employees, hire new ones, as well as upgrading an employee to be an Admin). `[Authorize(Roles = "Admin")]` ensures that this resource will only be accessible to authenticated users that also have the `Admin` role associated with their user id. A logged in user that is not an Admin will receive a `403` (Forbidden) response when trying to access this resource. Like `Me()` above, this builds a `UserProfileDTO` for the same reason: `Email` and `UserName` live on `IdentityUser`, not `UserProfile`, so `Include` and a `Select` projection bring them into one combined shape.
 
 ## Other Auth-Related Code in the Codebase
 The following files and modules contain the code related to auth:

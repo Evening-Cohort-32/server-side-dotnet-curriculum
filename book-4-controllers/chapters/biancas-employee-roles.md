@@ -114,7 +114,7 @@ public IActionResult GetWithRoles()
 {
     return Ok(_dbContext.UserProfiles
     .Include(up => up.IdentityUser)
-    .Select(up => new UserProfile
+    .Select(up => new UserProfileDTO
     {
         Id = up.Id,
         FirstName = up.FirstName,
@@ -131,6 +131,7 @@ public IActionResult GetWithRoles()
 }
 ```
 - This is a very inefficient way to do this query, but better solutions require a level of complexity that is not necessary right now. The query gets user profiles, then searches for user roles associated with the profile, and maps each of those to role names.
+- Notice this projects into `UserProfileDTO`, not the `UserProfile` entity, same reason as `Me()` and `UserProfileController.Get()` back in the Auth chapter: `Email`, `UserName`, and `Roles` aren't columns on `UserProfile` itself.
 
 The `promote` and `demote` functions currently only log to the console, but the component should be viewable now. Test it to see if admins have a demote button, and non-admins have a promote button (you might have to register a few more users). Use the console to check that the buttons work.
 

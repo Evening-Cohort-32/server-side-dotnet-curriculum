@@ -41,7 +41,9 @@ public IActionResult Get()
     return Ok(_dbContext.Bikes.Include(b => b.Owner).ToList());
 }
 ```
-The `Authorize` attribute is commented out for now, so that we can test the method in Postman without logging in. Test the method to see that the bike objects now include their owners. Once you have confirmed that the endpoint works, _uncomment_ the `Authorize` attribute to ensure that only logged in users will be able to access it. 
+Notice this replaces the `BikeDTO` projection you saw in the tour chapter with the `Bike` entity directly. For the rest of this book, the endpoints you build will mostly return entities directly rather than DTOs, so that the focus stays on controllers, routing, and auth. You already know DTOs well from books 2 and 3, feel free to keep using them in your own endpoints if you'd rather, the rest of this book just won't require it.
+
+The `Authorize` attribute is commented out for now, so that we can test the method in Yaak without logging in. Test the method to see that the bike objects now include their owners. Once you have confirmed that the endpoint works, _uncomment_ the `Authorize` attribute to ensure that only logged in users will be able to access it. 
 
 ### Accessing the API from React
 We need to implement the `getBikes` function in the `bikeManager` module to use in the `BikeList` component:
@@ -139,7 +141,7 @@ Some things to notice:
 1. The name of the method is somewhat arbitrary. The way that the framework figures out which method to call is through the route mapping that is provided in the `Route` and `HttpGet` attributes.    
 
 
-Comment out the `Authorize` attribute to test the endpoint in Postman before moving on (remember to uncomment it after testing). 
+Comment out the `Authorize` attribute to test the endpoint in Yaak before moving on (remember to uncomment it after testing). 
 
 ### Accessing the API from React
 

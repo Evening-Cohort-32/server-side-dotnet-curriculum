@@ -27,7 +27,17 @@ public class BikeController : ControllerBase
     [Authorize]
     public IActionResult Get()
     {
-        return Ok(_dbContext.Bikes.ToList());
+        return Ok(_dbContext
+            .Bikes
+            .Select(b => new BikeDTO
+            {
+                Id = b.Id,
+                Brand = b.Brand,
+                Color = b.Color,
+                BikeTypeId = b.BikeTypeId,
+                OwnerId = b.OwnerId
+            })
+            .ToList());
     }
 }
 ```
@@ -36,6 +46,7 @@ This class has a number of _attributes_ on it and on the methods that you haven'
 1. A controller contains all of the endpoints for a specific resource. In this case, all endpoints related to the Bikes resource. Usually you will have one controller for each resource available in the API. 
 1. The `BikeController` class also has a `Route` attribute. This tells the framework what route segment should be associated with all of the endpoints in the controller. In this case, `"api/[controller]"` tells the framework to use the first part of the controller name ("Bike") to create the route. So all of the endpoints in this controller will have URLs that start with `"/api/bike"` (it is case insensitive)
 1. Finally, the `Get` method is an endpoint. The `Ok` method that gets called inside `Get` will create an HTTP response with a status of `200`, as well as the data that's passed in. It is decorated with the `HttpGet` attribute to mark it as a `GET` endpoint, but is technically unnecessary as `GET` is the default. `Authorize` will be covered in the next chapter. 
+1. You've already seen `BikeDTO` and the rest of this project's DTOs back in book 2 and book 3, they work exactly the same way here. `Select` projects each `Bike` entity into its `BikeDTO`, giving you full control over the exact shape of the JSON response.
 
 Up Next: [Bianca's Tour II: Auth](./biancas-auth.md)
 
