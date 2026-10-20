@@ -92,6 +92,7 @@ Before diving in, it helps to know the order a SQL query actually executes in â€
 |[SQL Cheatsheet](./chapters/resource-01-sql.md)|
 |[Request Lifecycle](./chapters/resource-03-request-lifecycle.md)|
 |[Vertical Slices vs. Horizontal Layers](./chapters/resource-04-vertical-vs-horizontal-development.md)|
+|[EF Core LINQ Cheatsheet](./chapters/resource-06-efcore-linq.md)|
 
 |:test_tube: Projects|
 |-|
