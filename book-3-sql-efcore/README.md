@@ -80,9 +80,10 @@ Before diving in, it helps to know the order a SQL query actually executes in �
 |🍯 💻 [Organize Data Access with Repositories](./chapters/explorer-honeyrae-03-repositories.md) |
 |:tent: [Data Validation and Algorithmic Reasoning](./chapters/explorer-creekriver-01-reservation-validation.md) |
 |:tent: [Mapping to DTOs with AutoMapper](./chapters/explorer-creekriver-02-automapper.md) |
+|:tent: [Class-Based Inheritance](./chapters/explorer-creekriver-03-inheritance.md) |
 | :book: [Automapper to Map Models to DTO's](./chapters/explorer-loncotes-01-automapper.md) |
 | :book: [Loncotes React Client](./chapters/explorer-loncotes-02-client.md) |
-|:tv: [Advanced Linq: Nineties TV](./chapters/explorer-creekriver-03-advanced-linq.md)|
+|:tv: [Advanced Linq: Nineties TV](./chapters/explorer-ninetiestv-01-advanced-linq.md)|
 
 |🌐 Resources|
 |--|

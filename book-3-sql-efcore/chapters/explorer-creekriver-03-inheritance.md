@@ -145,7 +145,12 @@ haulingCart.Drive();
 truck.Drive();
 ```
 
-![all three vehicles printing the same "Vrooom!" message when Drive() is called](../../assets/inheritance-non-overridden-method.gif)
+Run `dotnet run`. You should see the same message three times:
+```
+Vrooom!
+Vrooom!
+Vrooom!
+```
 
 To give each vehicle its own sound, two things need to happen:
 
@@ -184,9 +189,13 @@ To give each vehicle its own sound, two things need to happen:
     }
     ```
 
-Now running the program again with a `Tractor` included, it makes a different sound than the rest of the fleet:
-
-![the Tractor printing its own "Chugga-chugga-chug!" message after Drive() is overridden](../../assets/inheritance-overridden-method.gif)
+Now add a `Tractor` to `Program.cs`, call its `Drive()` method, and run the program again. The tractor makes a different sound than the rest of the fleet:
+```
+Vrooom!
+Vrooom!
+Vrooom!
+Chugga-chugga-chug!
+```
 
 ## Practice: Custom Colors and Sounds
 1. Move all common properties in your fleet classes to a new `Vehicle` class.
@@ -194,12 +203,12 @@ Now running the program again with a `Tractor` included, it makes a different so
 1. Define a different value for each vehicle's properties.
 1. Create a `Drive()` method in the `Vehicle` class.
 1. Override the `Drive()` method in all the other vehicle classes. Include the vehicle's color in the message (e.g. "The green Tractor drives past. Chugga-chugga-chug!").
-    ![example output of all four fleet vehicles driving with their own message and color](../../assets/inheritance-all-vehicles-driving.gif)
+    When you run the program, each of the four vehicles should print its own message, with its own color in it. No vehicle should print the base class's "Vrooom!" anymore.
 1. Create a `Turn(string direction)` method and a `Stop()` method on `Vehicle`. Define a basic implementation of each.
 1. Override all three of those methods on some of the vehicles. For example, the `Stop()` method for the tractor might output "The green Tractor rolls to a stop at the edge of the field."
 1. Make your vehicle instances perform all three behaviors.
 
-![all fleet vehicles driving, turning, and stopping with their own overridden messages](../../assets/inheritance-vehicles-drive.gif)
+When you run the program, every vehicle should drive, turn, and stop. The vehicles you overrode a method on should print their own message for it, and the rest should fall back to the basic implementation from `Vehicle`.
 
 ## Practice: Shooting Dice
 For more inheritance practice, follow the instructions in this repo:
