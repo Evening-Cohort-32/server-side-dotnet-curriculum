@@ -74,7 +74,11 @@ export default function CreateWorkOrder({ loggedInUser }) {
 - This component logs the form data to the console rather than submitting it to the database. we'll add the logic for submitting to the API later. 
 
 ### Routing
-Replace the `workorders` route in `ApplicationViews.jsx` with these routes:
+In `ApplicationViews.jsx`, import the new component at the top of the file, then replace the `workorders` route with these routes:
+>ApplicationViews.jsx
+``` jsx
+import CreateWorkOrder from "./workorders/CreateWorkOrder";
+```
 ``` jsx
 <Route path="workorders">
     <Route
@@ -97,8 +101,11 @@ Replace the `workorders` route in `ApplicationViews.jsx` with these routes:
 ```
 - The Route group create two routes for `workorders`. The route marked `index` will match to `workorders` with no extra url segments. The create route will match `/workorders/create`. 
 
-Let's add a link to the form in the list component:
+Let's add a link to the form in the list component. Import `Link` at the top of the file, then add the link below the heading:
 >WorkOrderList.jsx
+``` javascript
+import { Link } from "react-router-dom";
+```
 ``` javascript
 <h2>Open Work Orders</h2>
 <Link to="/workorders/create">New Work Order</Link>
@@ -107,11 +114,12 @@ Let's add a link to the form in the list component:
 You should be able to test navigating to the form and filling it out. Check the console for confirmation that the form is collecting data. 
 
 ## Creating the Endpoint
-The previous chapter added an `InitiatedByUserProfileId` to `WorkOrder`, but nothing sets it yet. Whoever is logged in and submitting the form is the employee that opened the work order, so the endpoint can look that employee up the same way `AuthController.Me()` does: using the `NameIdentifier` claim from the cookie to find the matching `UserProfile`.
+The previous chapter introduced `InitiatedByUserProfileId` on `WorkOrder`, but nothing sets it yet. Whoever is logged in and submitting the form is the employee that opened the work order, so the endpoint can look that employee up the same way `AuthController.Me()` does: using the `NameIdentifier` claim from the cookie to find the matching `UserProfile`.
 
-Add a `using` directive to the top of `WorkOrderController.cs`:
+Add these `using` directives to the top of `WorkOrderController.cs`:
 ``` csharp
 using System.Security.Claims;
+using BiancasBikes.Models;
 ```
 Then add this method to the `WorkOrderController` class:
 ``` csharp
@@ -147,8 +155,12 @@ export const createWorkOrder = (workOrder) => {
 };
 ```
 
-Finally, use that API access function in the `CreateWorkOrder` component:
+Finally, use that API access function in the `CreateWorkOrder` component. Add these imports at the top of the file, then update the component:
 > CreateWorkOrder.jsx
+``` javascript
+import { useNavigate } from "react-router-dom";
+import { createWorkOrder } from "../../managers/workOrderManager";
+```
 ``` javascript
 const navigate = useNavigate();
 

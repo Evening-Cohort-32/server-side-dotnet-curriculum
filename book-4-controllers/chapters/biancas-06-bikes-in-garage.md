@@ -46,13 +46,20 @@ public IActionResult Inventory()
 - `Authorize` ensures that this endpoint is only accesible to logged in users
 
 ## Accessing the Endpoint in the Client
+Unlike `getBikes` and `getBikeById`, the client code for this feature is not already implemented. `bikeManager.js` and `NavBar.jsx` each have a placeholder comment where the code belongs. Replace each placeholder with the code below.
+
+In `bikeManager.js`, replace the `//add implementation here...` comment inside `getBikesInShopCount`:
 > bikeManager.js
 ``` javascript
 export const getBikesInShopCount = () => {
   return fetch(`${apiUrl}/inventory`).then((res) => res.json());
 };
 ```
+In `NavBar.jsx`, import `getBikesInShopCount` at the top of the file, then replace the `//implement functionality here....` comment inside `getInventory`:
 >NavBar.jsx
+``` javascript
+import { getBikesInShopCount } from "../managers/bikeManager";
+```
 ``` javascript
  const getInventory = () => {
     getBikesInShopCount().then(setInventory);

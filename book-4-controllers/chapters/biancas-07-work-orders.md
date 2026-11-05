@@ -119,7 +119,11 @@ export default function WorkOrderList({ loggedInUser }) {
 ```
 - This component has some test data in it. You can do this when you are building components that don't have endpoints yet. If you just want to work on the UI, create some fake data!
 
-Replace the current `workorders` endpoint in `ApplicationViews.jsx with this one:
+In `ApplicationViews.jsx`, import the new component at the top of the file, then replace the current `workorders` route with this one:
+>ApplicationViews.jsx
+``` jsx
+import WorkOrderList from "./workorders/WorkOrderList";
+```
 ``` jsx
 <Route
     path="workorders"
@@ -175,7 +179,7 @@ public class WorkOrderController : ControllerBase
 - The route for this controller will be `/api/workorder`. 
 - the `WorkOrderController` constructor is _injecting_ an instance of the `BiancasBikesDbContext` class to use to access the database. 
 - There is one endpoint in the class, `GetIncompleteWorkOrders`. 
-- The query in the method uses `OrderBy` and `ThenByDescending` to order the work orders first by when they were created, so that the oldest appear first. Then they are further sorted by whether an employee has been assigned to them or not. If the work order does not have a `MechanicUserProfileId`, it will appear before one that does. 
+- The query in the method uses `OrderBy` and `ThenByDescending` to order the work orders first by when they were created, so that the oldest appear first. `ThenByDescending` only breaks ties: when two work orders have the same `DateInitiated`, the one without a `MechanicUserProfileId` (unassigned) will appear before the one that has a mechanic assigned. 
 - notice that we had to use `Include` twice for `Bike`. Once, to be able to call `ThenInclude` for `Owner`, and a second time to be able to call `ThenInclude` for `BikeType`. 
 
 ## Connect the Endpoint and Component
@@ -187,8 +191,11 @@ export const getIncompleteWorkOrders = () => {
   return fetch(_apiUrl + "/incomplete").then((res) => res.json());
 };
 ```
-Finally, update the component to use the `getIncompleteWorkOrders` function:
+Finally, update the component to use the `getIncompleteWorkOrders` function. Import it at the top of the file, then update the `useEffect`:
 >WorkOrderList.jsx
+``` javascript
+import { getIncompleteWorkOrders } from "../../managers/workOrderManager";
+```
 ``` javascript
 useEffect(() => {
     getIncompleteWorkOrders().then(setWorkOrders);

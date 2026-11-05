@@ -87,7 +87,11 @@ export default function UserProfileList({ loggedInUser }) {
 }
 ```
 
-Make the component the element for the `Employees` menu item:
+Make the component the element for the `Employees` menu item. Import it at the top of `ApplicationViews.jsx`, then update the route:
+>ApplicationViews.jsx
+``` jsx
+import UserProfileList from "./userprofiles/UserProfileList";
+```
 ``` jsx
  <Route
     path="employees"
@@ -137,13 +141,22 @@ The `promote` and `demote` functions currently only log to the console, but the 
 
 ## Adding Promote and Demote Endpoints
 
-Add the following endpoints to `UserProfileController`:
+`IdentityRole` and `IdentityUserRole` come from ASP.NET Core Identity, so add this `using` directive to the top of `UserProfileController.cs`:
+``` csharp
+using Microsoft.AspNetCore.Identity;
+```
+Then add the following endpoints to `UserProfileController`:
 ``` csharp
 [HttpPost("promote/{id}")]
 [Authorize(Roles = "Admin")]
 public IActionResult Promote(string id)
 {
     IdentityRole role = _dbContext.Roles.SingleOrDefault(r => r.Name == "Admin");
+    if (_dbContext.UserRoles.Any(ur => ur.RoleId == role.Id && ur.UserId == id))
+    {
+        // The user is already an admin
+        return BadRequest();
+    }
     // This will create a new row in the many-to-many UserRoles table.
     _dbContext.UserRoles.Add(new IdentityUserRole<string>
     {
@@ -166,11 +179,18 @@ public IActionResult Demote(string id)
             ur.RoleId == role.Id &&
             ur.UserId == id);
 
+    if (userRole == null)
+    {
+        // The user isn't an admin, so there's nothing to remove
+        return NotFound();
+    }
+
     _dbContext.UserRoles.Remove(userRole);
     _dbContext.SaveChanges();
     return NoContent();
 }
 ```
+- Both endpoints check for the case where there's nothing to do, the same way `UpdateWorkOrder` checks for a work order that doesn't exist. Without these checks, promoting a user who is already an admin would try to add a duplicate row to `UserRoles`, and demoting a user who isn't an admin would try to remove `null`. Both would cause a `500` error. The UI hides the button that doesn't apply, but a double-click or an out-of-date page could still send one of these requests.
 
 Add these functions to `userProfileManager`:
 ``` javascript
@@ -186,8 +206,11 @@ export const demoteUser = (userId) => {
   });
 };
 ```
-Finally, update the functions in `UserProfileList` to use the data access functions from `userProfileManager`:
+Finally, update the functions in `UserProfileList` to use the data access functions from `userProfileManager`. Add `promoteUser` and `demoteUser` to the existing `userProfileManager` import at the top of the file:
 >UserProfileList.jsx
+``` javascript
+import { getUserProfilesWithRoles, promoteUser, demoteUser } from "../../managers/userProfileManager";
+```
 ``` javascript
  const promote = (id) => {
     promoteUser(id).then(() => {
@@ -203,6 +226,17 @@ Finally, update the functions in `UserProfileList` to use the data access functi
 You should now be able to test the promote and demote functionality for users. Promotion and Demotion is only allowed by admins (because `Roles = "Admin"`) is passed into the `Authorize` attribute on the controller methods. The route should only even be visible to admins because of the `roles={["Admin"]}` prop passed to `AuthorizedRoute` for the route. 
 
 Sign in as a non-admin to see that an attempt to navigate to `/employees` results in a redirect to the `Login` component. `Employees` should not appear on the navbar for non-admins. 
+
+### When Role Changes Take Effect
+Promoting or demoting a user changes the `UserRoles` table right away, but it doesn't change what that user can do right away. When a user logs in, the API copies their roles into the authentication cookie, and from then on `[Authorize(Roles = "Admin")]` checks the roles in the cookie, not the ones in the database. The client works the same way: `loggedInUser.roles` comes from the `/me` endpoint, which reads the cookie's claims too.
+
+That means:
+1. A user you promote won't see `Employees` in the navbar or have admin access until they log out and log back in.
+1. A user you demote _keeps_ admin access until they log out, or until their cookie expires.
+
+To test promotion, promote a user, then log in as that user. To test demotion, log in as a second admin in a private browser window, demote that admin from your main window, and notice that they can still reach `/employees` until they log out and back in.
+
+This is a real tradeoff in role-based access control. Checking roles from the cookie means the API doesn't have to query the database on every request, but it also means role changes are delayed. Applications that need changes to take effect immediately (for example, to lock out a fired employee) have to add extra checks against the database, which is beyond the scope of this course.
 
 The code in this chapter is complex, and you only are responsible for knowing how to use the `Authorize` attribute to protect an endpoint based on roles.
 
