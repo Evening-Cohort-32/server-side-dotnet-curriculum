@@ -17,6 +17,10 @@ Bianca's Bike Shop has asked us to build an application that Bianca, her mechani
     ``` bash
     dotnet user-secrets set AdminPassword password
     ```
+1. Update your global EF Core tools. This project uses a newer version of EF Core than the one you installed the tools for, and the `dotnet-ef` tool version is tracked separately from the SDK, so without this step every `dotnet ef` command will warn that the tools are older than the runtime:
+    ``` bash
+    dotnet tool update --global dotnet-ef
+    ```
 1. Create the database migration:
     ``` bash 
     dotnet ef migrations add InitialCreate

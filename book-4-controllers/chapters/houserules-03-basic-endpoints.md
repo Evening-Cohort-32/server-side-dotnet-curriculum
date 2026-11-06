@@ -6,7 +6,7 @@ It might be helpful to use the app to create a few more users (write down their 
 
 ## `UserProfileController`
 
-Add a file to the Controllers directory called `UserProfileController.cs`. You can use the `UserProfileController` from Bianca's Bikes to set up the class. You should only need to change the namespace reference and the name of the db context class.
+Add a file to the Controllers directory called `UserProfileController.cs`. You can use the `UserProfileController` from Bianca's Bikes to set up the class. Change the namespace reference and the name of the db context class, and keep the admin-only `Get` endpoint, which you'll use to list users. Delete the other endpoints you added in Bianca's Bikes (`GetMechanics`, `GetWithRoles`, `Promote`, and `Demote`), since they were for Bianca's features.
 
 ### Additional Endpoint for `UserProfileController`
 
@@ -14,6 +14,7 @@ Add a file to the Controllers directory called `UserProfileController.cs`. You c
    - This endpoint will get a UserProfile along with its assigned chores (through the `ChoreAssignment` table), as well as the user's completed chores (through the `ChoreCompletion` table).
    - It should be accessible to any logged in user, regardless of role. That means using the `Authorize` attribute without specifying a role.
    - Use `Include` and `ThenInclude` for `ChoreAssignment` and for `ChoreCompletion` to include the `Chore` data in both cases.
+   - Don't `Include` the `IdentityUser` in this endpoint. If you return a `UserProfile` entity with its `IdentityUser` included, the response will contain that user's `PasswordHash`. If you want to show a user's email or username, use a `UserProfileDTO` the way Bianca's `UserProfileController.Get()` does, so that only the properties you choose are sent to the client.
    - As a reminder, you can test the endpoint in Yaak without logging in by commenting out the `Authorize` attribute.
    - If you haven't already, you will need to add collections to the `UserProfile` to store that related data.
 
@@ -31,7 +32,7 @@ The following endpoints should be accessible to all logged in users:
    - This endpoint will return a chore with the current assignees and all completions (you do not need to include each UserProfile that did the completion)
 1. `POST` `/api/chore/{id}/complete`
    - This endpoint will create a new `ChoreCompletion`.
-   - Use a query string parameter to indicate the `userId` that will be assigned to the chore matching the id in the URL.
+   - Use a query string parameter to indicate the `userId` of the user who completed the chore matching the id in the URL.
    - Set the `CompletedOn` property in the controller method so that the client doesn't have to pass it in.
    - This endpoint can return a `204 No Content` response once it has created the completion.
 
@@ -47,8 +48,11 @@ The following endpoints should be accessible to admin users only:
    - This endpoint will assign a chore to a user.
    - Pass the `userId` in as a query string param, as in the completion endpoint above.
    - This endpoint can return a 204 response.
+   - If the user is already assigned to the chore, return a `400 Bad Request` instead of creating a duplicate assignment (the same check Bianca's `Promote` endpoint does).
 1. `POST` `/api/chore/{id}/unassign`
-   - This endpoint will unassign a chore to a user.
+   - This endpoint will unassign a chore from a user.
    - Pass the `userId` in as a query string param, as in the other endpoints above.
+   - This endpoint can return a 204 response.
+   - If the user isn't assigned to the chore, return a `404 Not Found` (the same check Bianca's `Demote` endpoint does).
 
 Up Next: [Client Views](./houserules-04-client-views.md)
