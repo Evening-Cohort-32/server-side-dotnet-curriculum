@@ -15,18 +15,14 @@ So far in the course, the HTML that appears in your browser has mostly been gene
 1. Server-side and client-side validation
 
 ## Table of Contents
-|#|DeShawn's Dog Walking III <br>🐕‍🦺 🐩 <sub>(guided tour)</sub>|
-|:-:|:-:|
-|1|[Project Setup](./chapters/deshawns-01-setup.md) <br><sub style="font-size: 0.85rem;">#nullable</sub>|
-|2|[Database](./chapters/deshawns-02-database.md)|
-|3|[How MVC Renders a Page](./chapters/deshawns-03-mvc-tour.md) <br><sub style="font-size: 0.85rem;">#routing #views #razor #layouts</sub>|
-|4|[Walkers](./chapters/deshawns-04-walkers.md) <br><sub style="font-size: 0.85rem;">#model #tag helpers</sub>|
-|5|[Owners](./chapters/deshawns-05-owners.md)|
-|6|[Forms](./chapters/deshawns-06-forms.md) <br><sub style="font-size: 0.85rem;">#model binding #anti-forgery</sub>|
-|7|[View Models](./chapters/deshawns-07-view-models.md)|
-|8|[Validation](./chapters/deshawns-08-validation.md) <br><sub style="font-size: 0.85rem;">#ModelState #data annotations</sub>|
-|9|[Dogs](./chapters/deshawns-09-dogs.md)|
-
-|:test_tube: Optional Project|
-|-|
-|[Refining DeShawn's](./chapters/project-01-refining-deshawns.md)|
+|#|DeShawn's Dog Walking III <br>🐕‍🦺 🐩 <sub>(guided tour)</sub>|Refining DeShawn's <br>🐕‍🦺 🐩 <sub>(optional extra practice)</sub>|
+|:-:|:-:|:-:|
+|1|[Project Setup](./chapters/deshawns-01-setup.md) <br><sub style="font-size: 0.85rem;">#nullable</sub>|[Walk Statuses](./chapters/refining-01-walk-statuses.md) <br><sub style="font-size: 0.85rem;">#enums</sub>|
+|2|[Database](./chapters/deshawns-02-database.md)|[Logging In](./chapters/refining-02-logging-in.md) <br><sub style="font-size: 0.85rem;">#cookies #claims</sub>|
+|3|[How MVC Renders a Page](./chapters/deshawns-03-mvc-tour.md) <br><sub style="font-size: 0.85rem;">#routing #views #razor #layouts</sub>|[Requirements](./chapters/refining-03-requirements.md)|
+|4|[Walkers](./chapters/deshawns-04-walkers.md) <br><sub style="font-size: 0.85rem;">#model #tag helpers</sub>||
+|5|[Owners](./chapters/deshawns-05-owners.md)||
+|6|[Forms](./chapters/deshawns-06-forms.md) <br><sub style="font-size: 0.85rem;">#model binding #anti-forgery</sub>||
+|7|[View Models](./chapters/deshawns-07-view-models.md)||
+|8|[Validation](./chapters/deshawns-08-validation.md) <br><sub style="font-size: 0.85rem;">#ModelState #data annotations</sub>||
+|9|[Dogs](./chapters/deshawns-09-dogs.md)||
