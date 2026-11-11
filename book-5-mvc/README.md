@@ -29,4 +29,4 @@ So far in the course, the HTML that appears in your browser has mostly been gene
 
 |:test_tube: Optional Project|
 |-|
-|[Refining DogGo](https://github.com/nashville-software-school/bangazon-inc/blob/server-side-curriculum/book-2-mvc/chapters/HOLIDAY_MVC_PROJECT.md)|
+|[Refining DeShawn's](./chapters/project-01-refining-deshawns.md)|
